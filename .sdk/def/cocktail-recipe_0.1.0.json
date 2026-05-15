@@ -1,0 +1,827 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "Cocktail Recipe API",
+    "description": "Provides access to a free cocktail recipe API with various endpoints for searching cocktails, ingredients, and more. Supports JSON format. Test API key '1' can be used for development and educational purposes. Premium API subscription required for production use.",
+    "version": "1.0.0",
+    "contact": {
+      "email": "support@thecocktaildb.com"
+    },
+    "termsOfService": "https://www.thecocktaildb.com/terms"
+  },
+  "servers": [
+    {
+      "url": "https://www.thecocktaildb.com/api/json/v1/1",
+      "description": "Production server (using test API key '1')"
+    }
+  ],
+  "paths": {
+    "/search.php": {
+      "get": {
+        "summary": "Search for cocktails or ingredients",
+        "description": "Search for cocktails by name, list cocktails by first letter, or search for ingredients by name",
+        "operationId": "searchCocktails",
+        "tags": [
+          "Search"
+        ],
+        "parameters": [
+          {
+            "name": "s",
+            "in": "query",
+            "description": "Search cocktail by name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "margarita"
+            }
+          },
+          {
+            "name": "f",
+            "in": "query",
+            "description": "List all cocktails by first letter",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "minLength": 1,
+              "maxLength": 1,
+              "example": "a"
+            }
+          },
+          {
+            "name": "i",
+            "in": "query",
+            "description": "Search ingredient by name",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "vodka"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "idDrink": {
+                            "type": "string",
+                            "description": "Unique drink ID"
+                          },
+                          "strDrink": {
+                            "type": "string",
+                            "description": "Drink name"
+                          },
+                          "strDrinkAlternate": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strTags": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strVideo": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strCategory": {
+                            "type": "string",
+                            "description": "Drink category"
+                          },
+                          "strIBA": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strAlcoholic": {
+                            "type": "string",
+                            "description": "Alcoholic or Non-Alcoholic"
+                          },
+                          "strGlass": {
+                            "type": "string",
+                            "description": "Type of glass"
+                          },
+                          "strInstructions": {
+                            "type": "string",
+                            "description": "Recipe instructions"
+                          },
+                          "strDrinkThumb": {
+                            "type": "string",
+                            "description": "URL to drink thumbnail image"
+                          },
+                          "strIngredient1": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strIngredient2": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strIngredient3": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strMeasure1": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strMeasure2": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strMeasure3": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "dateModified": {
+                            "type": "string",
+                            "format": "date-time",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "idIngredient": {
+                            "type": "string"
+                          },
+                          "strIngredient": {
+                            "type": "string"
+                          },
+                          "strDescription": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strType": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strAlcohol": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strABV": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/lookup.php": {
+      "get": {
+        "summary": "Lookup cocktail or ingredient details",
+        "description": "Lookup full cocktail details by ID or ingredient details by ingredient ID",
+        "operationId": "lookupDetails",
+        "tags": [
+          "Lookup"
+        ],
+        "parameters": [
+          {
+            "name": "i",
+            "in": "query",
+            "description": "Lookup cocktail by ID",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "11007"
+            }
+          },
+          {
+            "name": "iid",
+            "in": "query",
+            "description": "Lookup ingredient by ID",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "552"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "idDrink": {
+                            "type": "string"
+                          },
+                          "strDrink": {
+                            "type": "string"
+                          },
+                          "strCategory": {
+                            "type": "string"
+                          },
+                          "strAlcoholic": {
+                            "type": "string"
+                          },
+                          "strGlass": {
+                            "type": "string"
+                          },
+                          "strInstructions": {
+                            "type": "string"
+                          },
+                          "strDrinkThumb": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    },
+                    "ingredients": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "idIngredient": {
+                            "type": "string"
+                          },
+                          "strIngredient": {
+                            "type": "string"
+                          },
+                          "strDescription": {
+                            "type": "string"
+                          },
+                          "strType": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/random.php": {
+      "get": {
+        "summary": "Get a random cocktail",
+        "description": "Returns a single random cocktail with full details",
+        "operationId": "getRandomCocktail",
+        "tags": [
+          "Random"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with random cocktail",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "idDrink": {
+                            "type": "string"
+                          },
+                          "strDrink": {
+                            "type": "string"
+                          },
+                          "strCategory": {
+                            "type": "string"
+                          },
+                          "strAlcoholic": {
+                            "type": "string"
+                          },
+                          "strGlass": {
+                            "type": "string"
+                          },
+                          "strInstructions": {
+                            "type": "string"
+                          },
+                          "strDrinkThumb": {
+                            "type": "string"
+                          },
+                          "strIngredient1": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strIngredient2": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strMeasure1": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "strMeasure2": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        }
+                      },
+                      "maxItems": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/randomselection.php": {
+      "get": {
+        "summary": "Get 10 random cocktails",
+        "description": "Returns a selection of 10 random cocktails. Premium API only.",
+        "operationId": "getRandomSelection",
+        "tags": [
+          "Random",
+          "Premium"
+        ],
+        "security": [
+          {
+            "premiumApiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with 10 random cocktails",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      },
+                      "maxItems": 10
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Premium API key required"
+          }
+        }
+      }
+    },
+    "/popular.php": {
+      "get": {
+        "summary": "List popular cocktails",
+        "description": "Returns a list of popular cocktails. Premium API only.",
+        "operationId": "getPopularCocktails",
+        "tags": [
+          "Lists",
+          "Premium"
+        ],
+        "security": [
+          {
+            "premiumApiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with popular cocktails",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Premium API key required"
+          }
+        }
+      }
+    },
+    "/latest.php": {
+      "get": {
+        "summary": "List latest cocktails",
+        "description": "Returns the most recent cocktails added to the database. Premium API only.",
+        "operationId": "getLatestCocktails",
+        "tags": [
+          "Lists",
+          "Premium"
+        ],
+        "security": [
+          {
+            "premiumApiKey": []
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with latest cocktails",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized - Premium API key required"
+          }
+        }
+      }
+    },
+    "/filter.php": {
+      "get": {
+        "summary": "Filter cocktails",
+        "description": "Filter cocktails by ingredient, alcoholic type, category, or glass type. Multi-ingredient filtering requires Premium API.",
+        "operationId": "filterCocktails",
+        "tags": [
+          "Filter"
+        ],
+        "parameters": [
+          {
+            "name": "i",
+            "in": "query",
+            "description": "Filter by ingredient (comma-separated for multi-ingredient, Premium only)",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Gin"
+            }
+          },
+          {
+            "name": "a",
+            "in": "query",
+            "description": "Filter by alcoholic type",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "Alcoholic",
+                "Non_Alcoholic"
+              ],
+              "example": "Alcoholic"
+            }
+          },
+          {
+            "name": "c",
+            "in": "query",
+            "description": "Filter by category",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Ordinary_Drink"
+            }
+          },
+          {
+            "name": "g",
+            "in": "query",
+            "description": "Filter by glass type",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "example": "Cocktail_glass"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with filtered cocktails",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strDrink": {
+                            "type": "string"
+                          },
+                          "strDrinkThumb": {
+                            "type": "string"
+                          },
+                          "idDrink": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/list.php": {
+      "get": {
+        "summary": "List available filters",
+        "description": "List all available categories, glasses, ingredients, or alcoholic filters",
+        "operationId": "listFilters",
+        "tags": [
+          "Lists"
+        ],
+        "parameters": [
+          {
+            "name": "c",
+            "in": "query",
+            "description": "List categories",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "list"
+              ],
+              "example": "list"
+            }
+          },
+          {
+            "name": "g",
+            "in": "query",
+            "description": "List glass types",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "list"
+              ],
+              "example": "list"
+            }
+          },
+          {
+            "name": "i",
+            "in": "query",
+            "description": "List ingredients",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "list"
+              ],
+              "example": "list"
+            }
+          },
+          {
+            "name": "a",
+            "in": "query",
+            "description": "List alcoholic filters",
+            "required": false,
+            "schema": {
+              "type": "string",
+              "enum": [
+                "list"
+              ],
+              "example": "list"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with list of filters",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "drinks": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "strCategory": {
+                            "type": "string"
+                          },
+                          "strGlass": {
+                            "type": "string"
+                          },
+                          "strIngredient1": {
+                            "type": "string"
+                          },
+                          "strAlcoholic": {
+                            "type": "string"
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "premiumApiKey": {
+        "type": "apiKey",
+        "in": "path",
+        "name": "apiKey",
+        "description": "Premium API key for production use. Test key '1' can be used for development."
+      }
+    },
+    "schemas": {
+      "Cocktail": {
+        "type": "object",
+        "properties": {
+          "idDrink": {
+            "type": "string",
+            "description": "Unique cocktail ID"
+          },
+          "strDrink": {
+            "type": "string",
+            "description": "Name of the cocktail"
+          },
+          "strDrinkAlternate": {
+            "type": "string",
+            "nullable": true,
+            "description": "Alternate name"
+          },
+          "strTags": {
+            "type": "string",
+            "nullable": true,
+            "description": "Comma-separated tags"
+          },
+          "strVideo": {
+            "type": "string",
+            "nullable": true,
+            "description": "Video URL"
+          },
+          "strCategory": {
+            "type": "string",
+            "description": "Drink category"
+          },
+          "strIBA": {
+            "type": "string",
+            "nullable": true,
+            "description": "IBA category"
+          },
+          "strAlcoholic": {
+            "type": "string",
+            "description": "Alcoholic or Non-Alcoholic"
+          },
+          "strGlass": {
+            "type": "string",
+            "description": "Type of glass to serve in"
+          },
+          "strInstructions": {
+            "type": "string",
+            "description": "Preparation instructions"
+          },
+          "strDrinkThumb": {
+            "type": "string",
+            "description": "URL to cocktail thumbnail image"
+          },
+          "strIngredient1": {
+            "type": "string",
+            "nullable": true
+          },
+          "strIngredient2": {
+            "type": "string",
+            "nullable": true
+          },
+          "strIngredient3": {
+            "type": "string",
+            "nullable": true
+          },
+          "strIngredient4": {
+            "type": "string",
+            "nullable": true
+          },
+          "strIngredient5": {
+            "type": "string",
+            "nullable": true
+          },
+          "strMeasure1": {
+            "type": "string",
+            "nullable": true
+          },
+          "strMeasure2": {
+            "type": "string",
+            "nullable": true
+          },
+          "strMeasure3": {
+            "type": "string",
+            "nullable": true
+          },
+          "strMeasure4": {
+            "type": "string",
+            "nullable": true
+          },
+          "strMeasure5": {
+            "type": "string",
+            "nullable": true
+          },
+          "dateModified": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true,
+            "description": "Last modification date"
+          }
+        }
+      },
+      "Ingredient": {
+        "type": "object",
+        "properties": {
+          "idIngredient": {
+            "type": "string",
+            "description": "Unique ingredient ID"
+          },
+          "strIngredient": {
+            "type": "string",
+            "description": "Name of the ingredient"
+          },
+          "strDescription": {
+            "type": "string",
+            "nullable": true,
+            "description": "Description of the ingredient"
+          },
+          "strType": {
+            "type": "string",
+            "nullable": true,
+            "description": "Type of ingredient"
+          },
+          "strAlcohol": {
+            "type": "string",
+            "nullable": true,
+            "description": "Whether ingredient contains alcohol"
+          },
+          "strABV": {
+            "type": "string",
+            "nullable": true,
+            "description": "Alcohol by volume percentage"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Search",
+      "description": "Search for cocktails and ingredients"
+    },
+    {
+      "name": "Lookup",
+      "description": "Lookup specific cocktails or ingredients by ID"
+    },
+    {
+      "name": "Random",
+      "description": "Get random cocktails"
+    },
+    {
+      "name": "Filter",
+      "description": "Filter cocktails by various criteria"
+    },
+    {
+      "name": "Lists",
+      "description": "List available filter options"
+    },
+    {
+      "name": "Premium",
+      "description": "Premium API endpoints requiring subscription"
+    }
+  ]
+}

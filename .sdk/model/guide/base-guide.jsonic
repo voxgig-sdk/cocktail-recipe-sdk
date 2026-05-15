@@ -1,0 +1,47 @@
+# Guide
+
+guide: {
+  metrics: count: entity: 5
+  metrics: count: path: 8
+  metrics: count: method: 8
+
+  entity: filter: {
+    path: "/filter.php": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: list: {
+    path: "/latest.php": {
+      op: list: method: *GET
+    }
+    path: "/list.php": {
+      op: list: method: *GET
+    }
+    path: "/popular.php": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: lookup: {
+    path: "/lookup.php": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: random: {
+    path: "/random.php": {
+      op: list: method: *GET
+    }
+    path: "/randomselection.php": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: search: {
+    path: "/search.php": {
+      op: list: method: *GET
+    }
+  }
+
+}

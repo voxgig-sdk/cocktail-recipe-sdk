@@ -1,0 +1,24 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      contact: {
+        email: "support@thecocktaildb.com"
+      }
+      description: "Provides access to a free cocktail recipe API with various endpoints for searching cocktails, ingredients, and more. Supports JSON format. Test API key '1' can be used for development and educational purposes. Premium API subscription required for production use."
+      servers: [
+        {
+          description: "Production server (using test API key '1')"
+          url: "https://www.thecocktaildb.com/api/json/v1/1"
+        }
+      ]
+      termsOfService: "https://www.thecocktaildb.com/terms"
+      title: "Cocktail Recipe API"
+      version: "1.0.0"
+    }
+  }
+}
+
+}

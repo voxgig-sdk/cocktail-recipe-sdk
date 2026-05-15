@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "filter": {
+      "FILTER00": {
+        "id_drink": "s1e",
+        "str_drink": "s1f",
+        "str_drink_thumb": "s20"
+      },
+      "FILTER01": {
+        "id_drink": "s3c",
+        "str_drink": "s3d",
+        "str_drink_thumb": "s3e"
+      },
+      "FILTER02": {
+        "id_drink": "s5a",
+        "str_drink": "s5b",
+        "str_drink_thumb": "s5c"
+      }
+    }
+  },
+  "new": {
+    "filter": {
+      "filter_ref01": {
+        "id_drink": "s78",
+        "str_drink": "s79",
+        "str_drink_thumb": "s7a"
+      }
+    }
+  }
+}

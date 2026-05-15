@@ -1,0 +1,68 @@
+# Entity: lookup
+
+main: kit: entity: lookup: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "drink"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ingredient"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "lookup"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "11007"
+                kind: "query"
+                name: "i"
+                orig: "i"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "552"
+                kind: "query"
+                name: "iid"
+                orig: "iid"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/lookup.php"
+          parts: [
+            "lookup.php"
+          ]
+          select: {
+            exist: [
+              "i"
+              "iid"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

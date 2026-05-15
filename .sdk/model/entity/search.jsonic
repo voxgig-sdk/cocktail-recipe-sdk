@@ -1,0 +1,77 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "drink"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "ingredient"
+      req: false
+      type: "`$ARRAY`"
+    }
+  ]
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "a"
+                kind: "query"
+                name: "f"
+                orig: "f"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "vodka"
+                kind: "query"
+                name: "i"
+                orig: "i"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "margarita"
+                kind: "query"
+                name: "s"
+                orig: "s"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/search.php"
+          parts: [
+            "search.php"
+          ]
+          select: {
+            exist: [
+              "f"
+              "i"
+              "s"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

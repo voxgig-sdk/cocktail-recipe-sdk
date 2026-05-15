@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "random": {
+      "RANDOM00": {
+        "drink": [],
+        "id_drink": "s79",
+        "str_alcoholic": "s7a",
+        "str_category": "s7b",
+        "str_drink": "s7c",
+        "str_drink_thumb": "s7d",
+        "str_glass": "s7e",
+        "str_ingredient1": "s7f",
+        "str_ingredient2": "s80",
+        "str_instruction": "s81",
+        "str_measure1": "s82",
+        "str_measure2": "s83"
+      },
+      "RANDOM01": {
+        "drink": [],
+        "id_drink": "sf1",
+        "str_alcoholic": "sf2",
+        "str_category": "sf3",
+        "str_drink": "sf4",
+        "str_drink_thumb": "sf5",
+        "str_glass": "sf6",
+        "str_ingredient1": "sf7",
+        "str_ingredient2": "sf8",
+        "str_instruction": "sf9",
+        "str_measure1": "sfa",
+        "str_measure2": "sfb"
+      },
+      "RANDOM02": {
+        "drink": [],
+        "id_drink": "s169",
+        "str_alcoholic": "s16a",
+        "str_category": "s16b",
+        "str_drink": "s16c",
+        "str_drink_thumb": "s16d",
+        "str_glass": "s16e",
+        "str_ingredient1": "s16f",
+        "str_ingredient2": "s170",
+        "str_instruction": "s171",
+        "str_measure1": "s172",
+        "str_measure2": "s173"
+      }
+    }
+  },
+  "new": {
+    "random": {
+      "random_ref01": {
+        "drink": [],
+        "id_drink": "s1e1",
+        "str_alcoholic": "s1e2",
+        "str_category": "s1e3",
+        "str_drink": "s1e4",
+        "str_drink_thumb": "s1e5",
+        "str_glass": "s1e6",
+        "str_ingredient1": "s1e7",
+        "str_ingredient2": "s1e8",
+        "str_instruction": "s1e9",
+        "str_measure1": "s1ea",
+        "str_measure2": "s1eb"
+      }
+    }
+  }
+}

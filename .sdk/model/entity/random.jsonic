@@ -1,0 +1,103 @@
+# Entity: random
+
+main: kit: entity: random: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "drink"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "id_drink"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_alcoholic"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_drink"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_drink_thumb"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_glass"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_ingredient1"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_ingredient2"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_instruction"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_measure1"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_measure2"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "random"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          method: "GET"
+          orig: "/random.php"
+          parts: [
+            "random.php"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/randomselection.php"
+          parts: [
+            "randomselection.php"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

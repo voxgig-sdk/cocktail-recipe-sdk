@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "lookup": {
+      "LOOKUP00": {
+        "drink": [],
+        "ingredient": []
+      },
+      "LOOKUP01": {
+        "drink": [],
+        "ingredient": []
+      },
+      "LOOKUP02": {
+        "drink": [],
+        "ingredient": []
+      }
+    }
+  },
+  "new": {
+    "lookup": {
+      "lookup_ref01": {
+        "drink": [],
+        "ingredient": []
+      }
+    }
+  }
+}

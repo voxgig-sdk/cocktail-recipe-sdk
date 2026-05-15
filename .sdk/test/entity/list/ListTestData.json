@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "list": {
+      "LIST00": {
+        "drink": [],
+        "str_alcoholic": "s33",
+        "str_category": "s34",
+        "str_glass": "s35",
+        "str_ingredient1": "s36"
+      },
+      "LIST01": {
+        "drink": [],
+        "str_alcoholic": "s65",
+        "str_category": "s66",
+        "str_glass": "s67",
+        "str_ingredient1": "s68"
+      },
+      "LIST02": {
+        "drink": [],
+        "str_alcoholic": "s97",
+        "str_category": "s98",
+        "str_glass": "s99",
+        "str_ingredient1": "s9a"
+      }
+    }
+  },
+  "new": {
+    "list": {
+      "list_ref01": {
+        "drink": [],
+        "str_alcoholic": "sc9",
+        "str_category": "sca",
+        "str_glass": "scb",
+        "str_ingredient1": "scc"
+      }
+    }
+  }
+}

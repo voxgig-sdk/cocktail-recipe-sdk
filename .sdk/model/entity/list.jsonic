@@ -1,0 +1,123 @@
+# Entity: list
+
+main: kit: entity: list: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "drink"
+      req: false
+      type: "`$ARRAY`"
+    }
+    {
+      name: "str_alcoholic"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_category"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_glass"
+      req: false
+      type: "`$STRING`"
+    }
+    {
+      name: "str_ingredient1"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          args: {
+            query: [
+              {
+                example: "list"
+                kind: "query"
+                name: "a"
+                orig: "a"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "list"
+                kind: "query"
+                name: "c"
+                orig: "c"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "list"
+                kind: "query"
+                name: "g"
+                orig: "g"
+                reqd: false
+                type: "`$STRING`"
+              }
+              {
+                example: "list"
+                kind: "query"
+                name: "i"
+                orig: "i"
+                reqd: false
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/list.php"
+          parts: [
+            "list.php"
+          ]
+          select: {
+            exist: [
+              "a"
+              "c"
+              "g"
+              "i"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/latest.php"
+          parts: [
+            "latest.php"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          method: "GET"
+          orig: "/popular.php"
+          parts: [
+            "popular.php"
+          ]
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

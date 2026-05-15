@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "search": {
+      "SEARCH00": {
+        "drink": [],
+        "ingredient": []
+      },
+      "SEARCH01": {
+        "drink": [],
+        "ingredient": []
+      },
+      "SEARCH02": {
+        "drink": [],
+        "ingredient": []
+      }
+    }
+  },
+  "new": {
+    "search": {
+      "search_ref01": {
+        "drink": [],
+        "ingredient": []
+      }
+    }
+  }
+}

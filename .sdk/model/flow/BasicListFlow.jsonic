@@ -1,0 +1,22 @@
+# BasicListFlow
+
+main: kit: flow: BasicListFlow:
+{
+  entity: "list",
+  kind: "basic",
+  name: "BasicListFlow",
+  step: [
+    {
+      op: "list",
+      valid: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "list_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicListFlow"
+}
