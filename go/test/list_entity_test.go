@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/cocktail-recipe-sdk"
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/core"
+	sdk "github.com/voxgig-sdk/cocktail-recipe-sdk/go"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/cocktail-recipe-sdk/go/utility/struct"
 )
 
 func TestListEntity(t *testing.T) {

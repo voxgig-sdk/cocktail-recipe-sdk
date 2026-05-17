@@ -1,9 +1,9 @@
 package entity
 
 import (
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/core"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/cocktail-recipe-sdk/go/utility/struct"
 )
 
 type FilterEntity struct {

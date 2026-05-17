@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/cocktail-recipe-sdk"
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/core"
+	sdk "github.com/voxgig-sdk/cocktail-recipe-sdk/go"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/core"
 )
 
 func TestListDirect(t *testing.T) {

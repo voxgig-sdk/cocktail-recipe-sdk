@@ -1,10 +1,10 @@
 package voxgigcocktailrecipesdk
 
 import (
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/core"
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/entity"
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/feature"
-	_ "github.com/voxgig-sdk/cocktail-recipe-sdk/utility"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/core"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/entity"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/feature"
+	_ "github.com/voxgig-sdk/cocktail-recipe-sdk/go/utility"
 )
 
 // Type aliases preserve external API.

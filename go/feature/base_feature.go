@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/cocktail-recipe-sdk/core"
+	"github.com/voxgig-sdk/cocktail-recipe-sdk/go/core"
 )
 
 type BaseFeature struct {
