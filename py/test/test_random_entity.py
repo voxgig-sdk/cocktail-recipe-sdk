@@ -92,7 +92,6 @@ def _random_basic_setup(extra):
         "COCKTAILRECIPE_TEST_RANDOM_ENTID": idmap,
         "COCKTAILRECIPE_TEST_LIVE": "FALSE",
         "COCKTAILRECIPE_TEST_EXPLAIN": "FALSE",
-        "COCKTAILRECIPE_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -103,7 +102,6 @@ def _random_basic_setup(extra):
     if env.get("COCKTAILRECIPE_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("COCKTAILRECIPE_APIKEY"),
             },
             extra or {},
         ])

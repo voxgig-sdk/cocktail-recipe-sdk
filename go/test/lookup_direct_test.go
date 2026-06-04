@@ -93,14 +93,12 @@ func lookupDirectSetup(mockres any) *lookupDirectSetupResult {
 	env := envOverride(map[string]any{
 		"COCKTAILRECIPE_TEST_LOOKUP_ENTID": map[string]any{},
 		"COCKTAILRECIPE_TEST_LIVE":    "FALSE",
-		"COCKTAILRECIPE_APIKEY":       "NONE",
 	})
 
 	live := env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
-			"apikey": env["COCKTAILRECIPE_APIKEY"],
 		}
 		client := sdk.NewCocktailRecipeSDK(mergedOpts)
 

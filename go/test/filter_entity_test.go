@@ -119,7 +119,6 @@ func filterBasicSetup(extra map[string]any) *entityTestSetup {
 		"COCKTAILRECIPE_TEST_FILTER_ENTID": idmap,
 		"COCKTAILRECIPE_TEST_LIVE":      "FALSE",
 		"COCKTAILRECIPE_TEST_EXPLAIN":   "FALSE",
-		"COCKTAILRECIPE_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["COCKTAILRECIPE_TEST_FILTER_ENTID"])
@@ -130,7 +129,6 @@ func filterBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["COCKTAILRECIPE_APIKEY"],
 			},
 			extra,
 		})

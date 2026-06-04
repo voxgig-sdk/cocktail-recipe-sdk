@@ -86,7 +86,6 @@ function filter_basic_setup($extra)
         "COCKTAILRECIPE_TEST_FILTER_ENTID" => $idmap,
         "COCKTAILRECIPE_TEST_LIVE" => "FALSE",
         "COCKTAILRECIPE_TEST_EXPLAIN" => "FALSE",
-        "COCKTAILRECIPE_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -98,7 +97,6 @@ function filter_basic_setup($extra)
     if ($env["COCKTAILRECIPE_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["COCKTAILRECIPE_APIKEY"],
             ],
             $extra ?? [],
         ]);

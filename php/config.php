@@ -20,9 +20,6 @@ class CocktailRecipeConfig
             ],
             "options" => [
                 "base" => "https://www.thecocktaildb.com/api/json/v1/1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],

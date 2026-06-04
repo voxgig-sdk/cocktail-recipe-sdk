@@ -61,14 +61,12 @@ def _search_direct_setup(mockres):
     env = runner.env_override({
         "COCKTAILRECIPE_TEST_SEARCH_ENTID": {},
         "COCKTAILRECIPE_TEST_LIVE": "FALSE",
-        "COCKTAILRECIPE_APIKEY": "NONE",
     })
 
     live = env.get("COCKTAILRECIPE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("COCKTAILRECIPE_APIKEY"),
         }
         client = CocktailRecipeSDK(merged_opts)
         return {
