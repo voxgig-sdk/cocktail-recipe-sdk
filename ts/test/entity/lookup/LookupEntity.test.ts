@@ -113,6 +113,7 @@ function basicSetup(extra?: any) {
     'COCKTAIL_RECIPE_TEST_LOOKUP_ENTID': idmap,
     'COCKTAIL_RECIPE_TEST_LIVE': 'FALSE',
     'COCKTAIL_RECIPE_TEST_EXPLAIN': 'FALSE',
+    'COCKTAIL_RECIPE_APIKEY': 'NONE',
   })
 
   idmap = env['COCKTAIL_RECIPE_TEST_LOOKUP_ENTID']
@@ -122,6 +123,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new CocktailRecipeSDK(merge([
       {
+        apikey: env.COCKTAIL_RECIPE_APIKEY,
       },
       extra
     ]))

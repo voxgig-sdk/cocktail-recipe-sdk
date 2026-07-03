@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'COCKTAILRECIPE_TEST_LOOKUP_ENTID': {},
     'COCKTAILRECIPE_TEST_LIVE': 'FALSE',
+    'COCKTAILRECIPE_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.COCKTAILRECIPE_TEST_LIVE
 
   if (live) {
     const client = new CocktailRecipeSDK({
+      apikey: env.COCKTAILRECIPE_APIKEY,
     })
 
     let idmap: any = env['COCKTAILRECIPE_TEST_LOOKUP_ENTID']

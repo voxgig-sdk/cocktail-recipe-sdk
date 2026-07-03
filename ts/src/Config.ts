@@ -38,6 +38,10 @@ class Config {
   options = {
     base: 'https://www.thecocktaildb.com/api/json/v1/1',
 
+    auth: {
+      prefix: 'Bearer',
+    },
+
     headers: {
       "content-type": "application/json"
     },
@@ -67,70 +71,72 @@ class Config {
     "filter": {
       "fields": [
         {
+          "active": true,
           "name": "id_drink",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "str_drink",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "str_drink_thumb",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         }
       ],
       "name": "filter",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "Alcoholic",
                     "kind": "query",
                     "name": "a",
                     "orig": "a",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "Ordinary_Drink",
                     "kind": "query",
                     "name": "c",
                     "orig": "c",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "Cocktail_glass",
                     "kind": "query",
                     "name": "g",
                     "orig": "g",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "Gin",
                     "kind": "query",
                     "name": "i",
                     "orig": "i",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -151,11 +157,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -166,84 +170,86 @@ class Config {
     "list": {
       "fields": [
         {
+          "active": true,
           "name": "drink",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "str_alcoholic",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "str_category",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "str_glass",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "str_ingredient1",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         }
       ],
       "name": "list",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "list",
                     "kind": "query",
                     "name": "a",
                     "orig": "a",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "list",
                     "kind": "query",
                     "name": "c",
                     "orig": "c",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "list",
                     "kind": "query",
                     "name": "g",
                     "orig": "g",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "list",
                     "kind": "query",
                     "name": "i",
                     "orig": "i",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -264,41 +270,39 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/latest.php",
               "parts": [
                 "latest.php"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/popular.php",
               "parts": [
                 "popular.php"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 2
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -309,45 +313,47 @@ class Config {
     "lookup": {
       "fields": [
         {
+          "active": true,
           "name": "drink",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "ingredient",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "lookup",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "11007",
                     "kind": "query",
                     "name": "i",
                     "orig": "i",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "552",
                     "kind": "query",
                     "name": "iid",
                     "orig": "iid",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -366,11 +372,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -381,127 +385,127 @@ class Config {
     "random": {
       "fields": [
         {
+          "active": true,
           "name": "drink",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "id_drink",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 1
         },
         {
+          "active": true,
           "name": "str_alcoholic",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 2
         },
         {
+          "active": true,
           "name": "str_category",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 3
         },
         {
+          "active": true,
           "name": "str_drink",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 4
         },
         {
+          "active": true,
           "name": "str_drink_thumb",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 5
         },
         {
+          "active": true,
           "name": "str_glass",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 6
         },
         {
+          "active": true,
           "name": "str_ingredient1",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 7
         },
         {
+          "active": true,
           "name": "str_ingredient2",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 8
         },
         {
+          "active": true,
           "name": "str_instruction",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 9
         },
         {
+          "active": true,
           "name": "str_measure1",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 10
         },
         {
+          "active": true,
           "name": "str_measure2",
           "req": false,
           "type": "`$STRING`",
-          "active": true,
           "index$": 11
         }
       ],
       "name": "random",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/random.php",
               "parts": [
                 "random.php"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 0
             },
             {
+              "active": true,
+              "args": {},
               "method": "GET",
               "orig": "/randomselection.php",
               "parts": [
                 "randomselection.php"
               ],
+              "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
-              "args": {},
-              "select": {},
               "index$": 1
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },
@@ -512,54 +516,56 @@ class Config {
     "search": {
       "fields": [
         {
+          "active": true,
           "name": "drink",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 0
         },
         {
+          "active": true,
           "name": "ingredient",
           "req": false,
           "type": "`$ARRAY`",
-          "active": true,
           "index$": 1
         }
       ],
       "name": "search",
       "op": {
         "list": {
+          "input": "data",
           "name": "list",
           "points": [
             {
+              "active": true,
               "args": {
                 "query": [
                   {
+                    "active": true,
                     "example": "a",
                     "kind": "query",
                     "name": "f",
                     "orig": "f",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "vodka",
                     "kind": "query",
                     "name": "i",
                     "orig": "i",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   },
                   {
+                    "active": true,
                     "example": "margarita",
                     "kind": "query",
                     "name": "s",
                     "orig": "s",
                     "reqd": false,
-                    "type": "`$STRING`",
-                    "active": true
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -579,11 +585,9 @@ class Config {
                 "req": "`reqdata`",
                 "res": "`body`"
               },
-              "active": true,
               "index$": 0
             }
           ],
-          "input": "data",
           "key$": "list"
         }
       },

@@ -92,6 +92,7 @@ function filter_basic_setup(extra)
     ["COCKTAILRECIPE_TEST_FILTER_ENTID"] = idmap,
     ["COCKTAILRECIPE_TEST_LIVE"] = "FALSE",
     ["COCKTAILRECIPE_TEST_EXPLAIN"] = "FALSE",
+    ["COCKTAILRECIPE_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -103,6 +104,7 @@ function filter_basic_setup(extra)
   if env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["COCKTAILRECIPE_APIKEY"],
       },
       extra or {},
     })

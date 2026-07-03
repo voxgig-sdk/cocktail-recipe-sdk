@@ -1,23 +1,8 @@
 # CocktailRecipe SDK
 
-Search, filter, and look up cocktail recipes, ingredients, and drink images from TheCocktailDB
+Cocktail Recipe API client, generated from the OpenAPI spec.
 
 > TypeScript, Python, PHP, Golang, Ruby, Lua SDKs, a CLI, an interactive REPL, and an MCP server for AI agents — all generated from one OpenAPI spec by [@voxgig/sdkgen](https://github.com/voxgig/sdkgen).
-
-## About Cocktail Recipe API
-
-[TheCocktailDB](https://www.thecocktaildb.com/) is a community-maintained, crowd-sourced database of cocktail recipes, ingredients, and drink imagery. It is run by the same UK-based team behind TheMealDB and exposes a simple JSON HTTP API at `https://www.thecocktaildb.com/api/json/v1/{key}`.
-
-What you get from the API:
-
-- Search drinks by name, by first letter, or search ingredients by name (`search.php`).
-- Look up full cocktail details by drink ID or ingredient details by ingredient ID (`lookup.php`).
-- Fetch a random cocktail (`random.php`).
-- Filter drinks by ingredient, alcoholic / non-alcoholic status, category, or glass type (`filter.php`).
-- List the available categories, glasses, ingredients, and alcoholic filter values (`list.php`).
-- Cocktail and ingredient images in multiple sizes (200/350/500 px for drinks; 100/350/700 px for ingredients).
-
-Operational notes: the API is JSON over HTTPS with CORS enabled, so it can be called directly from browsers. The development key `1` is rate-limited and capped at roughly 100 results per query; multi-ingredient filtering, popular / latest endpoints, and the image API methods are gated behind the Premium tier.
 
 ## Try it
 
@@ -51,29 +36,31 @@ gem install cocktail-recipe-sdk
 luarocks install cocktail-recipe-sdk
 ```
 
-## 30-second quickstart
+## Quickstart
 
 ### TypeScript
 
 ```ts
 import { CocktailRecipeSDK } from 'cocktail-recipe'
 
-const client = new CocktailRecipeSDK({})
+const client = new CocktailRecipeSDK({
+  apikey: process.env.COCKTAIL-RECIPE_APIKEY,
+})
 
 // List all filters
 const filters = await client.Filter().list()
+console.log(filters.data)
 ```
 
-See the [TypeScript README](ts/README.md) for the
-full guide, or scroll down for the same example in other languages.
+See the [TypeScript README](ts/README.md) for the full guide.
 
-## What's in the box
+## Surfaces
 
-| Surface | Use it for | Path |
-| --- | --- | --- |
-| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | App integration | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
-| **CLI** | Scripts, CI, ops, one-off API calls | `go-cli/` |
-| **MCP server** | AI agents (Claude, Cursor, Cline) | `go-mcp/` |
+| Surface | Path |
+| --- | --- |
+| **SDK** (TypeScript, Python, PHP, Golang, Ruby, Lua) | `ts/` `py/` `php/` `go/` `rb/` `lua/` |
+| **CLI** | `go-cli/` |
+| **MCP server** | `go-mcp/` |
 
 ## Use it from an AI agent (MCP)
 
@@ -103,11 +90,11 @@ The API exposes 5 entities:
 
 | Entity | Description | API path |
 | --- | --- | --- |
-| **Filter** | Filter drink lists by a single attribute such as ingredient, alcoholic status, category, or glass via `filter.php` (e.g. `filter.php?i=Gin`, `filter.php?a=Alcoholic`, `filter.php?c=Cocktail`, `filter.php?g=Cocktail_glass`). | `/filter.php` |
-| **List** | Enumerate the controlled vocabularies used by the filter endpoints — categories, glasses, ingredients, and alcoholic/non-alcoholic values — via `list.php` (e.g. `list.php?c=list`). | `/list.php` |
-| **Lookup** | Retrieve a full record by ID — a cocktail by drink ID or an ingredient by ingredient ID — via `lookup.php` (e.g. `lookup.php?i=11007`, `lookup.php?iid=552`). | `/lookup.php` |
-| **Random** | Return a single randomly chosen cocktail with its full recipe via `random.php`. | `/random.php` |
-| **Search** | Search cocktails by name or first letter, or search ingredients by name via `search.php` (e.g. `search.php?s=margarita`, `search.php?f=a`, `search.php?i=vodka`). | `/search.php` |
+| **Filter** |  | `/filter.php` |
+| **List** |  | `/list.php` |
+| **Lookup** |  | `/lookup.php` |
+| **Random** |  | `/random.php` |
+| **Search** |  | `/search.php` |
 
 Each entity supports the following operations where available: **load**,
 **list**, **create**, **update**, and **remove**.
@@ -117,12 +104,16 @@ Each entity supports the following operations where available: **load**,
 ### Python
 
 ```python
+import os
 from cocktailrecipe_sdk import CocktailRecipeSDK
 
-client = CocktailRecipeSDK({})
+client = CocktailRecipeSDK({
+    "apikey": os.environ.get("COCKTAIL-RECIPE_APIKEY"),
+})
 
 # List all filters
-filters, err = client.Filter(None).list(None, None)
+filters, err = client.Filter().list()
+print(filters)
 ```
 
 ### PHP
@@ -131,10 +122,13 @@ filters, err = client.Filter(None).list(None, None)
 <?php
 require_once 'cocktailrecipe_sdk.php';
 
-$client = new CocktailRecipeSDK([]);
+$client = new CocktailRecipeSDK([
+    "apikey" => getenv("COCKTAIL-RECIPE_APIKEY"),
+]);
 
 // List all filters
-[$filters, $err] = $client->Filter(null)->list(null, null);
+[$filters, $err] = $client->Filter()->list();
+print_r($filters);
 ```
 
 ### Golang
@@ -142,10 +136,13 @@ $client = new CocktailRecipeSDK([]);
 ```go
 import sdk "github.com/voxgig-sdk/cocktail-recipe-sdk/go"
 
-client := sdk.NewCocktailRecipeSDK(map[string]any{})
+client := sdk.NewCocktailRecipeSDK(map[string]any{
+    "apikey": os.Getenv("COCKTAIL-RECIPE_APIKEY"),
+})
 
 // List all filters
 filters, err := client.Filter(nil).List(nil, nil)
+fmt.Println(filters)
 ```
 
 ### Ruby
@@ -153,10 +150,13 @@ filters, err := client.Filter(nil).List(nil, nil)
 ```ruby
 require_relative "CocktailRecipe_sdk"
 
-client = CocktailRecipeSDK.new({})
+client = CocktailRecipeSDK.new({
+  "apikey" => ENV["COCKTAIL-RECIPE_APIKEY"],
+})
 
 # List all filters
-filters, err = client.Filter(nil).list(nil, nil)
+filters, err = client.Filter().list
+puts filters
 ```
 
 ### Lua
@@ -164,10 +164,13 @@ filters, err = client.Filter(nil).list(nil, nil)
 ```lua
 local sdk = require("cocktail-recipe_sdk")
 
-local client = sdk.new({})
+local client = sdk.new({
+  apikey = os.getenv("COCKTAIL-RECIPE_APIKEY"),
+})
 
 -- List all filters
-local filters, err = client:Filter(nil):list(nil, nil)
+local filters, err = client:Filter():list()
+print(filters)
 ```
 
 ## Unit testing in offline mode
@@ -186,25 +189,21 @@ const result = await client.Filter().load({ id: 'test01' })
 ### Python
 
 ```python
-client = CocktailRecipeSDK.test(None, None)
-result, err = client.Filter(None).load(
-    {"id": "test01"}, None
-)
+client = CocktailRecipeSDK.test()
+result, err = client.Filter().load({"id": "test01"})
 ```
 
 ### PHP
 
 ```php
-$client = CocktailRecipeSDK::test(null, null);
-[$result, $err] = $client->Filter(null)->load(
-    ["id" => "test01"], null
-);
+$client = CocktailRecipeSDK::test();
+[$result, $err] = $client->Filter()->load(["id" => "test01"]);
 ```
 
 ### Golang
 
 ```go
-client := sdk.TestSDK(nil, nil)
+client := sdk.Test()
 result, err := client.Filter(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
@@ -213,19 +212,15 @@ result, err := client.Filter(nil).Load(
 ### Ruby
 
 ```ruby
-client = CocktailRecipeSDK.test(nil, nil)
-result, err = client.Filter(nil).load(
-  { "id" => "test01" }, nil
-)
+client = CocktailRecipeSDK.test
+result, err = client.Filter().load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
-local client = sdk.test(nil, nil)
-local result, err = client:Filter(nil):load(
-  { id = "test01" }, nil
-)
+local client = sdk.test()
+local result, err = client:Filter():load({ id = "test01" })
 ```
 
 ## How it works
@@ -329,16 +324,6 @@ local result, err = client:direct({
 - [Golang](go/README.md)
 - [Ruby](rb/README.md)
 - [Lua](lua/README.md)
-
-## Using the Cocktail Recipe API
-
-- Upstream: [https://www.thecocktaildb.com/](https://www.thecocktaildb.com/)
-- API docs: [https://www.thecocktaildb.com/api.php](https://www.thecocktaildb.com/api.php)
-
-- Free basic access using the development test key `1` (URL path `/api/json/v1/1`).
-- Production / commercial use requires a Premium API subscription via [TheCocktailDB](https://www.thecocktaildb.com/api.php).
-- Premium-only features include multi-ingredient filtering, popular/recent lookups, image API methods, and full database access beyond the 100-item limit.
-- Attribution to TheCocktailDB is appreciated; check the site's terms for the current policy before redistributing data or images.
 
 ---
 

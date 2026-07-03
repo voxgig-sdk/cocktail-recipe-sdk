@@ -17,34 +17,7 @@ main: {
       termsOfService: "https://www.thecocktaildb.com/terms"
       title: "Cocktail Recipe API"
       version: "1.0.0"
-      tagline: "Search, filter, and look up cocktail recipes, ingredients, and drink images from TheCocktailDB"
-      homepage: "https://www.thecocktaildb.com/"
-      docs_url: "https://www.thecocktaildb.com/api.php"
-      license_short: "Free for development with test key `1`; production use requires a Premium API subscription."
-      license_md: `- Free basic access using the development test key \`1\` (URL path \`/api/json/v1/1\`).
-- Production / commercial use requires a Premium API subscription via [TheCocktailDB](https://www.thecocktaildb.com/api.php).
-- Premium-only features include multi-ingredient filtering, popular/recent lookups, image API methods, and full database access beyond the 100-item limit.
-- Attribution to TheCocktailDB is appreciated; check the site's terms for the current policy before redistributing data or images.`
-      about_md: `[TheCocktailDB](https://www.thecocktaildb.com/) is a community-maintained, crowd-sourced database of cocktail recipes, ingredients, and drink imagery. It is run by the same UK-based team behind TheMealDB and exposes a simple JSON HTTP API at \`https://www.thecocktaildb.com/api/json/v1/{key}\`.
-
-What you get from the API:
-
-- Search drinks by name, by first letter, or search ingredients by name (\`search.php\`).
-- Look up full cocktail details by drink ID or ingredient details by ingredient ID (\`lookup.php\`).
-- Fetch a random cocktail (\`random.php\`).
-- Filter drinks by ingredient, alcoholic / non-alcoholic status, category, or glass type (\`filter.php\`).
-- List the available categories, glasses, ingredients, and alcoholic filter values (\`list.php\`).
-- Cocktail and ingredient images in multiple sizes (200/350/500 px for drinks; 100/350/700 px for ingredients).
-
-Operational notes: the API is JSON over HTTPS with CORS enabled, so it can be called directly from browsers. The development key \`1\` is rate-limited and capped at roughly 100 results per query; multi-ingredient filtering, popular / latest endpoints, and the image API methods are gated behind the Premium tier.`
-      entity_desc: {
-        filter: "Filter drink lists by a single attribute such as ingredient, alcoholic status, category, or glass via `filter.php` (e.g. `filter.php?i=Gin`, `filter.php?a=Alcoholic`, `filter.php?c=Cocktail`, `filter.php?g=Cocktail_glass`)."
-        list: "Enumerate the controlled vocabularies used by the filter endpoints — categories, glasses, ingredients, and alcoholic/non-alcoholic values — via `list.php` (e.g. `list.php?c=list`)."
-        lookup: "Retrieve a full record by ID — a cocktail by drink ID or an ingredient by ingredient ID — via `lookup.php` (e.g. `lookup.php?i=11007`, `lookup.php?iid=552`)."
-        random: "Return a single randomly chosen cocktail with its full recipe via `random.php`."
-        search: "Search cocktails by name or first letter, or search ingredients by name via `search.php` (e.g. `search.php?s=margarita`, `search.php?f=a`, `search.php?i=vodka`)."
-      }
-      auth: false
     }
   }
 }
+
