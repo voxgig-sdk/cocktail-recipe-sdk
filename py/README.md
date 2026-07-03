@@ -10,7 +10,7 @@ The Python SDK for the CocktailRecipe API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install cocktail-recipe-sdk
+pip install voxgig-sdk-cocktail-recipe
 ```
 
 Or install from source:

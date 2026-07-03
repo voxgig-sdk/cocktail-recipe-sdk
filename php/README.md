@@ -10,7 +10,7 @@ The PHP SDK for the CocktailRecipe API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/cocktail-recipe-sdk
+composer require voxgig-sdk/cocktail-recipe
 ```
 
 

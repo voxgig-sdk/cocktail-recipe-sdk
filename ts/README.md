@@ -10,7 +10,7 @@ The TypeScript SDK for the CocktailRecipe API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install cocktail-recipe
+npm install @voxgig-sdk/cocktail-recipe
 ```
 ## Tutorial: your first API call
 

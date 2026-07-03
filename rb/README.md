@@ -10,13 +10,13 @@ The Ruby SDK for the CocktailRecipe API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install cocktail-recipe-sdk
+gem install voxgig-sdk-cocktail-recipe
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "cocktail-recipe-sdk"
+gem "voxgig-sdk-cocktail-recipe"
 ```
 
 Then run:

@@ -10,7 +10,7 @@ The Lua SDK for the CocktailRecipe API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install cocktail-recipe-sdk
+luarocks install voxgig-sdk-cocktail-recipe
 ```
 
 If the module is not yet published, add the source directory to
