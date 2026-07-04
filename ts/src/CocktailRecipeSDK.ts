@@ -208,70 +208,35 @@ class CocktailRecipeSDK {
 
 
 
-  _filter?: FilterEntity
-
-  // Idiomatic facade: `client.filter.list()` / `client.filter.load({ id })`.
-  get filter(): FilterEntity {
-    return (this._filter ??= new FilterEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.filter` instead. */
+  // Entity access: `client.Filter().list()` / `client.Filter().load({ id })`.
   Filter(data?: any) {
     const self = this
     return new FilterEntity(self,data)
   }
 
 
-  _list?: ListEntity
-
-  // Idiomatic facade: `client.list.list()` / `client.list.load({ id })`.
-  get list(): ListEntity {
-    return (this._list ??= new ListEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.list` instead. */
+  // Entity access: `client.List().list()` / `client.List().load({ id })`.
   List(data?: any) {
     const self = this
     return new ListEntity(self,data)
   }
 
 
-  _lookup?: LookupEntity
-
-  // Idiomatic facade: `client.lookup.list()` / `client.lookup.load({ id })`.
-  get lookup(): LookupEntity {
-    return (this._lookup ??= new LookupEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.lookup` instead. */
+  // Entity access: `client.Lookup().list()` / `client.Lookup().load({ id })`.
   Lookup(data?: any) {
     const self = this
     return new LookupEntity(self,data)
   }
 
 
-  _random?: RandomEntity
-
-  // Idiomatic facade: `client.random.list()` / `client.random.load({ id })`.
-  get random(): RandomEntity {
-    return (this._random ??= new RandomEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.random` instead. */
+  // Entity access: `client.Random().list()` / `client.Random().load({ id })`.
   Random(data?: any) {
     const self = this
     return new RandomEntity(self,data)
   }
 
 
-  _search?: SearchEntity
-
-  // Idiomatic facade: `client.search.list()` / `client.search.load({ id })`.
-  get search(): SearchEntity {
-    return (this._search ??= new SearchEntity(this, undefined))
-  }
-
-  /** @deprecated Use `client.search` instead. */
+  // Entity access: `client.Search().list()` / `client.Search().load({ id })`.
   Search(data?: any) {
     const self = this
     return new SearchEntity(self,data)

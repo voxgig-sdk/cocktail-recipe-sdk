@@ -97,7 +97,7 @@ Prepare a fetch definition without sending. Returns the `fetchdef` and raises on
 ## FilterEntity
 
 ```python
-filter = client.filter
+filter = client.Filter()
 ```
 
 ### Fields
@@ -115,7 +115,9 @@ filter = client.filter
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.filter.list({})
+results = client.Filter().list({})
+for filter in results:
+    print(filter)
 ```
 
 ### Common Methods
@@ -150,7 +152,7 @@ Return the entity name.
 ## ListEntity
 
 ```python
-list = client.list
+list = client.List()
 ```
 
 ### Fields
@@ -170,7 +172,9 @@ list = client.list
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.list.list({})
+results = client.List().list({})
+for list in results:
+    print(list)
 ```
 
 ### Common Methods
@@ -205,7 +209,7 @@ Return the entity name.
 ## LookupEntity
 
 ```python
-lookup = client.lookup
+lookup = client.Lookup()
 ```
 
 ### Fields
@@ -222,7 +226,9 @@ lookup = client.lookup
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.lookup.list({})
+results = client.Lookup().list({})
+for lookup in results:
+    print(lookup)
 ```
 
 ### Common Methods
@@ -257,7 +263,7 @@ Return the entity name.
 ## RandomEntity
 
 ```python
-random = client.random
+random = client.Random()
 ```
 
 ### Fields
@@ -284,7 +290,9 @@ random = client.random
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.random.list({})
+results = client.Random().list({})
+for random in results:
+    print(random)
 ```
 
 ### Common Methods
@@ -319,7 +327,7 @@ Return the entity name.
 ## SearchEntity
 
 ```python
-search = client.search
+search = client.Search()
 ```
 
 ### Fields
@@ -336,7 +344,9 @@ search = client.search
 List entities matching the given criteria. Returns a list and raises on error.
 
 ```python
-results = client.search.list({})
+results = client.Search().list({})
+for search in results:
+    print(search)
 ```
 
 ### Common Methods

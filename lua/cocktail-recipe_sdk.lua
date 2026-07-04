@@ -244,8 +244,9 @@ end
 
 
 
--- Idiomatic facade: client:filter():list() / client:filter():load({ id = ... })
-function CocktailRecipeSDK:filter(data)
+-- Idiomatic facade: client:Filter():list() / client:Filter():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CocktailRecipeSDK:Filter(data)
   local EntityMod = require("entity.filter_entity")
   if data == nil then
     if self._filter == nil then
@@ -256,15 +257,10 @@ function CocktailRecipeSDK:filter(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:filter() instead.
-function CocktailRecipeSDK:Filter(data)
-  local EntityMod = require("entity.filter_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:list():list() / client:list():load({ id = ... })
-function CocktailRecipeSDK:list(data)
+-- Idiomatic facade: client:List():list() / client:List():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CocktailRecipeSDK:List(data)
   local EntityMod = require("entity.list_entity")
   if data == nil then
     if self._list == nil then
@@ -275,15 +271,10 @@ function CocktailRecipeSDK:list(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:list() instead.
-function CocktailRecipeSDK:List(data)
-  local EntityMod = require("entity.list_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:lookup():list() / client:lookup():load({ id = ... })
-function CocktailRecipeSDK:lookup(data)
+-- Idiomatic facade: client:Lookup():list() / client:Lookup():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CocktailRecipeSDK:Lookup(data)
   local EntityMod = require("entity.lookup_entity")
   if data == nil then
     if self._lookup == nil then
@@ -294,15 +285,10 @@ function CocktailRecipeSDK:lookup(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:lookup() instead.
-function CocktailRecipeSDK:Lookup(data)
-  local EntityMod = require("entity.lookup_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:random():list() / client:random():load({ id = ... })
-function CocktailRecipeSDK:random(data)
+-- Idiomatic facade: client:Random():list() / client:Random():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CocktailRecipeSDK:Random(data)
   local EntityMod = require("entity.random_entity")
   if data == nil then
     if self._random == nil then
@@ -313,15 +299,10 @@ function CocktailRecipeSDK:random(data)
   return EntityMod.new(self, data)
 end
 
--- Deprecated: use client:random() instead.
-function CocktailRecipeSDK:Random(data)
-  local EntityMod = require("entity.random_entity")
-  return EntityMod.new(self, data)
-end
 
-
--- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
-function CocktailRecipeSDK:search(data)
+-- Idiomatic facade: client:Search():list() / client:Search():load({ id = ... })
+-- Entity access is capitalised (PascalCase) for parity with the other SDKs.
+function CocktailRecipeSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   if data == nil then
     if self._search == nil then
@@ -329,12 +310,6 @@ function CocktailRecipeSDK:search(data)
     end
     return self._search
   end
-  return EntityMod.new(self, data)
-end
-
--- Deprecated: use client:search() instead.
-function CocktailRecipeSDK:Search(data)
-  local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)
 end
 

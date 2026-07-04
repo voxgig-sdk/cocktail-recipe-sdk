@@ -30,16 +30,14 @@ client = CocktailRecipeSDK.new({
 })
 ```
 
-### 2. List filters
+### 2. List filter records
 
 ```ruby
 begin
-  result = client.filter.list
-  if result.is_a?(Array)
-    result.each do |item|
-      d = item.data_get
-      puts "#{d["id"]} #{d["name"]}"
-    end
+  # list returns an Array of Filter records — iterate directly.
+  filters = client.Filter.list
+  filters.each do |item|
+    puts "#{item["id"]} #{item["name"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -87,13 +85,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = CocktailRecipeSDK.test
+client = CocktailRecipeSDK.test({
+  "entity" => { "filter" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.filter.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+filter = client.Filter.load({ "id" => "test01" })
+puts filter
 ```
 
 ### Use a custom fetch function
@@ -290,7 +292,7 @@ API path: `/search.php`
 
 ### Filter
 
-Create an instance: `const filter = client.filter`
+Create an instance: `filter = client.Filter`
 
 #### Operations
 
@@ -308,14 +310,15 @@ Create an instance: `const filter = client.filter`
 
 #### Example: List
 
-```ts
-const filters = await client.filter.list()
+```ruby
+# list returns an Array of Filter records (raises on error).
+filters = client.Filter.list
 ```
 
 
 ### List
 
-Create an instance: `const list = client.list`
+Create an instance: `list = client.List`
 
 #### Operations
 
@@ -335,14 +338,15 @@ Create an instance: `const list = client.list`
 
 #### Example: List
 
-```ts
-const lists = await client.list.list()
+```ruby
+# list returns an Array of List records (raises on error).
+lists = client.List.list
 ```
 
 
 ### Lookup
 
-Create an instance: `const lookup = client.lookup`
+Create an instance: `lookup = client.Lookup`
 
 #### Operations
 
@@ -359,14 +363,15 @@ Create an instance: `const lookup = client.lookup`
 
 #### Example: List
 
-```ts
-const lookups = await client.lookup.list()
+```ruby
+# list returns an Array of Lookup records (raises on error).
+lookups = client.Lookup.list
 ```
 
 
 ### Random
 
-Create an instance: `const random = client.random`
+Create an instance: `random = client.Random`
 
 #### Operations
 
@@ -393,14 +398,15 @@ Create an instance: `const random = client.random`
 
 #### Example: List
 
-```ts
-const randoms = await client.random.list()
+```ruby
+# list returns an Array of Random records (raises on error).
+randoms = client.Random.list
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `search = client.Search`
 
 #### Operations
 
@@ -417,8 +423,9 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```ruby
+# list returns an Array of Search records (raises on error).
+searchs = client.Search.list
 ```
 
 
@@ -493,7 +500,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-filter = client.filter
+filter = client.Filter
 filter.load({ "id" => "example_id" })
 
 # filter.data_get now returns the loaded filter data

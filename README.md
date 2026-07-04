@@ -28,9 +28,11 @@ const client = new CocktailRecipeSDK({
   apikey: process.env.COCKTAIL_RECIPE_APIKEY,
 })
 
-// List all filters
-const filters = await client.filter.list()
-console.log(filters.data)
+// List all filters (returns Filter[])
+const filters = await client.Filter().list()
+for (const filter of filters) {
+  console.log(filter)
+}
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -92,9 +94,10 @@ client = CocktailRecipeSDK({
     "apikey": os.environ.get("COCKTAIL_RECIPE_APIKEY"),
 })
 
-# List all filters
-filters = client.filter.list()
-print(filters)
+# List all filters (returns a list, raises on error)
+filters = client.Filter().list({})
+for filter in filters:
+    print(filter)
 ```
 
 ### PHP
@@ -107,8 +110,8 @@ $client = new CocktailRecipeSDK([
     "apikey" => getenv("COCKTAIL_RECIPE_APIKEY"),
 ]);
 
-// List all filters (throws on error)
-$filters = $client->filter()->list();
+// List all filters (returns an array; throws on error)
+$filters = $client->Filter()->list();
 print_r($filters);
 ```
 
@@ -135,8 +138,8 @@ client = CocktailRecipeSDK.new({
   "apikey" => ENV["COCKTAIL_RECIPE_APIKEY"],
 })
 
-# List all filters
-filters = client.filter.list
+# List all filters (returns an Array; raises on error)
+filters = client.Filter.list
 puts filters
 ```
 
@@ -150,7 +153,7 @@ local client = sdk.new({
 })
 
 -- List all filters
-local filters, err = client:filter():list()
+local filters, err = client:Filter():list()
 print(filters)
 ```
 
@@ -163,22 +166,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = CocktailRecipeSDK.test()
-const result = await client.filter.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const filter = await client.Filter().load({ id: 'test01' })
+// filter is a bare Filter populated with mock data
+console.log(filter)
 ```
 
 ### Python
 
 ```python
 client = CocktailRecipeSDK.test()
-result = client.filter.load({"id": "test01"})
+filter = client.Filter().load({"id": "test01"})
+print(filter)
 ```
 
 ### PHP
 
 ```php
-$client = CocktailRecipeSDK::test();
-$result = $client->filter()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = CocktailRecipeSDK::test([
+    "entity" => ["filter" => ["test01" => ["id" => "test01"]]],
+]);
+$filter = $client->Filter()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -193,15 +201,18 @@ result, err := client.Filter(nil).Load(
 ### Ruby
 
 ```ruby
-client = CocktailRecipeSDK.test
-result = client.filter.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = CocktailRecipeSDK.test({
+  "entity" => { "filter" => { "test01" => { "id" => "test01" } } },
+})
+filter = client.Filter.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:filter():load({ id = "test01" })
+local result, err = client:Filter():load({ id = "test01" })
 ```
 
 ## How it works
@@ -249,6 +260,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

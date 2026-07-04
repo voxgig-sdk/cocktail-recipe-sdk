@@ -4,97 +4,91 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class Filter:
-    id_drink: Optional[str] = None
-    str_drink: Optional[str] = None
-    str_drink_thumb: Optional[str] = None
+class Filter(TypedDict, total=False):
+    id_drink: str
+    str_drink: str
+    str_drink_thumb: str
 
 
-@dataclass
-class FilterListMatch:
-    id_drink: Optional[str] = None
-    str_drink: Optional[str] = None
-    str_drink_thumb: Optional[str] = None
+class FilterListMatch(TypedDict, total=False):
+    id_drink: str
+    str_drink: str
+    str_drink_thumb: str
 
 
-@dataclass
-class List:
-    drink: Optional[list] = None
-    str_alcoholic: Optional[str] = None
-    str_category: Optional[str] = None
-    str_glass: Optional[str] = None
-    str_ingredient1: Optional[str] = None
+class List(TypedDict, total=False):
+    drink: list
+    str_alcoholic: str
+    str_category: str
+    str_glass: str
+    str_ingredient1: str
 
 
-@dataclass
-class ListListMatch:
-    drink: Optional[list] = None
-    str_alcoholic: Optional[str] = None
-    str_category: Optional[str] = None
-    str_glass: Optional[str] = None
-    str_ingredient1: Optional[str] = None
+class ListListMatch(TypedDict, total=False):
+    drink: list
+    str_alcoholic: str
+    str_category: str
+    str_glass: str
+    str_ingredient1: str
 
 
-@dataclass
-class Lookup:
-    drink: Optional[list] = None
-    ingredient: Optional[list] = None
+class Lookup(TypedDict, total=False):
+    drink: list
+    ingredient: list
 
 
-@dataclass
-class LookupListMatch:
-    drink: Optional[list] = None
-    ingredient: Optional[list] = None
+class LookupListMatch(TypedDict, total=False):
+    drink: list
+    ingredient: list
 
 
-@dataclass
-class Random:
-    drink: Optional[list] = None
-    id_drink: Optional[str] = None
-    str_alcoholic: Optional[str] = None
-    str_category: Optional[str] = None
-    str_drink: Optional[str] = None
-    str_drink_thumb: Optional[str] = None
-    str_glass: Optional[str] = None
-    str_ingredient1: Optional[str] = None
-    str_ingredient2: Optional[str] = None
-    str_instruction: Optional[str] = None
-    str_measure1: Optional[str] = None
-    str_measure2: Optional[str] = None
+class Random(TypedDict, total=False):
+    drink: list
+    id_drink: str
+    str_alcoholic: str
+    str_category: str
+    str_drink: str
+    str_drink_thumb: str
+    str_glass: str
+    str_ingredient1: str
+    str_ingredient2: str
+    str_instruction: str
+    str_measure1: str
+    str_measure2: str
 
 
-@dataclass
-class RandomListMatch:
-    drink: Optional[list] = None
-    id_drink: Optional[str] = None
-    str_alcoholic: Optional[str] = None
-    str_category: Optional[str] = None
-    str_drink: Optional[str] = None
-    str_drink_thumb: Optional[str] = None
-    str_glass: Optional[str] = None
-    str_ingredient1: Optional[str] = None
-    str_ingredient2: Optional[str] = None
-    str_instruction: Optional[str] = None
-    str_measure1: Optional[str] = None
-    str_measure2: Optional[str] = None
+class RandomListMatch(TypedDict, total=False):
+    drink: list
+    id_drink: str
+    str_alcoholic: str
+    str_category: str
+    str_drink: str
+    str_drink_thumb: str
+    str_glass: str
+    str_ingredient1: str
+    str_ingredient2: str
+    str_instruction: str
+    str_measure1: str
+    str_measure2: str
 
 
-@dataclass
-class Search:
-    drink: Optional[list] = None
-    ingredient: Optional[list] = None
+class Search(TypedDict, total=False):
+    drink: list
+    ingredient: list
 
 
-@dataclass
-class SearchListMatch:
-    drink: Optional[list] = None
-    ingredient: Optional[list] = None
-
+class SearchListMatch(TypedDict, total=False):
+    drink: list
+    ingredient: list

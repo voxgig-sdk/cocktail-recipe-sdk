@@ -100,7 +100,7 @@ same parameters as `direct()`.
 ## FilterEntity
 
 ```lua
-local filter = client:filter(nil)
+local filter = client:Filter(nil)
 ```
 
 ### Fields
@@ -118,7 +118,7 @@ local filter = client:filter(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:filter():list()
+local results, err = client:Filter():list()
 ```
 
 ### Common Methods
@@ -154,7 +154,7 @@ Return the entity name.
 ## ListEntity
 
 ```lua
-local list = client:list(nil)
+local list = client:List(nil)
 ```
 
 ### Fields
@@ -174,7 +174,7 @@ local list = client:list(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:list():list()
+local results, err = client:List():list()
 ```
 
 ### Common Methods
@@ -210,7 +210,7 @@ Return the entity name.
 ## LookupEntity
 
 ```lua
-local lookup = client:lookup(nil)
+local lookup = client:Lookup(nil)
 ```
 
 ### Fields
@@ -227,7 +227,7 @@ local lookup = client:lookup(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:lookup():list()
+local results, err = client:Lookup():list()
 ```
 
 ### Common Methods
@@ -263,7 +263,7 @@ Return the entity name.
 ## RandomEntity
 
 ```lua
-local random = client:random(nil)
+local random = client:Random(nil)
 ```
 
 ### Fields
@@ -290,7 +290,7 @@ local random = client:random(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:random():list()
+local results, err = client:Random():list()
 ```
 
 ### Common Methods
@@ -326,7 +326,7 @@ Return the entity name.
 ## SearchEntity
 
 ```lua
-local search = client:search(nil)
+local search = client:Search(nil)
 ```
 
 ### Fields
@@ -343,7 +343,7 @@ local search = client:search(nil)
 List entities matching the given criteria. Returns an array.
 
 ```lua
-local results, err = client:search():list()
+local results, err = client:Search():list()
 ```
 
 ### Common Methods

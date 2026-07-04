@@ -103,7 +103,7 @@ same parameters as `direct()`. Raises on error.
 ## FilterEntity
 
 ```ruby
-filter = client.filter
+filter = client.Filter
 ```
 
 ### Fields
@@ -121,7 +121,7 @@ filter = client.filter
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.filter.list(nil)
+results = client.Filter.list(nil)
 ```
 
 ### Common Methods
@@ -157,7 +157,7 @@ Return the entity name.
 ## ListEntity
 
 ```ruby
-list = client.list
+list = client.List
 ```
 
 ### Fields
@@ -177,7 +177,7 @@ list = client.list
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.list.list(nil)
+results = client.List.list(nil)
 ```
 
 ### Common Methods
@@ -213,7 +213,7 @@ Return the entity name.
 ## LookupEntity
 
 ```ruby
-lookup = client.lookup
+lookup = client.Lookup
 ```
 
 ### Fields
@@ -230,7 +230,7 @@ lookup = client.lookup
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.lookup.list(nil)
+results = client.Lookup.list(nil)
 ```
 
 ### Common Methods
@@ -266,7 +266,7 @@ Return the entity name.
 ## RandomEntity
 
 ```ruby
-random = client.random
+random = client.Random
 ```
 
 ### Fields
@@ -293,7 +293,7 @@ random = client.random
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.random.list(nil)
+results = client.Random.list(nil)
 ```
 
 ### Common Methods
@@ -329,7 +329,7 @@ Return the entity name.
 ## SearchEntity
 
 ```ruby
-search = client.search
+search = client.Search
 ```
 
 ### Fields
@@ -346,7 +346,7 @@ search = client.search
 List entities matching the given criteria. Returns an array. Raises on error.
 
 ```ruby
-results = client.search.list(nil)
+results = client.Search.list(nil)
 ```
 
 ### Common Methods

@@ -102,7 +102,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## FilterEntity
 
 ```php
-$filter = $client->filter();
+$filter = $client->Filter();
 ```
 
 ### Fields
@@ -120,7 +120,7 @@ $filter = $client->filter();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->filter()->list([]);
+$results = $client->Filter()->list([]);
 ```
 
 ### Common Methods
@@ -156,7 +156,7 @@ Return the entity name.
 ## ListEntity
 
 ```php
-$list = $client->list();
+$list = $client->List();
 ```
 
 ### Fields
@@ -176,7 +176,7 @@ $list = $client->list();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->list()->list([]);
+$results = $client->List()->list([]);
 ```
 
 ### Common Methods
@@ -212,7 +212,7 @@ Return the entity name.
 ## LookupEntity
 
 ```php
-$lookup = $client->lookup();
+$lookup = $client->Lookup();
 ```
 
 ### Fields
@@ -229,7 +229,7 @@ $lookup = $client->lookup();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->lookup()->list([]);
+$results = $client->Lookup()->list([]);
 ```
 
 ### Common Methods
@@ -265,7 +265,7 @@ Return the entity name.
 ## RandomEntity
 
 ```php
-$random = $client->random();
+$random = $client->Random();
 ```
 
 ### Fields
@@ -292,7 +292,7 @@ $random = $client->random();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->random()->list([]);
+$results = $client->Random()->list([]);
 ```
 
 ### Common Methods
@@ -328,7 +328,7 @@ Return the entity name.
 ## SearchEntity
 
 ```php
-$search = $client->search();
+$search = $client->Search();
 ```
 
 ### Fields
@@ -345,7 +345,7 @@ $search = $client->search();
 List entities matching the given criteria. Returns an array. Throws on error.
 
 ```php
-$results = $client->search()->list([]);
+$results = $client->Search()->list([]);
 ```
 
 ### Common Methods

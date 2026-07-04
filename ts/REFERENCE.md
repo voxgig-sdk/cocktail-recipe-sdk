@@ -158,7 +158,7 @@ Alias for `CocktailRecipeSDK.test()`.
 ## FilterEntity
 
 ```ts
-const filter = client.filter
+const filter = client.Filter()
 ```
 
 ### Fields
@@ -176,7 +176,7 @@ const filter = client.filter
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.filter.list()
+const results = await client.Filter().list()
 ```
 
 ### Common Methods
@@ -210,7 +210,7 @@ Return a copy of the entity options.
 ## ListEntity
 
 ```ts
-const list = client.list
+const list = client.List()
 ```
 
 ### Fields
@@ -230,7 +230,7 @@ const list = client.list
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.list.list()
+const results = await client.List().list()
 ```
 
 ### Common Methods
@@ -264,7 +264,7 @@ Return a copy of the entity options.
 ## LookupEntity
 
 ```ts
-const lookup = client.lookup
+const lookup = client.Lookup()
 ```
 
 ### Fields
@@ -281,7 +281,7 @@ const lookup = client.lookup
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.lookup.list()
+const results = await client.Lookup().list()
 ```
 
 ### Common Methods
@@ -315,7 +315,7 @@ Return a copy of the entity options.
 ## RandomEntity
 
 ```ts
-const random = client.random
+const random = client.Random()
 ```
 
 ### Fields
@@ -342,7 +342,7 @@ const random = client.random
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.random.list()
+const results = await client.Random().list()
 ```
 
 ### Common Methods
@@ -376,7 +376,7 @@ Return a copy of the entity options.
 ## SearchEntity
 
 ```ts
-const search = client.search
+const search = client.Search()
 ```
 
 ### Fields
@@ -393,7 +393,7 @@ const search = client.search
 List entities matching the given criteria. Returns an array.
 
 ```ts
-const results = await client.search.list()
+const results = await client.Search().list()
 ```
 
 ### Common Methods

@@ -31,18 +31,16 @@ $client = new CocktailRecipeSDK([
 ]);
 ```
 
-### 2. List filters
+### 2. List filter records
 
 ```php
 try {
-    $result = $client->filter()->list();
-    if (is_array($result)) {
-        foreach ($result as $item) {
-            $d = $item->data_get();
-            echo $d["id"] . " " . $d["name"] . "\n";
-        }
+    // list() returns an array of Filter records — iterate directly.
+    $filters = $client->Filter()->list();
+    foreach ($filters as $item) {
+        echo $item["id"] . " " . $item["name"] . "\n";
     }
-} catch (\Exception $err) {
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -88,13 +86,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = CocktailRecipeSDK::test();
+$client = CocktailRecipeSDK::test([
+    "entity" => ["filter" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->filter()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$filter = $client->Filter()->load(["id" => "test01"]);
+print_r($filter);
 ```
 
 ### Use a custom fetch function
@@ -295,7 +297,7 @@ API path: `/search.php`
 
 ### Filter
 
-Create an instance: `const filter = client.filter`
+Create an instance: `$filter = $client->Filter();`
 
 #### Operations
 
@@ -313,14 +315,15 @@ Create an instance: `const filter = client.filter`
 
 #### Example: List
 
-```ts
-const filters = await client.filter.list()
+```php
+// list() returns an array of Filter records (throws on error).
+$filters = $client->Filter()->list();
 ```
 
 
 ### List
 
-Create an instance: `const list = client.list`
+Create an instance: `$list = $client->List();`
 
 #### Operations
 
@@ -340,14 +343,15 @@ Create an instance: `const list = client.list`
 
 #### Example: List
 
-```ts
-const lists = await client.list.list()
+```php
+// list() returns an array of List records (throws on error).
+$lists = $client->List()->list();
 ```
 
 
 ### Lookup
 
-Create an instance: `const lookup = client.lookup`
+Create an instance: `$lookup = $client->Lookup();`
 
 #### Operations
 
@@ -364,14 +368,15 @@ Create an instance: `const lookup = client.lookup`
 
 #### Example: List
 
-```ts
-const lookups = await client.lookup.list()
+```php
+// list() returns an array of Lookup records (throws on error).
+$lookups = $client->Lookup()->list();
 ```
 
 
 ### Random
 
-Create an instance: `const random = client.random`
+Create an instance: `$random = $client->Random();`
 
 #### Operations
 
@@ -398,14 +403,15 @@ Create an instance: `const random = client.random`
 
 #### Example: List
 
-```ts
-const randoms = await client.random.list()
+```php
+// list() returns an array of Random records (throws on error).
+$randoms = $client->Random()->list();
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.search`
+Create an instance: `$search = $client->Search();`
 
 #### Operations
 
@@ -422,8 +428,9 @@ Create an instance: `const search = client.search`
 
 #### Example: List
 
-```ts
-const searchs = await client.search.list()
+```php
+// list() returns an array of Search records (throws on error).
+$searchs = $client->Search()->list();
 ```
 
 
@@ -498,7 +505,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$filter = $client->filter();
+$filter = $client->Filter();
 $filter->load(["id" => "example_id"]);
 
 // $filter->dataGet() now returns the loaded filter data
