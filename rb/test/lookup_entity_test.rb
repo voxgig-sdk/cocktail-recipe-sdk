@@ -43,8 +43,7 @@ class LookupEntityTest < Minitest::Test
     lookup_ref01_ent = client.Lookup(nil)
     lookup_ref01_match = {}
 
-    lookup_ref01_list_result, err = lookup_ref01_ent.list(lookup_ref01_match, nil)
-    assert_nil err
+    lookup_ref01_list_result = lookup_ref01_ent.list(lookup_ref01_match, nil)
     assert lookup_ref01_list_result.is_a?(Array)
 
   end

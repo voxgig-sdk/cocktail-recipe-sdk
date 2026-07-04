@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'CocktailRecipe_types'
+
 
 class CocktailRecipeSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class CocktailRecipeSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class CocktailRecipeSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue CocktailRecipeError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = CocktailRecipeHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class CocktailRecipeSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,40 +198,75 @@ class CocktailRecipeSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.filter.list / client.filter.load({ "id" => ... })
+  def filter
+    require_relative 'entity/filter_entity'
+    @filter ||= FilterEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.filter instead.
   def Filter(data = nil)
     require_relative 'entity/filter_entity'
     FilterEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.list.list / client.list.load({ "id" => ... })
+  def list
+    require_relative 'entity/list_entity'
+    @list ||= ListEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.list instead.
   def List(data = nil)
     require_relative 'entity/list_entity'
     ListEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.lookup.list / client.lookup.load({ "id" => ... })
+  def lookup
+    require_relative 'entity/lookup_entity'
+    @lookup ||= LookupEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.lookup instead.
   def Lookup(data = nil)
     require_relative 'entity/lookup_entity'
     LookupEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.random.list / client.random.load({ "id" => ... })
+  def random
+    require_relative 'entity/random_entity'
+    @random ||= RandomEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.random instead.
   def Random(data = nil)
     require_relative 'entity/random_entity'
     RandomEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.search.list / client.search.load({ "id" => ... })
+  def search
+    require_relative 'entity/search_entity'
+    @search ||= SearchEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.search instead.
   def Search(data = nil)
     require_relative 'entity/search_entity'
     SearchEntity.new(self, data)

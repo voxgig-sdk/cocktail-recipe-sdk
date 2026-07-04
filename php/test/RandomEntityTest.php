@@ -50,8 +50,7 @@ class RandomEntityTest extends TestCase
         $random_ref01_ent = $client->Random(null);
         $random_ref01_match = [];
 
-        [$random_ref01_list_result, $err] = $random_ref01_ent->list($random_ref01_match, null);
-        $this->assertNull($err);
+        $random_ref01_list_result = $random_ref01_ent->list($random_ref01_match, null);
         $this->assertIsArray($random_ref01_list_result);
 
     }

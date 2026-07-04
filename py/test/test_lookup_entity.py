@@ -50,8 +50,7 @@ class TestLookupEntity:
         lookup_ref01_ent = client.Lookup(None)
         lookup_ref01_match = {}
 
-        lookup_ref01_list_result, err = lookup_ref01_ent.list(lookup_ref01_match, None)
-        assert err is None
+        lookup_ref01_list_result = lookup_ref01_ent.list(lookup_ref01_match, None)
         assert isinstance(lookup_ref01_list_result, list)
 
 

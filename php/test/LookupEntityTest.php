@@ -50,8 +50,7 @@ class LookupEntityTest extends TestCase
         $lookup_ref01_ent = $client->Lookup(null);
         $lookup_ref01_match = [];
 
-        [$lookup_ref01_list_result, $err] = $lookup_ref01_ent->list($lookup_ref01_match, null);
-        $this->assertNull($err);
+        $lookup_ref01_list_result = $lookup_ref01_ent->list($lookup_ref01_match, null);
         $this->assertIsArray($lookup_ref01_list_result);
 
     }

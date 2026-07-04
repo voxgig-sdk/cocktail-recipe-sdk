@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch RandomListMatch
+---@param ctrl? table
+---@return Random[]
+---@return string? err
 function RandomEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

@@ -43,8 +43,7 @@ class FilterEntityTest < Minitest::Test
     filter_ref01_ent = client.Filter(nil)
     filter_ref01_match = {}
 
-    filter_ref01_list_result, err = filter_ref01_ent.list(filter_ref01_match, nil)
-    assert_nil err
+    filter_ref01_list_result = filter_ref01_ent.list(filter_ref01_match, nil)
     assert filter_ref01_list_result.is_a?(Array)
 
   end

@@ -144,16 +144,23 @@ class CocktailRecipeSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class CocktailRecipeSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,35 +212,90 @@ class CocktailRecipeSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def filter(self):
+        """Idiomatic facade: client.filter.list() / client.filter.load({"id": ...})."""
+        from entity.filter_entity import FilterEntity
+        cached = getattr(self, "_filter", None)
+        if cached is None:
+            cached = FilterEntity(self, None)
+            self._filter = cached
+        return cached
 
     def Filter(self, data=None):
+        # Deprecated: use client.filter instead.
         from entity.filter_entity import FilterEntity
         return FilterEntity(self, data)
 
 
+    @property
+    def list(self):
+        """Idiomatic facade: client.list.list() / client.list.load({"id": ...})."""
+        from entity.list_entity import ListEntity
+        cached = getattr(self, "_list", None)
+        if cached is None:
+            cached = ListEntity(self, None)
+            self._list = cached
+        return cached
+
     def List(self, data=None):
+        # Deprecated: use client.list instead.
         from entity.list_entity import ListEntity
         return ListEntity(self, data)
 
 
+    @property
+    def lookup(self):
+        """Idiomatic facade: client.lookup.list() / client.lookup.load({"id": ...})."""
+        from entity.lookup_entity import LookupEntity
+        cached = getattr(self, "_lookup", None)
+        if cached is None:
+            cached = LookupEntity(self, None)
+            self._lookup = cached
+        return cached
+
     def Lookup(self, data=None):
+        # Deprecated: use client.lookup instead.
         from entity.lookup_entity import LookupEntity
         return LookupEntity(self, data)
 
 
+    @property
+    def random(self):
+        """Idiomatic facade: client.random.list() / client.random.load({"id": ...})."""
+        from entity.random_entity import RandomEntity
+        cached = getattr(self, "_random", None)
+        if cached is None:
+            cached = RandomEntity(self, None)
+            self._random = cached
+        return cached
+
     def Random(self, data=None):
+        # Deprecated: use client.random instead.
         from entity.random_entity import RandomEntity
         return RandomEntity(self, data)
 
 
+    @property
+    def search(self):
+        """Idiomatic facade: client.search.list() / client.search.load({"id": ...})."""
+        from entity.search_entity import SearchEntity
+        cached = getattr(self, "_search", None)
+        if cached is None:
+            cached = SearchEntity(self, None)
+            self._search = cached
+        return cached
+
     def Search(self, data=None):
+        # Deprecated: use client.search instead.
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 

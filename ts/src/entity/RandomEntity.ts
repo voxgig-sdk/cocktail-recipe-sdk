@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Random,
+  RandomListMatch,
+} from '../CocktailRecipeTypes'
 
 // TODO: needs Entity superclass
-class RandomEntity extends CocktailRecipeEntityBase {
+class RandomEntity extends CocktailRecipeEntityBase<Random> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class RandomEntity extends CocktailRecipeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: RandomListMatch, ctrl?: Control): Promise<Random[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class RandomEntity extends CocktailRecipeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Random[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

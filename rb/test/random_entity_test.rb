@@ -43,8 +43,7 @@ class RandomEntityTest < Minitest::Test
     random_ref01_ent = client.Random(nil)
     random_ref01_match = {}
 
-    random_ref01_list_result, err = random_ref01_ent.list(random_ref01_match, nil)
-    assert_nil err
+    random_ref01_list_result = random_ref01_ent.list(random_ref01_match, nil)
     assert random_ref01_list_result.is_a?(Array)
 
   end

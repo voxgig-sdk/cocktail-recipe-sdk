@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  List,
+  ListListMatch,
+} from '../CocktailRecipeTypes'
 
 // TODO: needs Entity superclass
-class ListEntity extends CocktailRecipeEntityBase {
+class ListEntity extends CocktailRecipeEntityBase<List> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class ListEntity extends CocktailRecipeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: ListListMatch, ctrl?: Control): Promise<List[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class ListEntity extends CocktailRecipeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<List[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

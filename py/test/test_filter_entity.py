@@ -50,8 +50,7 @@ class TestFilterEntity:
         filter_ref01_ent = client.Filter(None)
         filter_ref01_match = {}
 
-        filter_ref01_list_result, err = filter_ref01_ent.list(filter_ref01_match, None)
-        assert err is None
+        filter_ref01_list_result = filter_ref01_ent.list(filter_ref01_match, None)
         assert isinstance(filter_ref01_list_result, list)
 
 

@@ -50,8 +50,7 @@ class FilterEntityTest extends TestCase
         $filter_ref01_ent = $client->Filter(null);
         $filter_ref01_match = [];
 
-        [$filter_ref01_list_result, $err] = $filter_ref01_ent->list($filter_ref01_match, null);
-        $this->assertNull($err);
+        $filter_ref01_list_result = $filter_ref01_ent->list($filter_ref01_match, null);
         $this->assertIsArray($filter_ref01_list_result);
 
     }

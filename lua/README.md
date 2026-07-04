@@ -9,12 +9,9 @@ The Lua SDK for the CocktailRecipe API — an entity-oriented client using Lua c
 
 
 ## Install
-```bash
-luarocks install voxgig-sdk-cocktail-recipe
-```
-
-If the module is not yet published, add the source directory to
-your `LUA_PATH`:
+This package is not yet published to LuaRocks. Install it from the
+GitHub release tag (`lua/vX.Y.Z`, see [Releases](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases)),
+or add the source directory to your `LUA_PATH`:
 
 ```bash
 export LUA_PATH="path/to/lua/?.lua;path/to/lua/?/init.lua;;"
@@ -32,14 +29,14 @@ loading a specific record.
 local sdk = require("cocktail-recipe_sdk")
 
 local client = sdk.new({
-  apikey = os.getenv("COCKTAIL-RECIPE_APIKEY"),
+  apikey = os.getenv("COCKTAIL_RECIPE_APIKEY"),
 })
 ```
 
 ### 2. List filters
 
 ```lua
-local result, err = client:Filter():list()
+local result, err = client:filter():list()
 if err then error(err) end
 
 if type(result) == "table" then
@@ -93,7 +90,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:CocktailRecipe():load({ id = "test01" })
+local result, err = client:filter():load({ id = "test01" })
 -- result contains mock response data
 ```
 
@@ -126,8 +123,8 @@ local client = sdk.new({
 Create a `.env.local` file at the project root:
 
 ```
-COCKTAIL-RECIPE_TEST_LIVE=TRUE
-COCKTAIL-RECIPE_APIKEY=<your-key>
+COCKTAIL_RECIPE_TEST_LIVE=TRUE
+COCKTAIL_RECIPE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -290,7 +287,7 @@ API path: `/search.php`
 
 ### Filter
 
-Create an instance: `const filter = client.Filter()`
+Create an instance: `const filter = client.filter`
 
 #### Operations
 
@@ -309,13 +306,13 @@ Create an instance: `const filter = client.Filter()`
 #### Example: List
 
 ```ts
-const filters = await client.Filter().list()
+const filters = await client.filter.list()
 ```
 
 
 ### List
 
-Create an instance: `const list = client.List()`
+Create an instance: `const list = client.list`
 
 #### Operations
 
@@ -336,13 +333,13 @@ Create an instance: `const list = client.List()`
 #### Example: List
 
 ```ts
-const lists = await client.List().list()
+const lists = await client.list.list()
 ```
 
 
 ### Lookup
 
-Create an instance: `const lookup = client.Lookup()`
+Create an instance: `const lookup = client.lookup`
 
 #### Operations
 
@@ -360,13 +357,13 @@ Create an instance: `const lookup = client.Lookup()`
 #### Example: List
 
 ```ts
-const lookups = await client.Lookup().list()
+const lookups = await client.lookup.list()
 ```
 
 
 ### Random
 
-Create an instance: `const random = client.Random()`
+Create an instance: `const random = client.random`
 
 #### Operations
 
@@ -394,13 +391,13 @@ Create an instance: `const random = client.Random()`
 #### Example: List
 
 ```ts
-const randoms = await client.Random().list()
+const randoms = await client.random.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -418,7 +415,7 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
@@ -493,11 +490,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```lua
-local moon = client:Moon(nil)
-moon:load({ planet_id = "earth", id = "luna" }, nil)
+local filter = client:filter()
+filter:load({ id = "example_id" })
 
--- moon:data_get() now returns the loaded moon data
--- moon:match_get() returns the last match criteria
+-- filter:data_get() now returns the loaded filter data
+-- filter:match_get() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration

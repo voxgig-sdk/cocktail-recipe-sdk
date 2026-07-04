@@ -244,30 +244,95 @@ end
 
 
 
+-- Idiomatic facade: client:filter():list() / client:filter():load({ id = ... })
+function CocktailRecipeSDK:filter(data)
+  local EntityMod = require("entity.filter_entity")
+  if data == nil then
+    if self._filter == nil then
+      self._filter = EntityMod.new(self, nil)
+    end
+    return self._filter
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:filter() instead.
 function CocktailRecipeSDK:Filter(data)
   local EntityMod = require("entity.filter_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:list():list() / client:list():load({ id = ... })
+function CocktailRecipeSDK:list(data)
+  local EntityMod = require("entity.list_entity")
+  if data == nil then
+    if self._list == nil then
+      self._list = EntityMod.new(self, nil)
+    end
+    return self._list
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:list() instead.
 function CocktailRecipeSDK:List(data)
   local EntityMod = require("entity.list_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:lookup():list() / client:lookup():load({ id = ... })
+function CocktailRecipeSDK:lookup(data)
+  local EntityMod = require("entity.lookup_entity")
+  if data == nil then
+    if self._lookup == nil then
+      self._lookup = EntityMod.new(self, nil)
+    end
+    return self._lookup
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:lookup() instead.
 function CocktailRecipeSDK:Lookup(data)
   local EntityMod = require("entity.lookup_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:random():list() / client:random():load({ id = ... })
+function CocktailRecipeSDK:random(data)
+  local EntityMod = require("entity.random_entity")
+  if data == nil then
+    if self._random == nil then
+      self._random = EntityMod.new(self, nil)
+    end
+    return self._random
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:random() instead.
 function CocktailRecipeSDK:Random(data)
   local EntityMod = require("entity.random_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:search():list() / client:search():load({ id = ... })
+function CocktailRecipeSDK:search(data)
+  local EntityMod = require("entity.search_entity")
+  if data == nil then
+    if self._search == nil then
+      self._search = EntityMod.new(self, nil)
+    end
+    return self._search
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:search() instead.
 function CocktailRecipeSDK:Search(data)
   local EntityMod = require("entity.search_entity")
   return EntityMod.new(self, data)

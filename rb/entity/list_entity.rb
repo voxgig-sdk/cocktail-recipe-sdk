@@ -45,6 +45,7 @@ class ListEntity
     end
   end
 
+  # @return [List, Hash] the current List data
   def data_get
     @_utility.feature_hook.call(@_entctx, "GetData")
     VoxgigStruct.clone(@_data)
@@ -57,6 +58,7 @@ class ListEntity
     end
   end
 
+  # @return [Hash] the current match filter (any subset of List fields)
   def match_get
     @_utility.feature_hook.call(@_entctx, "GetMatch")
     VoxgigStruct.clone(@_match)
@@ -65,6 +67,11 @@ class ListEntity
   
 
   
+  # List List items matching the given filter.
+  #
+  # @param reqmatch [ListListMatch, Hash, nil] match filter (any subset of List fields)
+  # @param ctrl [Object, nil] optional per-call control
+  # @return [Array<List>, Array] the matching List items; raises CocktailRecipeError on failure
   def list(reqmatch, ctrl = nil)
     utility = @_utility
     ctx = utility.make_context.call({

@@ -9,9 +9,12 @@ The TypeScript SDK for the CocktailRecipe API — a type-safe, entity-oriented c
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/cocktail-recipe
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,17 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CocktailRecipeSDK } from 'cocktail-recipe'
+import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe'
 
 const client = new CocktailRecipeSDK({
-  apikey: process.env.COCKTAIL-RECIPE_APIKEY,
+  apikey: process.env.COCKTAIL_RECIPE_APIKEY,
 })
 ```
 
 ### 2. List filters
 
 ```ts
-const result = await client.Filter().list()
+const result = await client.filter.list()
 
 if (result.ok) {
   for (const item of result.data) {
@@ -81,7 +84,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = CocktailRecipeSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.filter.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -98,7 +101,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.filter
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -135,8 +138,8 @@ const client = new CocktailRecipeSDK({
 Create a `.env.local` file at the project root:
 
 ```
-COCKTAIL-RECIPE_TEST_LIVE=TRUE
-COCKTAIL-RECIPE_APIKEY=<your-key>
+COCKTAIL_RECIPE_TEST_LIVE=TRUE
+COCKTAIL_RECIPE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -331,7 +334,7 @@ API path: `/search.php`
 
 ### Filter
 
-Create an instance: `const filter = client.Filter()`
+Create an instance: `const filter = client.filter`
 
 #### Operations
 
@@ -350,13 +353,13 @@ Create an instance: `const filter = client.Filter()`
 #### Example: List
 
 ```ts
-const filters = await client.Filter().list()
+const filters = await client.filter.list()
 ```
 
 
 ### List
 
-Create an instance: `const list = client.List()`
+Create an instance: `const list = client.list`
 
 #### Operations
 
@@ -377,13 +380,13 @@ Create an instance: `const list = client.List()`
 #### Example: List
 
 ```ts
-const lists = await client.List().list()
+const lists = await client.list.list()
 ```
 
 
 ### Lookup
 
-Create an instance: `const lookup = client.Lookup()`
+Create an instance: `const lookup = client.lookup`
 
 #### Operations
 
@@ -401,13 +404,13 @@ Create an instance: `const lookup = client.Lookup()`
 #### Example: List
 
 ```ts
-const lookups = await client.Lookup().list()
+const lookups = await client.lookup.list()
 ```
 
 
 ### Random
 
-Create an instance: `const random = client.Random()`
+Create an instance: `const random = client.random`
 
 #### Operations
 
@@ -435,13 +438,13 @@ Create an instance: `const random = client.Random()`
 #### Example: List
 
 ```ts
-const randoms = await client.Random().list()
+const randoms = await client.random.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -459,7 +462,7 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
@@ -520,7 +523,7 @@ cocktail-recipe/
 Import the SDK from the package root:
 
 ```ts
-import { CocktailRecipeSDK } from 'cocktail-recipe'
+import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe'
 ```
 
 ### Entity state
@@ -530,11 +533,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const filter = client.filter
+await filter.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// filter.data() now returns the loaded filter data
+// filter.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

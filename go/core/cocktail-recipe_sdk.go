@@ -245,26 +245,41 @@ func (sdk *CocktailRecipeSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// Filter returns a Filter entity bound to this client.
+// Idiomatic usage: client.Filter(nil).List(nil, nil) or
+// client.Filter(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CocktailRecipeSDK) Filter(data map[string]any) CocktailRecipeEntity {
 	return NewFilterEntityFunc(sdk, data)
 }
 
 
+// List returns a List entity bound to this client.
+// Idiomatic usage: client.List(nil).List(nil, nil) or
+// client.List(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CocktailRecipeSDK) List(data map[string]any) CocktailRecipeEntity {
 	return NewListEntityFunc(sdk, data)
 }
 
 
+// Lookup returns a Lookup entity bound to this client.
+// Idiomatic usage: client.Lookup(nil).List(nil, nil) or
+// client.Lookup(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CocktailRecipeSDK) Lookup(data map[string]any) CocktailRecipeEntity {
 	return NewLookupEntityFunc(sdk, data)
 }
 
 
+// Random returns a Random entity bound to this client.
+// Idiomatic usage: client.Random(nil).List(nil, nil) or
+// client.Random(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CocktailRecipeSDK) Random(data map[string]any) CocktailRecipeEntity {
 	return NewRandomEntityFunc(sdk, data)
 }
 
 
+// Search returns a Search entity bound to this client.
+// Idiomatic usage: client.Search(nil).List(nil, nil) or
+// client.Search(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *CocktailRecipeSDK) Search(data map[string]any) CocktailRecipeEntity {
 	return NewSearchEntityFunc(sdk, data)
 }

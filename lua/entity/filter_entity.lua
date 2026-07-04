@@ -81,6 +81,10 @@ end
 
 
 
+---@param reqmatch FilterListMatch
+---@param ctrl? table
+---@return Filter[]
+---@return string? err
 function FilterEntity:list(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

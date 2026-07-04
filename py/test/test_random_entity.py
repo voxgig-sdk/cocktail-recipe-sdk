@@ -50,8 +50,7 @@ class TestRandomEntity:
         random_ref01_ent = client.Random(None)
         random_ref01_match = {}
 
-        random_ref01_list_result, err = random_ref01_ent.list(random_ref01_match, None)
-        assert err is None
+        random_ref01_list_result = random_ref01_ent.list(random_ref01_match, None)
         assert isinstance(random_ref01_list_result, list)
 
 

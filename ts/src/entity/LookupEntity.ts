@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Lookup,
+  LookupListMatch,
+} from '../CocktailRecipeTypes'
 
 // TODO: needs Entity superclass
-class LookupEntity extends CocktailRecipeEntityBase {
+class LookupEntity extends CocktailRecipeEntityBase<Lookup> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {
     super(client, entopts)
@@ -33,7 +37,7 @@ class LookupEntity extends CocktailRecipeEntityBase {
 
 
 
-  async list(this: any, reqmatch?: any, ctrl?: Control) {
+  async list(this: any, reqmatch?: LookupListMatch, ctrl?: Control): Promise<Lookup[]> {
 
     const utility = this._utility
 
@@ -133,7 +137,9 @@ class LookupEntity extends CocktailRecipeEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Lookup[]> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

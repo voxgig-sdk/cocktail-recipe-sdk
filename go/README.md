@@ -10,14 +10,18 @@ The Golang SDK for the CocktailRecipe API — an entity-oriented client using st
 
 ## Install
 ```bash
-go get github.com/voxgig-sdk/cocktail-recipe-sdk/go
+go get github.com/voxgig-sdk/cocktail-recipe-sdk/go@latest
 ```
 
-If the module is not yet published to a registry, use a `replace` directive
-in your `go.mod` to point to a local checkout:
+The Go module proxy resolves the version from the `go/vX.Y.Z` GitHub
+release tag — see [Releases](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases) for the available versions.
+
+To vendor from a local checkout instead, clone this repo alongside your
+project and add a `replace` directive pointing at the checked-out
+`go/` directory:
 
 ```bash
-go mod edit -replace github.com/voxgig-sdk/cocktail-recipe-sdk/go=../path/to/github.com/voxgig-sdk/cocktail-recipe-sdk/go
+go mod edit -replace github.com/voxgig-sdk/cocktail-recipe-sdk/go=../cocktail-recipe-sdk/go
 ```
 
 
@@ -41,7 +45,7 @@ import (
 
 func main() {
     client := sdk.NewCocktailRecipeSDK(map[string]any{
-        "apikey": os.Getenv("COCKTAIL-RECIPE_APIKEY"),
+        "apikey": os.Getenv("COCKTAIL_RECIPE_APIKEY"),
     })
 ```
 
@@ -109,7 +113,7 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-result, err := client.Planet(nil).Load(
+result, err := client.Filter(nil).Load(
     map[string]any{"id": "test01"}, nil,
 )
 // result contains mock response data
@@ -144,8 +148,8 @@ client := sdk.NewCocktailRecipeSDK(map[string]any{
 Create a `.env.local` file at the project root:
 
 ```
-COCKTAIL-RECIPE_TEST_LIVE=TRUE
-COCKTAIL-RECIPE_APIKEY=<your-key>
+COCKTAIL_RECIPE_TEST_LIVE=TRUE
+COCKTAIL_RECIPE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -506,11 +510,11 @@ Entity instances are stateful. After a successful `Load`, the entity
 stores the returned data and match criteria internally.
 
 ```go
-moon := client.Moon(nil)
-moon.Load(map[string]any{"planet_id": "earth", "id": "luna"}, nil)
+filter := client.Filter(nil)
+filter.Load(map[string]any{"id": "example_id"}, nil)
 
-// moon.Data() now returns the loaded moon data
-// moon.Match() returns the last match criteria
+// filter.Data() now returns the loaded filter data
+// filter.Match() returns the last match criteria
 ```
 
 Call `Make()` to create a fresh instance with the same configuration

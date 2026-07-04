@@ -55,6 +55,9 @@ class RandomEntity
         return new RandomEntity($this->_client, $opts);
     }
 
+    /**
+     * @param Random|array $args Random data (assoc-array) to store.
+     */
     public function data_set($args): void
     {
         if ($args) {
@@ -63,12 +66,18 @@ class RandomEntity
         }
     }
 
+    /**
+     * @return Random|array The current Random data as an assoc-array.
+     */
     public function data_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetData");
         return Struct::clone($this->_data);
     }
 
+    /**
+     * @param array $args Match filter (any subset of Random fields).
+     */
     public function match_set($args): void
     {
         if ($args) {
@@ -77,6 +86,9 @@ class RandomEntity
         }
     }
 
+    /**
+     * @return array The current match filter (any subset of Random fields).
+     */
     public function match_get()
     {
         ($this->_utility->feature_hook)($this->_entctx, "GetMatch");
@@ -86,7 +98,16 @@ class RandomEntity
     
 
     
-    public function list($reqmatch, $ctrl = null): array
+    /**
+     * List Random items matching the given filter.
+     *
+     * @param RandomListMatch|array|null $reqmatch Match filter (any subset
+     *   of Random fields) as an assoc-array; RandomListMatch names the shape.
+     * @param mixed $ctrl Optional per-call control overrides.
+     * @return Random[]|array A list of Random items as assoc-arrays at
+     *   the SDK boundary; throws CocktailRecipeError on failure (item-5 convention).
+     */
+    public function list(?array $reqmatch = null, $ctrl = null): mixed
     {
         $utility = $this->_utility;
         $ctx = ($utility->make_context)([
@@ -114,7 +135,7 @@ class RandomEntity
 
     
 
-    private function _run_op($ctx, callable $post_done): array
+    private function _run_op($ctx, callable $post_done): mixed
     {
         $utility = $this->_utility;
 

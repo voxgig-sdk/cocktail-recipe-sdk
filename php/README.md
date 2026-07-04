@@ -9,9 +9,10 @@ The PHP SDK for the CocktailRecipe API — an entity-oriented client using PHP c
 
 
 ## Install
-```bash
-composer require voxgig-sdk/cocktail-recipe
-```
+This package is not yet published to Packagist. Install it from the
+GitHub release tag (`php/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases)
 
 
 ## Tutorial: your first API call
@@ -26,21 +27,23 @@ loading a specific record.
 require_once 'cocktailrecipe_sdk.php';
 
 $client = new CocktailRecipeSDK([
-    "apikey" => getenv("COCKTAIL-RECIPE_APIKEY"),
+    "apikey" => getenv("COCKTAIL_RECIPE_APIKEY"),
 ]);
 ```
 
 ### 2. List filters
 
 ```php
-[$result, $err] = $client->Filter()->list();
-if ($err) { throw new \Exception($err); }
-
-if (is_array($result)) {
-    foreach ($result as $item) {
-        $d = $item->data_get();
-        echo $d["id"] . " " . $d["name"] . "\n";
+try {
+    $result = $client->filter()->list();
+    if (is_array($result)) {
+        foreach ($result as $item) {
+            $d = $item->data_get();
+            echo $d["id"] . " " . $d["name"] . "\n";
+        }
     }
+} catch (\Exception $err) {
+    echo "Error: " . $err->getMessage();
 }
 ```
 
@@ -52,28 +55,31 @@ if (is_array($result)) {
 For endpoints not covered by entity methods:
 
 ```php
-[$result, $err] = $client->direct([
+// direct() is the raw-HTTP escape hatch: it returns a result array
+// (it does not throw). Branch on $result["ok"].
+$result = $client->direct([
     "path" => "/api/resource/{id}",
     "method" => "GET",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 if ($result["ok"]) {
     echo $result["status"];  // 200
     print_r($result["data"]);  // response body
+} else {
+    echo "Error: " . $result["err"]->getMessage();
 }
 ```
 
 ### Prepare a request without sending it
 
 ```php
-[$fetchdef, $err] = $client->prepare([
+// prepare() throws on error and returns the fetch definition.
+$fetchdef = $client->prepare([
     "path" => "/api/resource/{id}",
     "method" => "DELETE",
     "params" => ["id" => "example"],
 ]);
-if ($err) { throw new \Exception($err); }
 
 echo $fetchdef["url"];
 echo $fetchdef["method"];
@@ -87,7 +93,7 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CocktailRecipeSDK::test();
 
-[$result, $err] = $client->CocktailRecipe()->load(["id" => "test01"]);
+$result = $client->filter()->load(["id" => "test01"]);
 // $result contains mock response data
 ```
 
@@ -121,8 +127,8 @@ $client = new CocktailRecipeSDK([
 Create a `.env.local` file at the project root:
 
 ```
-COCKTAIL-RECIPE_TEST_LIVE=TRUE
-COCKTAIL-RECIPE_APIKEY=<your-key>
+COCKTAIL_RECIPE_TEST_LIVE=TRUE
+COCKTAIL_RECIPE_APIKEY=<your-key>
 ```
 
 Then run:
@@ -195,8 +201,12 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return `[$result, $err]`. The first value is an
-`array` with these keys:
+Entity operations return the bare result data (an `array` for single-entity
+ops, a `list` for `list`) and throw on error. Wrap calls in
+`try`/`catch` to handle failures.
+
+The `direct()` escape hatch never throws — it returns a result `array`
+you branch on via `$result["ok"]`:
 
 | Key | Type | Description |
 | --- | --- | --- |
@@ -285,7 +295,7 @@ API path: `/search.php`
 
 ### Filter
 
-Create an instance: `const filter = client.Filter()`
+Create an instance: `const filter = client.filter`
 
 #### Operations
 
@@ -304,13 +314,13 @@ Create an instance: `const filter = client.Filter()`
 #### Example: List
 
 ```ts
-const filters = await client.Filter().list()
+const filters = await client.filter.list()
 ```
 
 
 ### List
 
-Create an instance: `const list = client.List()`
+Create an instance: `const list = client.list`
 
 #### Operations
 
@@ -331,13 +341,13 @@ Create an instance: `const list = client.List()`
 #### Example: List
 
 ```ts
-const lists = await client.List().list()
+const lists = await client.list.list()
 ```
 
 
 ### Lookup
 
-Create an instance: `const lookup = client.Lookup()`
+Create an instance: `const lookup = client.lookup`
 
 #### Operations
 
@@ -355,13 +365,13 @@ Create an instance: `const lookup = client.Lookup()`
 #### Example: List
 
 ```ts
-const lookups = await client.Lookup().list()
+const lookups = await client.lookup.list()
 ```
 
 
 ### Random
 
-Create an instance: `const random = client.Random()`
+Create an instance: `const random = client.random`
 
 #### Operations
 
@@ -389,13 +399,13 @@ Create an instance: `const random = client.Random()`
 #### Example: List
 
 ```ts
-const randoms = await client.Random().list()
+const randoms = await client.random.list()
 ```
 
 
 ### Search
 
-Create an instance: `const search = client.Search()`
+Create an instance: `const search = client.search`
 
 #### Operations
 
@@ -413,7 +423,7 @@ Create an instance: `const search = client.Search()`
 #### Example: List
 
 ```ts
-const searchs = await client.Search().list()
+const searchs = await client.search.list()
 ```
 
 
@@ -488,11 +498,11 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$moon = $client->Moon();
-[$result, $err] = $moon->load(["planet_id" => "earth", "id" => "luna"]);
+$filter = $client->filter();
+$filter->load(["id" => "example_id"]);
 
-// $moon->dataGet() now returns the loaded moon data
-// $moon->matchGet() returns the last match criteria
+// $filter->dataGet() now returns the loaded filter data
+// $filter->matchGet() returns the last match criteria
 ```
 
 Call `make()` to create a fresh instance with the same configuration
