@@ -11,7 +11,11 @@ export interface Filter {
   str_drink_thumb?: string
 }
 
-export type FilterListMatch = Partial<Filter>
+export interface FilterListMatch {
+  id_drink?: string
+  str_drink?: string
+  str_drink_thumb?: string
+}
 
 export interface List {
   drink?: any[]
@@ -21,14 +25,23 @@ export interface List {
   str_ingredient1?: string
 }
 
-export type ListListMatch = Partial<List>
+export interface ListListMatch {
+  drink?: any[]
+  str_alcoholic?: string
+  str_category?: string
+  str_glass?: string
+  str_ingredient1?: string
+}
 
 export interface Lookup {
   drink?: any[]
   ingredient?: any[]
 }
 
-export type LookupListMatch = Partial<Lookup>
+export interface LookupListMatch {
+  drink?: any[]
+  ingredient?: any[]
+}
 
 export interface Random {
   drink?: any[]
@@ -45,12 +58,28 @@ export interface Random {
   str_measure2?: string
 }
 
-export type RandomListMatch = Partial<Random>
+export interface RandomListMatch {
+  drink?: any[]
+  id_drink?: string
+  str_alcoholic?: string
+  str_category?: string
+  str_drink?: string
+  str_drink_thumb?: string
+  str_glass?: string
+  str_ingredient1?: string
+  str_ingredient2?: string
+  str_instruction?: string
+  str_measure1?: string
+  str_measure2?: string
+}
 
 export interface Search {
   drink?: any[]
   ingredient?: any[]
 }
 
-export type SearchListMatch = Partial<Search>
+export interface SearchListMatch {
+  drink?: any[]
+  ingredient?: any[]
+}
 

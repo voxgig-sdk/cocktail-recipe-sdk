@@ -4,6 +4,8 @@
 
 The Golang SDK for the CocktailRecipe API — an entity-oriented client using standard Go conventions. No generics required; data flows as `map[string]any`.
 
+It exposes the API as capitalised, semantic **Entities** — e.g. `client.Filter(nil)` — each with the same small set of operations (`List`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -63,6 +65,35 @@ func main() {
 ```
 
 
+## Error handling
+
+Every entity operation returns `(value, error)`. Check `err` before
+using the value — there is no exception to catch:
+
+```go
+filters, err := client.Filter(nil).List(nil, nil)
+if err != nil {
+    // handle err
+    return
+}
+_ = filters
+```
+
+`Direct` follows the same `(value, error)` convention:
+
+```go
+result, err := client.Direct(map[string]any{
+    "path":   "/api/resource/{id}",
+    "method": "GET",
+    "params": map[string]any{"id": "example_id"},
+})
+if err != nil {
+    // handle err
+}
+_ = result
+```
+
+
 ## How-to guides
 
 ### Make a direct HTTP request
@@ -109,13 +140,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-filter, err := client.Filter(nil).Load(
-    map[string]any{"id": "test01"}, nil,
+filter, err := client.Filter(nil).List(
+    nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(filter) // the loaded mock data
+fmt.Println(filter) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -206,11 +237,7 @@ All entities implement the `CocktailRecipeEntity` interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `Load` | `(reqmatch, ctrl map[string]any) (any, error)` | Load a single entity by match criteria. |
 | `List` | `(reqmatch, ctrl map[string]any) (any, error)` | List entities matching the criteria. |
-| `Create` | `(reqdata, ctrl map[string]any) (any, error)` | Create a new entity. |
-| `Update` | `(reqdata, ctrl map[string]any) (any, error)` | Update an existing entity. |
-| `Remove` | `(reqmatch, ctrl map[string]any) (any, error)` | Remove an entity. |
 | `Data` | `(args ...any) any` | Get or set entity data. |
 | `Match` | `(args ...any) any` | Get or set entity match criteria. |
 | `Make` | `() Entity` | Create a new instance with the same options. |
@@ -223,16 +250,15 @@ operation's data **directly** — there is no wrapper:
 
 | Operation | `value` |
 | --- | --- |
-| `Load` / `Create` / `Update` / `Remove` | the entity record (`map[string]any`) |
 | `List` | a `[]any` of entity records |
 
 Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    filter, err := client.Filter(nil).Load(map[string]any{"id": "example_id"}, nil)
+    filter, err := client.Filter(nil).List(map[string]any{/* fields */}, nil)
     if err != nil { /* handle */ }
-    // filter is the loaded record
+    // filter is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -327,9 +353,9 @@ Create an instance: `filter := client.Filter(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | ``$STRING`` |  |
-| `str_drink` | ``$STRING`` |  |
-| `str_drink_thumb` | ``$STRING`` |  |
+| `id_drink` | `string` |  |
+| `str_drink` | `string` |  |
+| `str_drink_thumb` | `string` |  |
 
 #### Example: List
 
@@ -356,11 +382,11 @@ Create an instance: `list := client.List(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `str_alcoholic` | ``$STRING`` |  |
-| `str_category` | ``$STRING`` |  |
-| `str_glass` | ``$STRING`` |  |
-| `str_ingredient1` | ``$STRING`` |  |
+| `drink` | `[]any` |  |
+| `str_alcoholic` | `string` |  |
+| `str_category` | `string` |  |
+| `str_glass` | `string` |  |
+| `str_ingredient1` | `string` |  |
 
 #### Example: List
 
@@ -387,8 +413,8 @@ Create an instance: `lookup := client.Lookup(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `ingredient` | ``$ARRAY`` |  |
+| `drink` | `[]any` |  |
+| `ingredient` | `[]any` |  |
 
 #### Example: List
 
@@ -415,18 +441,18 @@ Create an instance: `random := client.Random(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `id_drink` | ``$STRING`` |  |
-| `str_alcoholic` | ``$STRING`` |  |
-| `str_category` | ``$STRING`` |  |
-| `str_drink` | ``$STRING`` |  |
-| `str_drink_thumb` | ``$STRING`` |  |
-| `str_glass` | ``$STRING`` |  |
-| `str_ingredient1` | ``$STRING`` |  |
-| `str_ingredient2` | ``$STRING`` |  |
-| `str_instruction` | ``$STRING`` |  |
-| `str_measure1` | ``$STRING`` |  |
-| `str_measure2` | ``$STRING`` |  |
+| `drink` | `[]any` |  |
+| `id_drink` | `string` |  |
+| `str_alcoholic` | `string` |  |
+| `str_category` | `string` |  |
+| `str_drink` | `string` |  |
+| `str_drink_thumb` | `string` |  |
+| `str_glass` | `string` |  |
+| `str_ingredient1` | `string` |  |
+| `str_ingredient2` | `string` |  |
+| `str_instruction` | `string` |  |
+| `str_measure1` | `string` |  |
+| `str_measure2` | `string` |  |
 
 #### Example: List
 
@@ -453,8 +479,8 @@ Create an instance: `search := client.Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `ingredient` | ``$ARRAY`` |  |
+| `drink` | `[]any` |  |
+| `ingredient` | `[]any` |  |
 
 #### Example: List
 
@@ -467,12 +493,16 @@ fmt.Println(searchs) // the array of records
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -489,9 +519,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller. An unexpected panic triggers the
-`PreUnexpected` hook.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -532,14 +562,14 @@ like `core.ToMapAny`.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `Load`, the entity
+Entity instances are stateful. After a successful `List`, the entity
 stores the returned data and match criteria internally.
 
 ```go
 filter := client.Filter(nil)
-filter.Load(map[string]any{"id": "example_id"}, nil)
+filter.List(nil, nil)
 
-// filter.Data() now returns the loaded filter data
+// filter.Data() now returns the filter data from the last list
 // filter.Match() returns the last match criteria
 ```
 

@@ -221,31 +221,31 @@ class CocktailRecipeSDK:
 
 
     def Filter(self, data=None) -> "FilterEntity":
-        """Entity factory: client.Filter().list({}) / client.Filter().load({"id": ...})."""
+        """Entity factory: client.Filter().list() / client.Filter().load({"id": ...})."""
         from entity.filter_entity import FilterEntity
         return FilterEntity(self, data)
 
 
     def List(self, data=None) -> "ListEntity":
-        """Entity factory: client.List().list({}) / client.List().load({"id": ...})."""
+        """Entity factory: client.List().list() / client.List().load({"id": ...})."""
         from entity.list_entity import ListEntity
         return ListEntity(self, data)
 
 
     def Lookup(self, data=None) -> "LookupEntity":
-        """Entity factory: client.Lookup().list({}) / client.Lookup().load({"id": ...})."""
+        """Entity factory: client.Lookup().list() / client.Lookup().load({"id": ...})."""
         from entity.lookup_entity import LookupEntity
         return LookupEntity(self, data)
 
 
     def Random(self, data=None) -> "RandomEntity":
-        """Entity factory: client.Random().list({}) / client.Random().load({"id": ...})."""
+        """Entity factory: client.Random().list() / client.Random().load({"id": ...})."""
         from entity.random_entity import RandomEntity
         return RandomEntity(self, data)
 
 
     def Search(self, data=None) -> "SearchEntity":
-        """Entity factory: client.Search().list({}) / client.Search().load({"id": ...})."""
+        """Entity factory: client.Search().list() / client.Search().load({"id": ...})."""
         from entity.search_entity import SearchEntity
         return SearchEntity(self, data)
 

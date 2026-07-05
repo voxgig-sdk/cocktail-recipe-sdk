@@ -8,7 +8,7 @@ Complete API reference for the CocktailRecipe Python SDK.
 ### Constructor
 
 ```python
-from cocktail-recipe_sdk import CocktailRecipeSDK
+from cocktailrecipe_sdk import CocktailRecipeSDK
 
 client = CocktailRecipeSDK(options)
 ```
@@ -104,18 +104,18 @@ filter = client.Filter()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
+| `id_drink` | `str` | No |  |
+| `str_drink` | `str` | No |  |
+| `str_drink_thumb` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Filter().list({})
+results = client.Filter().list()
 for filter in results:
     print(filter)
 ```
@@ -159,20 +159,20 @@ list = client.List()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
+| `drink` | `list` | No |  |
+| `str_alcoholic` | `str` | No |  |
+| `str_category` | `str` | No |  |
+| `str_glass` | `str` | No |  |
+| `str_ingredient1` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.List().list({})
+results = client.List().list()
 for list in results:
     print(list)
 ```
@@ -216,17 +216,17 @@ lookup = client.Lookup()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `list` | No |  |
+| `ingredient` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Lookup().list({})
+results = client.Lookup().list()
 for lookup in results:
     print(lookup)
 ```
@@ -270,27 +270,27 @@ random = client.Random()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
-| `str_ingredient2` | ``$STRING`` | No |  |
-| `str_instruction` | ``$STRING`` | No |  |
-| `str_measure1` | ``$STRING`` | No |  |
-| `str_measure2` | ``$STRING`` | No |  |
+| `drink` | `list` | No |  |
+| `id_drink` | `str` | No |  |
+| `str_alcoholic` | `str` | No |  |
+| `str_category` | `str` | No |  |
+| `str_drink` | `str` | No |  |
+| `str_drink_thumb` | `str` | No |  |
+| `str_glass` | `str` | No |  |
+| `str_ingredient1` | `str` | No |  |
+| `str_ingredient2` | `str` | No |  |
+| `str_instruction` | `str` | No |  |
+| `str_measure1` | `str` | No |  |
+| `str_measure2` | `str` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Random().list({})
+results = client.Random().list()
 for random in results:
     print(random)
 ```
@@ -334,17 +334,17 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `list` | No |  |
+| `ingredient` | `list` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl=None) -> list`
+#### `list(reqmatch=None, ctrl=None) -> list`
 
-List entities matching the given criteria. Returns a list and raises on error.
+List entities matching the given criteria. The match is optional — call `list()` with no argument to list all records. Returns a list and raises on error.
 
 ```python
-results = client.Search().list({})
+results = client.Search().list()
 for search in results:
     print(search)
 ```

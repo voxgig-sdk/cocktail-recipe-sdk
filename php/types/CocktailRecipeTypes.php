@@ -20,7 +20,7 @@ class Filter
     public ?string $str_drink_thumb = null;
 }
 
-/** Match filter for Filter#list (any subset of Filter fields). */
+/** Request payload for Filter#list. */
 class FilterListMatch
 {
     public ?string $id_drink = null;
@@ -38,7 +38,7 @@ class List
     public ?string $str_ingredient1 = null;
 }
 
-/** Match filter for List#list (any subset of List fields). */
+/** Request payload for List#list. */
 class ListListMatch
 {
     public ?array $drink = null;
@@ -55,7 +55,7 @@ class Lookup
     public ?array $ingredient = null;
 }
 
-/** Match filter for Lookup#list (any subset of Lookup fields). */
+/** Request payload for Lookup#list. */
 class LookupListMatch
 {
     public ?array $drink = null;
@@ -79,7 +79,7 @@ class Random
     public ?string $str_measure2 = null;
 }
 
-/** Match filter for Random#list (any subset of Random fields). */
+/** Request payload for Random#list. */
 class RandomListMatch
 {
     public ?array $drink = null;
@@ -103,7 +103,7 @@ class Search
     public ?array $ingredient = null;
 }
 
-/** Match filter for Search#list (any subset of Search fields). */
+/** Request payload for Search#list. */
 class SearchListMatch
 {
     public ?array $drink = null;

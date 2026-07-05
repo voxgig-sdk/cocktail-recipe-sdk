@@ -15,8 +15,7 @@ type Filter struct {
 	StrDrinkThumb *string `json:"str_drink_thumb,omitempty"`
 }
 
-// FilterListMatch mirrors the filter fields as an all-optional match
-// filter (Go analog of Partial<Filter>).
+// FilterListMatch is the typed request payload for Filter.ListTyped.
 type FilterListMatch struct {
 	IdDrink *string `json:"id_drink,omitempty"`
 	StrDrink *string `json:"str_drink,omitempty"`
@@ -32,8 +31,7 @@ type List struct {
 	StrIngredient1 *string `json:"str_ingredient1,omitempty"`
 }
 
-// ListListMatch mirrors the list fields as an all-optional match
-// filter (Go analog of Partial<List>).
+// ListListMatch is the typed request payload for List.ListTyped.
 type ListListMatch struct {
 	Drink *[]any `json:"drink,omitempty"`
 	StrAlcoholic *string `json:"str_alcoholic,omitempty"`
@@ -48,8 +46,7 @@ type Lookup struct {
 	Ingredient *[]any `json:"ingredient,omitempty"`
 }
 
-// LookupListMatch mirrors the lookup fields as an all-optional match
-// filter (Go analog of Partial<Lookup>).
+// LookupListMatch is the typed request payload for Lookup.ListTyped.
 type LookupListMatch struct {
 	Drink *[]any `json:"drink,omitempty"`
 	Ingredient *[]any `json:"ingredient,omitempty"`
@@ -71,8 +68,7 @@ type Random struct {
 	StrMeasure2 *string `json:"str_measure2,omitempty"`
 }
 
-// RandomListMatch mirrors the random fields as an all-optional match
-// filter (Go analog of Partial<Random>).
+// RandomListMatch is the typed request payload for Random.ListTyped.
 type RandomListMatch struct {
 	Drink *[]any `json:"drink,omitempty"`
 	IdDrink *string `json:"id_drink,omitempty"`
@@ -94,8 +90,7 @@ type Search struct {
 	Ingredient *[]any `json:"ingredient,omitempty"`
 }
 
-// SearchListMatch mirrors the search fields as an all-optional match
-// filter (Go analog of Partial<Search>).
+// SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
 	Drink *[]any `json:"drink,omitempty"`
 	Ingredient *[]any `json:"ingredient,omitempty"`

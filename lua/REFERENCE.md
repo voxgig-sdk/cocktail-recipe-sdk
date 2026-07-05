@@ -107,9 +107,9 @@ local filter = client:Filter(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
+| `id_drink` | `string` | No |  |
+| `str_drink` | `string` | No |  |
+| `str_drink_thumb` | `string` | No |  |
 
 ### Operations
 
@@ -161,11 +161,11 @@ local list = client:List(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
+| `drink` | `table` | No |  |
+| `str_alcoholic` | `string` | No |  |
+| `str_category` | `string` | No |  |
+| `str_glass` | `string` | No |  |
+| `str_ingredient1` | `string` | No |  |
 
 ### Operations
 
@@ -217,8 +217,8 @@ local lookup = client:Lookup(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `table` | No |  |
+| `ingredient` | `table` | No |  |
 
 ### Operations
 
@@ -270,18 +270,18 @@ local random = client:Random(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
-| `str_ingredient2` | ``$STRING`` | No |  |
-| `str_instruction` | ``$STRING`` | No |  |
-| `str_measure1` | ``$STRING`` | No |  |
-| `str_measure2` | ``$STRING`` | No |  |
+| `drink` | `table` | No |  |
+| `id_drink` | `string` | No |  |
+| `str_alcoholic` | `string` | No |  |
+| `str_category` | `string` | No |  |
+| `str_drink` | `string` | No |  |
+| `str_drink_thumb` | `string` | No |  |
+| `str_glass` | `string` | No |  |
+| `str_ingredient1` | `string` | No |  |
+| `str_ingredient2` | `string` | No |  |
+| `str_instruction` | `string` | No |  |
+| `str_measure1` | `string` | No |  |
+| `str_measure2` | `string` | No |  |
 
 ### Operations
 
@@ -333,8 +333,8 @@ local search = client:Search(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `table` | No |  |
+| `ingredient` | `table` | No |  |
 
 ### Operations
 

@@ -4,6 +4,8 @@
 
 The Ruby SDK for the CocktailRecipe API — an entity-oriented client using idiomatic Ruby conventions.
 
+The SDK exposes the API as capitalised, semantic **Entities** — for example `client.Filter` — with named operations (`list`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
+
 > Other languages, the CLI, and MCP server live alongside this one — see
 > the [top-level README](../README.md).
 
@@ -37,11 +39,38 @@ begin
   # list returns an Array of Filter records — iterate directly.
   filters = client.Filter.list
   filters.each do |item|
-    puts "#{item["id"]} #{item["name"]}"
+    puts "#{item["id_drink"]}"
   end
 rescue => err
   warn "list failed: #{err}"
 end
+```
+
+
+## Error handling
+
+Entity operations raise on failure, so rescue them:
+
+```ruby
+begin
+  filters = client.Filter.list()
+rescue => err
+  warn "list failed: #{err}"
+end
+```
+
+`direct` does **not** raise — it returns the result hash. Branch on
+`ok`; on failure `status` holds the HTTP status (for error responses) and
+`err` holds a transport error, so read both defensively:
+
+```ruby
+result = client.direct({
+  "path" => "/api/resource/{id}",
+  "method" => "GET",
+  "params" => { "id" => "example_id" },
+})
+
+warn "request failed: #{result["err"] || "HTTP #{result["status"]}"}" unless result["ok"]
 ```
 
 
@@ -62,7 +91,9 @@ if result["ok"]
   puts result["status"]  # 200
   puts result["data"]    # response body
 else
-  warn result["err"]
+  # On an HTTP error status there is no err (only a transport failure sets
+  # it), so fall back to the status code.
+  warn(result["err"] || "HTTP #{result["status"]}")
 end
 ```
 
@@ -85,16 +116,13 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required. Seed fixture
-data via the `entity` option so offline calls resolve without a live server:
+Create a mock client for unit testing — no server required:
 
 ```ruby
-client = CocktailRecipeSDK.test({
-  "entity" => { "filter" => { "test01" => { "id" => "test01" } } },
-})
+client = CocktailRecipeSDK.test
 
-# load returns the bare mock record (raises on error).
-filter = client.Filter.load({ "id" => "test01" })
+# Entity ops return the bare mock record (raises on error).
+filter = client.Filter.list()
 puts filter
 ```
 
@@ -185,11 +213,7 @@ All entities share the same interface.
 
 | Method | Signature | Description |
 | --- | --- | --- |
-| `load` | `(reqmatch, ctrl) -> any` | Load a single entity by match criteria. Raises on error. |
-| `list` | `(reqmatch, ctrl) -> Array` | List entities matching the criteria. Raises on error. |
-| `create` | `(reqdata, ctrl) -> any` | Create a new entity. Raises on error. |
-| `update` | `(reqdata, ctrl) -> any` | Update an existing entity. Raises on error. |
-| `remove` | `(reqmatch, ctrl) -> any` | Remove an entity. Raises on error. |
+| `list` | `(reqmatch = nil, ctrl) -> Array` | List entities matching the criteria (call with no argument to list all). Raises on error. |
 | `data_get` | `() -> Hash` | Get entity data. |
 | `data_set` | `(data)` | Set entity data. |
 | `match_get` | `() -> Hash` | Get entity match criteria. |
@@ -304,9 +328,9 @@ Create an instance: `filter = client.Filter`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | ``$STRING`` |  |
-| `str_drink` | ``$STRING`` |  |
-| `str_drink_thumb` | ``$STRING`` |  |
+| `id_drink` | `String` |  |
+| `str_drink` | `String` |  |
+| `str_drink_thumb` | `String` |  |
 
 #### Example: List
 
@@ -330,11 +354,11 @@ Create an instance: `list = client.List`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `str_alcoholic` | ``$STRING`` |  |
-| `str_category` | ``$STRING`` |  |
-| `str_glass` | ``$STRING`` |  |
-| `str_ingredient1` | ``$STRING`` |  |
+| `drink` | `Array` |  |
+| `str_alcoholic` | `String` |  |
+| `str_category` | `String` |  |
+| `str_glass` | `String` |  |
+| `str_ingredient1` | `String` |  |
 
 #### Example: List
 
@@ -358,8 +382,8 @@ Create an instance: `lookup = client.Lookup`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `ingredient` | ``$ARRAY`` |  |
+| `drink` | `Array` |  |
+| `ingredient` | `Array` |  |
 
 #### Example: List
 
@@ -383,18 +407,18 @@ Create an instance: `random = client.Random`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `id_drink` | ``$STRING`` |  |
-| `str_alcoholic` | ``$STRING`` |  |
-| `str_category` | ``$STRING`` |  |
-| `str_drink` | ``$STRING`` |  |
-| `str_drink_thumb` | ``$STRING`` |  |
-| `str_glass` | ``$STRING`` |  |
-| `str_ingredient1` | ``$STRING`` |  |
-| `str_ingredient2` | ``$STRING`` |  |
-| `str_instruction` | ``$STRING`` |  |
-| `str_measure1` | ``$STRING`` |  |
-| `str_measure2` | ``$STRING`` |  |
+| `drink` | `Array` |  |
+| `id_drink` | `String` |  |
+| `str_alcoholic` | `String` |  |
+| `str_category` | `String` |  |
+| `str_drink` | `String` |  |
+| `str_drink_thumb` | `String` |  |
+| `str_glass` | `String` |  |
+| `str_ingredient1` | `String` |  |
+| `str_ingredient2` | `String` |  |
+| `str_instruction` | `String` |  |
+| `str_measure1` | `String` |  |
+| `str_measure2` | `String` |  |
 
 #### Example: List
 
@@ -418,8 +442,8 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | ``$ARRAY`` |  |
-| `ingredient` | ``$ARRAY`` |  |
+| `drink` | `Array` |  |
+| `ingredient` | `Array` |  |
 
 #### Example: List
 
@@ -429,12 +453,16 @@ searchs = client.Search.list
 ```
 
 
-## Explanation
+## Advanced
+
+> The sections above cover everyday use. The material below explains the
+> SDK's internals — useful when extending it with custom features, but not
+> needed for normal use.
 
 ### The operation pipeline
 
-Every entity operation (load, list, create, update, remove) follows a
-six-stage pipeline. Each stage fires a feature hook before executing:
+Every entity operation follows a six-stage pipeline. Each stage fires a
+feature hook before executing:
 
 ```
 PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
@@ -451,8 +479,9 @@ PrePoint → PreSpec → PreRequest → PreResponse → PreResult → PreDone
 - **PreDone**: Final stage before returning to the caller. Entity
   state (match, data) is updated here.
 
-If any stage returns an error, the pipeline short-circuits and the
-error is returned to the caller as a second return value.
+If any stage errors, the pipeline short-circuits and the error surfaces
+to the caller — see [Error handling](#error-handling) for how that looks
+in this language.
 
 ### Features and hooks
 
@@ -496,14 +525,14 @@ when needed.
 
 ### Entity state
 
-Entity instances are stateful. After a successful `load`, the entity
+Entity instances are stateful. After a successful `list`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
 filter = client.Filter
-filter.load({ "id" => "example_id" })
+filter.list()
 
-# filter.data_get now returns the loaded filter data
+# filter.data_get now returns the filter data from the last list
 # filter.match_get returns the last match criteria
 ```
 

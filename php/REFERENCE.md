@@ -8,7 +8,7 @@ Complete API reference for the CocktailRecipe PHP SDK.
 ### Constructor
 
 ```php
-require_once __DIR__ . '/cocktail-recipe_sdk.php';
+require_once __DIR__ . '/cocktailrecipe_sdk.php';
 
 $client = new CocktailRecipeSDK($options);
 ```
@@ -62,11 +62,11 @@ Create a new `RandomEntity` instance. Pass `null` for no initial data.
 
 Create a new `SearchEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): CocktailRecipeUtility`
 
 Return a copy of the SDK utility object.
 
@@ -109,35 +109,35 @@ $filter = $client->Filter();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
+| `id_drink` | `string` | No |  |
+| `str_drink` | `string` | No |  |
+| `str_drink_thumb` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Filter()->list([]);
+$results = $client->Filter()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -146,7 +146,7 @@ Set the entity match criteria.
 Create a new `FilterEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -163,37 +163,37 @@ $list = $client->List();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
+| `drink` | `array` | No |  |
+| `str_alcoholic` | `string` | No |  |
+| `str_category` | `string` | No |  |
+| `str_glass` | `string` | No |  |
+| `str_ingredient1` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->List()->list([]);
+$results = $client->List()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -202,7 +202,7 @@ Set the entity match criteria.
 Create a new `ListEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -219,34 +219,34 @@ $lookup = $client->Lookup();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `array` | No |  |
+| `ingredient` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Lookup()->list([]);
+$results = $client->Lookup()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -255,7 +255,7 @@ Set the entity match criteria.
 Create a new `LookupEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -272,44 +272,44 @@ $random = $client->Random();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
-| `str_ingredient2` | ``$STRING`` | No |  |
-| `str_instruction` | ``$STRING`` | No |  |
-| `str_measure1` | ``$STRING`` | No |  |
-| `str_measure2` | ``$STRING`` | No |  |
+| `drink` | `array` | No |  |
+| `id_drink` | `string` | No |  |
+| `str_alcoholic` | `string` | No |  |
+| `str_category` | `string` | No |  |
+| `str_drink` | `string` | No |  |
+| `str_drink_thumb` | `string` | No |  |
+| `str_glass` | `string` | No |  |
+| `str_ingredient1` | `string` | No |  |
+| `str_ingredient2` | `string` | No |  |
+| `str_instruction` | `string` | No |  |
+| `str_measure1` | `string` | No |  |
+| `str_measure2` | `string` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Random()->list([]);
+$results = $client->Random()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -318,7 +318,7 @@ Set the entity match criteria.
 Create a new `RandomEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -335,34 +335,34 @@ $search = $client->Search();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `array` | No |  |
+| `ingredient` | `array` | No |  |
 
 ### Operations
 
-#### `list(array $reqmatch, ?array $ctrl = null): mixed`
+#### `list(?array $reqmatch = null, ?array $ctrl = null): mixed`
 
-List entities matching the given criteria. Returns an array. Throws on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Throws on error.
 
 ```php
-$results = $client->Search()->list([]);
+$results = $client->Search()->list();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -371,7 +371,7 @@ Set the entity match criteria.
 Create a new `SearchEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

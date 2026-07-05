@@ -25,7 +25,7 @@ Filter = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Filter#list (any subset of Filter fields).
+# Request payload for Filter#list.
 #
 # @!attribute [rw] id_drink
 #   @return [String, nil]
@@ -67,7 +67,7 @@ List = Struct.new(
   keyword_init: true
 )
 
-# Match filter for List#list (any subset of List fields).
+# Request payload for List#list.
 #
 # @!attribute [rw] drink
 #   @return [Array, nil]
@@ -105,7 +105,7 @@ Lookup = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Lookup#list (any subset of Lookup fields).
+# Request payload for Lookup#list.
 #
 # @!attribute [rw] drink
 #   @return [Array, nil]
@@ -171,7 +171,7 @@ Random = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Random#list (any subset of Random fields).
+# Request payload for Random#list.
 #
 # @!attribute [rw] drink
 #   @return [Array, nil]
@@ -237,7 +237,7 @@ Search = Struct.new(
   keyword_init: true
 )
 
-# Match filter for Search#list (any subset of Search fields).
+# Request payload for Search#list.
 #
 # @!attribute [rw] drink
 #   @return [Array, nil]

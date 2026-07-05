@@ -8,7 +8,7 @@ Complete API reference for the CocktailRecipe Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'cocktail-recipe_sdk'
+require_relative 'CocktailRecipe_sdk'
 
 client = CocktailRecipeSDK.new(options)
 ```
@@ -110,18 +110,18 @@ filter = client.Filter
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
+| `id_drink` | `String` | No |  |
+| `str_drink` | `String` | No |  |
+| `str_drink_thumb` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Filter.list(nil)
+results = client.Filter.list
 ```
 
 ### Common Methods
@@ -164,20 +164,20 @@ list = client.List
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
+| `drink` | `Array` | No |  |
+| `str_alcoholic` | `String` | No |  |
+| `str_category` | `String` | No |  |
+| `str_glass` | `String` | No |  |
+| `str_ingredient1` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.List.list(nil)
+results = client.List.list
 ```
 
 ### Common Methods
@@ -220,17 +220,17 @@ lookup = client.Lookup
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `Array` | No |  |
+| `ingredient` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Lookup.list(nil)
+results = client.Lookup.list
 ```
 
 ### Common Methods
@@ -273,27 +273,27 @@ random = client.Random
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `id_drink` | ``$STRING`` | No |  |
-| `str_alcoholic` | ``$STRING`` | No |  |
-| `str_category` | ``$STRING`` | No |  |
-| `str_drink` | ``$STRING`` | No |  |
-| `str_drink_thumb` | ``$STRING`` | No |  |
-| `str_glass` | ``$STRING`` | No |  |
-| `str_ingredient1` | ``$STRING`` | No |  |
-| `str_ingredient2` | ``$STRING`` | No |  |
-| `str_instruction` | ``$STRING`` | No |  |
-| `str_measure1` | ``$STRING`` | No |  |
-| `str_measure2` | ``$STRING`` | No |  |
+| `drink` | `Array` | No |  |
+| `id_drink` | `String` | No |  |
+| `str_alcoholic` | `String` | No |  |
+| `str_category` | `String` | No |  |
+| `str_drink` | `String` | No |  |
+| `str_drink_thumb` | `String` | No |  |
+| `str_glass` | `String` | No |  |
+| `str_ingredient1` | `String` | No |  |
+| `str_ingredient2` | `String` | No |  |
+| `str_instruction` | `String` | No |  |
+| `str_measure1` | `String` | No |  |
+| `str_measure2` | `String` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Random.list(nil)
+results = client.Random.list
 ```
 
 ### Common Methods
@@ -336,17 +336,17 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | ``$ARRAY`` | No |  |
-| `ingredient` | ``$ARRAY`` | No |  |
+| `drink` | `Array` | No |  |
+| `ingredient` | `Array` | No |  |
 
 ### Operations
 
-#### `list(reqmatch, ctrl = nil) -> Array`
+#### `list(reqmatch = nil, ctrl = nil) -> Array`
 
-List entities matching the given criteria. Returns an array. Raises on error.
+List entities matching the given criteria (call with no argument to list all). Returns an array. Raises on error.
 
 ```ruby
-results = client.Search.list(nil)
+results = client.Search.list
 ```
 
 ### Common Methods
