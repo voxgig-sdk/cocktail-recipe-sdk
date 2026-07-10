@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -763,15 +760,25 @@
           "email": "support@thecocktaildb.com"
         },
         "description": "Provides access to a free cocktail recipe API with various endpoints for searching cocktails, ingredients, and more. Supports JSON format. Test API key '1' can be used for development and educational purposes. Premium API subscription required for production use.",
+        "meta_source": "https://www.freepublicapis.com",
+        "security": {
+          "in": "path",
+          "name": "apiKey",
+          "prefix": "",
+          "scheme": "premiumApiKey",
+          "type": "apiKey"
+        },
         "servers": [
           {
             "description": "Production server (using test API key '1')",
             "url": "https://www.thecocktaildb.com/api/json/v1/1"
           }
         ],
+        "summary": "Provides access to a free cocktail recipe API with various endpoints for searching cocktails, ingredients, and more.",
         "termsOfService": "https://www.thecocktaildb.com/terms",
         "title": "Cocktail Recipe API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://thecocktaildb.com"
       },
       "option": {},
       "target": {
@@ -824,6 +831,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -874,6 +884,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
