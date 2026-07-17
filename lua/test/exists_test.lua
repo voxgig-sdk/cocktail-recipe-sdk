@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- CocktailRecipe SDK exists test
 
 local sdk = require("cocktail-recipe_sdk")
 
