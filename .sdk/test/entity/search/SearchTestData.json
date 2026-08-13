@@ -2,24 +2,24 @@
   "existing": {
     "search": {
       "SEARCH00": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       },
       "SEARCH01": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       },
       "SEARCH02": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       }
     }
   },
   "new": {
     "search": {
       "search_ref01": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       }
     }
   }

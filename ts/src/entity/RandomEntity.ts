@@ -37,7 +37,7 @@ class RandomEntity extends CocktailRecipeEntityBase<Random> {
 
 
 
-  async list(this: any, reqmatch?: RandomListMatch, ctrl?: Control): Promise<Random[]> {
+  async list(this: any, reqmatch?: RandomListMatch, ctrl?: Control): Promise<RandomEntity[]> {
 
     const utility = this._utility
 

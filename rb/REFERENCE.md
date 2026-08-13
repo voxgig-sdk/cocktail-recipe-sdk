@@ -110,9 +110,9 @@ filter = client.Filter
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | `String` | No |  |
-| `str_drink` | `String` | No |  |
-| `str_drink_thumb` | `String` | No |  |
+| `idDrink` | `String` | No |  |
+| `strDrink` | `String` | No |  |
+| `strDrinkThumb` | `String` | No |  |
 
 ### Operations
 
@@ -164,11 +164,11 @@ list = client.List
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `Array` | No |  |
-| `str_alcoholic` | `String` | No |  |
-| `str_category` | `String` | No |  |
-| `str_glass` | `String` | No |  |
-| `str_ingredient1` | `String` | No |  |
+| `drinks` | `Array` | No |  |
+| `strAlcoholic` | `String` | No |  |
+| `strCategory` | `String` | No |  |
+| `strGlass` | `String` | No |  |
+| `strIngredient1` | `String` | No |  |
 
 ### Operations
 
@@ -220,8 +220,8 @@ lookup = client.Lookup
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `Array` | No |  |
-| `ingredient` | `Array` | No |  |
+| `drinks` | `Array` | No |  |
+| `ingredients` | `Array` | No |  |
 
 ### Operations
 
@@ -273,18 +273,18 @@ random = client.Random
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `Array` | No |  |
-| `id_drink` | `String` | No |  |
-| `str_alcoholic` | `String` | No |  |
-| `str_category` | `String` | No |  |
-| `str_drink` | `String` | No |  |
-| `str_drink_thumb` | `String` | No |  |
-| `str_glass` | `String` | No |  |
-| `str_ingredient1` | `String` | No |  |
-| `str_ingredient2` | `String` | No |  |
-| `str_instruction` | `String` | No |  |
-| `str_measure1` | `String` | No |  |
-| `str_measure2` | `String` | No |  |
+| `drinks` | `Array` | No |  |
+| `idDrink` | `String` | No |  |
+| `strAlcoholic` | `String` | No |  |
+| `strCategory` | `String` | No |  |
+| `strDrink` | `String` | No |  |
+| `strDrinkThumb` | `String` | No |  |
+| `strGlass` | `String` | No |  |
+| `strIngredient1` | `String` | No |  |
+| `strIngredient2` | `String` | No |  |
+| `strInstructions` | `String` | No |  |
+| `strMeasure1` | `String` | No |  |
+| `strMeasure2` | `String` | No |  |
 
 ### Operations
 
@@ -336,8 +336,8 @@ search = client.Search
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `Array` | No |  |
-| `ingredient` | `Array` | No |  |
+| `drinks` | `Array` | No |  |
+| `ingredients` | `Array` | No |  |
 
 ### Operations
 

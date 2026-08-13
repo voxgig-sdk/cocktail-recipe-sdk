@@ -39,21 +39,21 @@ class CocktailRecipeConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'id_drink',
+              'name' => 'idDrink',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'str_drink',
+              'name' => 'strDrink',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'str_drink_thumb',
+              'name' => 'strDrinkThumb',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
@@ -107,6 +107,7 @@ class CocktailRecipeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/filter.php',
                   'parts' => [
@@ -122,7 +123,7 @@ class CocktailRecipeConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.drinks`',
                   ],
                   'index$' => 0,
                 ],
@@ -138,35 +139,35 @@ class CocktailRecipeConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'drink',
+              'name' => 'drinks',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'str_alcoholic',
+              'name' => 'strAlcoholic',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'str_category',
+              'name' => 'strCategory',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'str_glass',
+              'name' => 'strGlass',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
             ],
             [
               'active' => true,
-              'name' => 'str_ingredient1',
+              'name' => 'strIngredient1',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
@@ -220,6 +221,7 @@ class CocktailRecipeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/list.php',
                   'parts' => [
@@ -235,13 +237,14 @@ class CocktailRecipeConfig
                   ],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.drinks`',
                   ],
                   'index$' => 0,
                 ],
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/latest.php',
                   'parts' => [
@@ -250,13 +253,14 @@ class CocktailRecipeConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.drinks`',
                   ],
                   'index$' => 1,
                 ],
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/popular.php',
                   'parts' => [
@@ -265,7 +269,7 @@ class CocktailRecipeConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.drinks`',
                   ],
                   'index$' => 2,
                 ],
@@ -281,14 +285,14 @@ class CocktailRecipeConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'drink',
+              'name' => 'drinks',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'ingredient',
+              'name' => 'ingredients',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 1,
@@ -324,6 +328,7 @@ class CocktailRecipeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/lookup.php',
                   'parts' => [
@@ -353,84 +358,84 @@ class CocktailRecipeConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'drink',
+              'name' => 'drinks',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'id_drink',
+              'name' => 'idDrink',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 1,
             ],
             [
               'active' => true,
-              'name' => 'str_alcoholic',
+              'name' => 'strAlcoholic',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 2,
             ],
             [
               'active' => true,
-              'name' => 'str_category',
+              'name' => 'strCategory',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 3,
             ],
             [
               'active' => true,
-              'name' => 'str_drink',
+              'name' => 'strDrink',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 4,
             ],
             [
               'active' => true,
-              'name' => 'str_drink_thumb',
+              'name' => 'strDrinkThumb',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 5,
             ],
             [
               'active' => true,
-              'name' => 'str_glass',
+              'name' => 'strGlass',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 6,
             ],
             [
               'active' => true,
-              'name' => 'str_ingredient1',
+              'name' => 'strIngredient1',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 7,
             ],
             [
               'active' => true,
-              'name' => 'str_ingredient2',
+              'name' => 'strIngredient2',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 8,
             ],
             [
               'active' => true,
-              'name' => 'str_instruction',
+              'name' => 'strInstructions',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 9,
             ],
             [
               'active' => true,
-              'name' => 'str_measure1',
+              'name' => 'strMeasure1',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 10,
             ],
             [
               'active' => true,
-              'name' => 'str_measure2',
+              'name' => 'strMeasure2',
               'req' => false,
               'type' => '`$STRING`',
               'index$' => 11,
@@ -445,6 +450,7 @@ class CocktailRecipeConfig
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/random.php',
                   'parts' => [
@@ -453,13 +459,14 @@ class CocktailRecipeConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.drinks`',
                   ],
                   'index$' => 0,
                 ],
                 [
                   'active' => true,
                   'args' => [],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/randomselection.php',
                   'parts' => [
@@ -468,7 +475,7 @@ class CocktailRecipeConfig
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
-                    'res' => '`body`',
+                    'res' => '`body.drinks`',
                   ],
                   'index$' => 1,
                 ],
@@ -484,14 +491,14 @@ class CocktailRecipeConfig
           'fields' => [
             [
               'active' => true,
-              'name' => 'drink',
+              'name' => 'drinks',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 0,
             ],
             [
               'active' => true,
-              'name' => 'ingredient',
+              'name' => 'ingredients',
               'req' => false,
               'type' => '`$ARRAY`',
               'index$' => 1,
@@ -536,6 +543,7 @@ class CocktailRecipeConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search.php',
                   'parts' => [

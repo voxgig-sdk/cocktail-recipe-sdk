@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# CocktailRecipe SDK exists test
 
 import pytest
 from cocktailrecipe_sdk import CocktailRecipeSDK

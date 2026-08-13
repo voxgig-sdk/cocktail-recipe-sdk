@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ CocktailRecipeUtility.registrar = ->(u) {
   u.prepare_params = CocktailRecipeUtilities::PrepareParams
   u.prepare_path = CocktailRecipeUtilities::PreparePath
   u.prepare_query = CocktailRecipeUtilities::PrepareQuery
+  u.graphql_body = CocktailRecipeUtilities::GraphqlBody
+  u.graphql_errors = CocktailRecipeUtilities::GraphqlErrors
   u.result_basic = CocktailRecipeUtilities::ResultBasic
   u.result_body = CocktailRecipeUtilities::ResultBody
   u.result_headers = CocktailRecipeUtilities::ResultHeaders

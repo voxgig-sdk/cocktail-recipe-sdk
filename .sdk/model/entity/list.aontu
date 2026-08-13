@@ -6,27 +6,27 @@ main: kit: entity: list: {
 
   fields: [
     {
-      name: "drink"
+      name: "drinks"
       req: false
       type: "`$ARRAY`"
     }
     {
-      name: "str_alcoholic"
+      name: "strAlcoholic"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "str_category"
+      name: "strCategory"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "str_glass"
+      name: "strGlass"
       req: false
       type: "`$STRING`"
     }
     {
-      name: "str_ingredient1"
+      name: "strIngredient1"
       req: false
       type: "`$STRING`"
     }
@@ -89,7 +89,7 @@ main: kit: entity: list: {
           }
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.drinks`"
           }
         }
         {
@@ -100,7 +100,7 @@ main: kit: entity: list: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.drinks`"
           }
         }
         {
@@ -111,7 +111,7 @@ main: kit: entity: list: {
           ]
           transform: {
             req: "`reqdata`"
-            res: "`body`"
+            res: "`body.drinks`"
           }
         }
       ]

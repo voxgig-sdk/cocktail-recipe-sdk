@@ -26,8 +26,8 @@ import {
 describe('SearchEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COCKTAILRECIPE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COCKTAILRECIPE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COCKTAIL_RECIPE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COCKTAIL_RECIPE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CocktailRecipeSDK.test()
@@ -63,7 +63,7 @@ describe('SearchEntity', async () => {
     const search_ref01_ent = client.Search()
     const search_ref01_match: any = {}
 
-    const search_ref01_list = await search_ref01_ent.list(search_ref01_match)
+    const search_ref01_list = (await search_ref01_ent.list(search_ref01_match)).map((e: any) => e.data())
 
 
   })

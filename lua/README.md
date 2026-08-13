@@ -45,7 +45,7 @@ local filters, err = client:Filter():list()
 if err then error(err) end
 
 for _, item in ipairs(filters) do
-  print(item["id_drink"])
+  print(item["idDrink"])
 end
 ```
 
@@ -226,9 +226,9 @@ data **directly** — there is no wrapper:
 
 Check `err` first (it is non-`nil` on failure), then use `value`:
 
-    local filter, err = client:Filter():load()
+    local filter, err = client:Filter():list()
     if err then error(err) end
-    -- filter is the loaded record
+    -- filter is the record list
 
 Only `direct()` returns a response envelope — a `table` with `ok`,
 `status`, `headers`, and `data` keys.
@@ -239,9 +239,9 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `id_drink` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
+| `idDrink` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
 
 Operations: List.
 
@@ -251,11 +251,11 @@ API path: `/filter.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
+| `drinks` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
 
 Operations: List.
 
@@ -265,8 +265,8 @@ API path: `/list.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -276,18 +276,18 @@ API path: `/lookup.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `id_drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
-| `str_ingredient2` |  |
-| `str_instruction` |  |
-| `str_measure1` |  |
-| `str_measure2` |  |
+| `drinks` |  |
+| `idDrink` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
+| `strIngredient2` |  |
+| `strInstructions` |  |
+| `strMeasure1` |  |
+| `strMeasure2` |  |
 
 Operations: List.
 
@@ -297,8 +297,8 @@ API path: `/random.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -323,9 +323,9 @@ Create an instance: `local filter = client:Filter(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
+| `idDrink` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
 
 #### Example: List
 
@@ -348,11 +348,11 @@ Create an instance: `local list = client:List(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `table` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
+| `drinks` | `table` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
 
 #### Example: List
 
@@ -375,8 +375,8 @@ Create an instance: `local lookup = client:Lookup(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `table` |  |
-| `ingredient` | `table` |  |
+| `drinks` | `table` |  |
+| `ingredients` | `table` |  |
 
 #### Example: List
 
@@ -399,18 +399,18 @@ Create an instance: `local random = client:Random(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `table` |  |
-| `id_drink` | `string` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
-| `str_ingredient2` | `string` |  |
-| `str_instruction` | `string` |  |
-| `str_measure1` | `string` |  |
-| `str_measure2` | `string` |  |
+| `drinks` | `table` |  |
+| `idDrink` | `string` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
+| `strIngredient2` | `string` |  |
+| `strInstructions` | `string` |  |
+| `strMeasure1` | `string` |  |
+| `strMeasure2` | `string` |  |
 
 #### Example: List
 
@@ -433,8 +433,8 @@ Create an instance: `local search = client:Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `table` |  |
-| `ingredient` | `table` |  |
+| `drinks` | `table` |  |
+| `ingredients` | `table` |  |
 
 #### Example: List
 

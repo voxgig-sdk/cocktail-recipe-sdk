@@ -37,7 +37,9 @@ const client = new CocktailRecipeSDK({
 
 ### 2. List filter records
 
-`list()` resolves to an array of Filter objects — iterate it directly:
+`list()` resolves to an array of Filter ENTITIES — every operation
+resolves to entities, not raw records. Iterate them directly, and call
+`.data()` on one for the record it holds:
 
 ```ts
 const filters = await client.Filter().list()
@@ -122,7 +124,8 @@ Create a mock client for unit testing — no server required:
 const client = CocktailRecipeSDK.test()
 
 const filter = await client.Filter().list()
-// filter is a bare entity populated with mock response data
+// filter is the entity, populated with mock response data
+// — call filter.data() for the record itself
 console.log(filter)
 ```
 
@@ -294,9 +297,9 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `id_drink` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
+| `idDrink` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
 
 Operations: list.
 
@@ -306,11 +309,11 @@ API path: `/filter.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
+| `drinks` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
 
 Operations: list.
 
@@ -320,8 +323,8 @@ API path: `/list.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: list.
 
@@ -331,18 +334,18 @@ API path: `/lookup.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `id_drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
-| `str_ingredient2` |  |
-| `str_instruction` |  |
-| `str_measure1` |  |
-| `str_measure2` |  |
+| `drinks` |  |
+| `idDrink` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
+| `strIngredient2` |  |
+| `strInstructions` |  |
+| `strMeasure1` |  |
+| `strMeasure2` |  |
 
 Operations: list.
 
@@ -352,8 +355,8 @@ API path: `/random.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: list.
 
@@ -378,9 +381,9 @@ Create an instance: `const filter = client.Filter()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
+| `idDrink` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
 
 #### Example: List
 
@@ -403,11 +406,11 @@ Create an instance: `const list = client.List()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `any[]` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
+| `drinks` | `any[]` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
 
 #### Example: List
 
@@ -430,8 +433,8 @@ Create an instance: `const lookup = client.Lookup()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `any[]` |  |
-| `ingredient` | `any[]` |  |
+| `drinks` | `any[]` |  |
+| `ingredients` | `any[]` |  |
 
 #### Example: List
 
@@ -454,18 +457,18 @@ Create an instance: `const random = client.Random()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `any[]` |  |
-| `id_drink` | `string` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
-| `str_ingredient2` | `string` |  |
-| `str_instruction` | `string` |  |
-| `str_measure1` | `string` |  |
-| `str_measure2` | `string` |  |
+| `drinks` | `any[]` |  |
+| `idDrink` | `string` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
+| `strIngredient2` | `string` |  |
+| `strInstructions` | `string` |  |
+| `strMeasure1` | `string` |  |
+| `strMeasure2` | `string` |  |
 
 #### Example: List
 
@@ -488,8 +491,8 @@ Create an instance: `const search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `any[]` |  |
-| `ingredient` | `any[]` |  |
+| `drinks` | `any[]` |  |
+| `ingredients` | `any[]` |  |
 
 #### Example: List
 

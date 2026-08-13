@@ -39,7 +39,7 @@ begin
   # list returns an Array of Filter records — iterate directly.
   filters = client.Filter.list
   filters.each do |item|
-    puts "#{item["id_drink"]}"
+    puts "#{item["idDrink"]}"
   end
 rescue => err
   warn "list failed: #{err}"
@@ -121,7 +121,8 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = CocktailRecipeSDK.test
 
-# Entity ops return the bare mock record (raises on error).
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
 filter = client.Filter.list()
 puts filter
 ```
@@ -244,9 +245,9 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `id_drink` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
+| `idDrink` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
 
 Operations: List.
 
@@ -256,11 +257,11 @@ API path: `/filter.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
+| `drinks` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
 
 Operations: List.
 
@@ -270,8 +271,8 @@ API path: `/list.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -281,18 +282,18 @@ API path: `/lookup.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `id_drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
-| `str_ingredient2` |  |
-| `str_instruction` |  |
-| `str_measure1` |  |
-| `str_measure2` |  |
+| `drinks` |  |
+| `idDrink` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
+| `strIngredient2` |  |
+| `strInstructions` |  |
+| `strMeasure1` |  |
+| `strMeasure2` |  |
 
 Operations: List.
 
@@ -302,8 +303,8 @@ API path: `/random.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -328,9 +329,9 @@ Create an instance: `filter = client.Filter`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | `String` |  |
-| `str_drink` | `String` |  |
-| `str_drink_thumb` | `String` |  |
+| `idDrink` | `String` |  |
+| `strDrink` | `String` |  |
+| `strDrinkThumb` | `String` |  |
 
 #### Example: List
 
@@ -354,11 +355,11 @@ Create an instance: `list = client.List`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `Array` |  |
-| `str_alcoholic` | `String` |  |
-| `str_category` | `String` |  |
-| `str_glass` | `String` |  |
-| `str_ingredient1` | `String` |  |
+| `drinks` | `Array` |  |
+| `strAlcoholic` | `String` |  |
+| `strCategory` | `String` |  |
+| `strGlass` | `String` |  |
+| `strIngredient1` | `String` |  |
 
 #### Example: List
 
@@ -382,8 +383,8 @@ Create an instance: `lookup = client.Lookup`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `Array` |  |
-| `ingredient` | `Array` |  |
+| `drinks` | `Array` |  |
+| `ingredients` | `Array` |  |
 
 #### Example: List
 
@@ -407,18 +408,18 @@ Create an instance: `random = client.Random`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `Array` |  |
-| `id_drink` | `String` |  |
-| `str_alcoholic` | `String` |  |
-| `str_category` | `String` |  |
-| `str_drink` | `String` |  |
-| `str_drink_thumb` | `String` |  |
-| `str_glass` | `String` |  |
-| `str_ingredient1` | `String` |  |
-| `str_ingredient2` | `String` |  |
-| `str_instruction` | `String` |  |
-| `str_measure1` | `String` |  |
-| `str_measure2` | `String` |  |
+| `drinks` | `Array` |  |
+| `idDrink` | `String` |  |
+| `strAlcoholic` | `String` |  |
+| `strCategory` | `String` |  |
+| `strDrink` | `String` |  |
+| `strDrinkThumb` | `String` |  |
+| `strGlass` | `String` |  |
+| `strIngredient1` | `String` |  |
+| `strIngredient2` | `String` |  |
+| `strInstructions` | `String` |  |
+| `strMeasure1` | `String` |  |
+| `strMeasure2` | `String` |  |
 
 #### Example: List
 
@@ -442,8 +443,8 @@ Create an instance: `search = client.Search`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `Array` |  |
-| `ingredient` | `Array` |  |
+| `drinks` | `Array` |  |
+| `ingredients` | `Array` |  |
 
 #### Example: List
 

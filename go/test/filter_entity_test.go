@@ -92,7 +92,7 @@ func TestFilterEntity(t *testing.T) {
 		// The basic flow consumes synthetic IDs from the fixture. In live mode
 		// without an *_ENTID env override, those IDs hit the live API and 4xx.
 		if setup.syntheticOnly {
-			t.Skip("live entity test uses synthetic IDs from fixture — set COCKTAILRECIPE_TEST_FILTER_ENTID JSON to run live")
+			t.Skip("live entity test uses synthetic IDs from fixture — set COCKTAIL_RECIPE_TEST_FILTER_ENTID JSON to run live")
 			return
 		}
 		client := setup.client
@@ -160,38 +160,38 @@ func filterBasicSetup(extra map[string]any) *entityTestSetup {
 	// Detect ENTID env override before envOverride consumes it. When live
 	// mode is on without a real override, the basic test runs against synthetic
 	// IDs from the fixture and 4xx's. Surface this so the test can skip.
-	entidEnvRaw := os.Getenv("COCKTAILRECIPE_TEST_FILTER_ENTID")
+	entidEnvRaw := os.Getenv("COCKTAIL_RECIPE_TEST_FILTER_ENTID")
 	idmapOverridden := entidEnvRaw != "" && strings.HasPrefix(strings.TrimSpace(entidEnvRaw), "{")
 
 	env := envOverride(map[string]any{
-		"COCKTAILRECIPE_TEST_FILTER_ENTID": idmap,
-		"COCKTAILRECIPE_TEST_LIVE":      "FALSE",
-		"COCKTAILRECIPE_TEST_EXPLAIN":   "FALSE",
-		"COCKTAILRECIPE_APIKEY":         "NONE",
+		"COCKTAIL_RECIPE_TEST_FILTER_ENTID": idmap,
+		"COCKTAIL_RECIPE_TEST_LIVE":      "FALSE",
+		"COCKTAIL_RECIPE_TEST_EXPLAIN":   "FALSE",
+		"COCKTAIL_RECIPE_APIKEY":         "NONE",
 	})
 
-	idmapResolved := core.ToMapAny(env["COCKTAILRECIPE_TEST_FILTER_ENTID"])
+	idmapResolved := core.ToMapAny(env["COCKTAIL_RECIPE_TEST_FILTER_ENTID"])
 	if idmapResolved == nil {
 		idmapResolved = core.ToMapAny(idmap)
 	}
 
-	if env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE" {
+	if env["COCKTAIL_RECIPE_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
-				"apikey": env["COCKTAILRECIPE_APIKEY"],
+				"apikey": env["COCKTAIL_RECIPE_APIKEY"],
 			},
 			extra,
 		})
 		client = sdk.NewCocktailRecipeSDK(core.ToMapAny(mergedOpts))
 	}
 
-	live := env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE"
+	live := env["COCKTAIL_RECIPE_TEST_LIVE"] == "TRUE"
 	return &entityTestSetup{
 		client:        client,
 		data:          entityData,
 		idmap:         idmapResolved,
 		env:           env,
-		explain:       env["COCKTAILRECIPE_TEST_EXPLAIN"] == "TRUE",
+		explain:       env["COCKTAIL_RECIPE_TEST_EXPLAIN"] == "TRUE",
 		live:          live,
 		syntheticOnly: live && !idmapOverridden,
 		now:           time.Now().UnixMilli(),

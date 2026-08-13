@@ -269,9 +269,9 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"id_drink"` |  |
-| `"str_drink"` |  |
-| `"str_drink_thumb"` |  |
+| `"idDrink"` |  |
+| `"strDrink"` |  |
+| `"strDrinkThumb"` |  |
 
 Operations: List.
 
@@ -281,11 +281,11 @@ API path: `/filter.php`
 
 | Field | Description |
 | --- | --- |
-| `"drink"` |  |
-| `"str_alcoholic"` |  |
-| `"str_category"` |  |
-| `"str_glass"` |  |
-| `"str_ingredient1"` |  |
+| `"drinks"` |  |
+| `"strAlcoholic"` |  |
+| `"strCategory"` |  |
+| `"strGlass"` |  |
+| `"strIngredient1"` |  |
 
 Operations: List.
 
@@ -295,8 +295,8 @@ API path: `/list.php`
 
 | Field | Description |
 | --- | --- |
-| `"drink"` |  |
-| `"ingredient"` |  |
+| `"drinks"` |  |
+| `"ingredients"` |  |
 
 Operations: List.
 
@@ -306,18 +306,18 @@ API path: `/lookup.php`
 
 | Field | Description |
 | --- | --- |
-| `"drink"` |  |
-| `"id_drink"` |  |
-| `"str_alcoholic"` |  |
-| `"str_category"` |  |
-| `"str_drink"` |  |
-| `"str_drink_thumb"` |  |
-| `"str_glass"` |  |
-| `"str_ingredient1"` |  |
-| `"str_ingredient2"` |  |
-| `"str_instruction"` |  |
-| `"str_measure1"` |  |
-| `"str_measure2"` |  |
+| `"drinks"` |  |
+| `"idDrink"` |  |
+| `"strAlcoholic"` |  |
+| `"strCategory"` |  |
+| `"strDrink"` |  |
+| `"strDrinkThumb"` |  |
+| `"strGlass"` |  |
+| `"strIngredient1"` |  |
+| `"strIngredient2"` |  |
+| `"strInstructions"` |  |
+| `"strMeasure1"` |  |
+| `"strMeasure2"` |  |
 
 Operations: List.
 
@@ -327,8 +327,8 @@ API path: `/random.php`
 
 | Field | Description |
 | --- | --- |
-| `"drink"` |  |
-| `"ingredient"` |  |
+| `"drinks"` |  |
+| `"ingredients"` |  |
 
 Operations: List.
 
@@ -353,9 +353,9 @@ Create an instance: `filter := client.Filter(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
+| `idDrink` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
 
 #### Example: List
 
@@ -382,11 +382,11 @@ Create an instance: `list := client.List(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `[]any` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
+| `drinks` | `[]any` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
 
 #### Example: List
 
@@ -413,8 +413,8 @@ Create an instance: `lookup := client.Lookup(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `[]any` |  |
-| `ingredient` | `[]any` |  |
+| `drinks` | `[]any` |  |
+| `ingredients` | `[]any` |  |
 
 #### Example: List
 
@@ -441,18 +441,18 @@ Create an instance: `random := client.Random(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `[]any` |  |
-| `id_drink` | `string` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
-| `str_ingredient2` | `string` |  |
-| `str_instruction` | `string` |  |
-| `str_measure1` | `string` |  |
-| `str_measure2` | `string` |  |
+| `drinks` | `[]any` |  |
+| `idDrink` | `string` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
+| `strIngredient2` | `string` |  |
+| `strInstructions` | `string` |  |
+| `strMeasure1` | `string` |  |
+| `strMeasure2` | `string` |  |
 
 #### Example: List
 
@@ -479,8 +479,8 @@ Create an instance: `search := client.Search(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `[]any` |  |
-| `ingredient` | `[]any` |  |
+| `drinks` | `[]any` |  |
+| `ingredients` | `[]any` |  |
 
 #### Example: List
 

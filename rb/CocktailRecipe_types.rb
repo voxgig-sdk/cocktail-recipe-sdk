@@ -10,243 +10,243 @@
 
 # Filter entity data model.
 #
-# @!attribute [rw] id_drink
+# @!attribute [rw] idDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink
+# @!attribute [rw] strDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink_thumb
+# @!attribute [rw] strDrinkThumb
 #   @return [String, nil]
 Filter = Struct.new(
-  :id_drink,
-  :str_drink,
-  :str_drink_thumb,
+  :idDrink,
+  :strDrink,
+  :strDrinkThumb,
   keyword_init: true
 )
 
 # Request payload for Filter#list.
 #
-# @!attribute [rw] id_drink
+# @!attribute [rw] idDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink
+# @!attribute [rw] strDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink_thumb
+# @!attribute [rw] strDrinkThumb
 #   @return [String, nil]
 FilterListMatch = Struct.new(
-  :id_drink,
-  :str_drink,
-  :str_drink_thumb,
+  :idDrink,
+  :strDrink,
+  :strDrinkThumb,
   keyword_init: true
 )
 
 # List entity data model.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] str_alcoholic
+# @!attribute [rw] strAlcoholic
 #   @return [String, nil]
 #
-# @!attribute [rw] str_category
+# @!attribute [rw] strCategory
 #   @return [String, nil]
 #
-# @!attribute [rw] str_glass
+# @!attribute [rw] strGlass
 #   @return [String, nil]
 #
-# @!attribute [rw] str_ingredient1
+# @!attribute [rw] strIngredient1
 #   @return [String, nil]
 List = Struct.new(
-  :drink,
-  :str_alcoholic,
-  :str_category,
-  :str_glass,
-  :str_ingredient1,
+  :drinks,
+  :strAlcoholic,
+  :strCategory,
+  :strGlass,
+  :strIngredient1,
   keyword_init: true
 )
 
 # Request payload for List#list.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] str_alcoholic
+# @!attribute [rw] strAlcoholic
 #   @return [String, nil]
 #
-# @!attribute [rw] str_category
+# @!attribute [rw] strCategory
 #   @return [String, nil]
 #
-# @!attribute [rw] str_glass
+# @!attribute [rw] strGlass
 #   @return [String, nil]
 #
-# @!attribute [rw] str_ingredient1
+# @!attribute [rw] strIngredient1
 #   @return [String, nil]
 ListListMatch = Struct.new(
-  :drink,
-  :str_alcoholic,
-  :str_category,
-  :str_glass,
-  :str_ingredient1,
+  :drinks,
+  :strAlcoholic,
+  :strCategory,
+  :strGlass,
+  :strIngredient1,
   keyword_init: true
 )
 
 # Lookup entity data model.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Array, nil]
 Lookup = Struct.new(
-  :drink,
-  :ingredient,
+  :drinks,
+  :ingredients,
   keyword_init: true
 )
 
 # Request payload for Lookup#list.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Array, nil]
 LookupListMatch = Struct.new(
-  :drink,
-  :ingredient,
+  :drinks,
+  :ingredients,
   keyword_init: true
 )
 
 # Random entity data model.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] id_drink
+# @!attribute [rw] idDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_alcoholic
+# @!attribute [rw] strAlcoholic
 #   @return [String, nil]
 #
-# @!attribute [rw] str_category
+# @!attribute [rw] strCategory
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink
+# @!attribute [rw] strDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink_thumb
+# @!attribute [rw] strDrinkThumb
 #   @return [String, nil]
 #
-# @!attribute [rw] str_glass
+# @!attribute [rw] strGlass
 #   @return [String, nil]
 #
-# @!attribute [rw] str_ingredient1
+# @!attribute [rw] strIngredient1
 #   @return [String, nil]
 #
-# @!attribute [rw] str_ingredient2
+# @!attribute [rw] strIngredient2
 #   @return [String, nil]
 #
-# @!attribute [rw] str_instruction
+# @!attribute [rw] strInstructions
 #   @return [String, nil]
 #
-# @!attribute [rw] str_measure1
+# @!attribute [rw] strMeasure1
 #   @return [String, nil]
 #
-# @!attribute [rw] str_measure2
+# @!attribute [rw] strMeasure2
 #   @return [String, nil]
-Random = Struct.new(
-  :drink,
-  :id_drink,
-  :str_alcoholic,
-  :str_category,
-  :str_drink,
-  :str_drink_thumb,
-  :str_glass,
-  :str_ingredient1,
-  :str_ingredient2,
-  :str_instruction,
-  :str_measure1,
-  :str_measure2,
+RandomType = Struct.new(
+  :drinks,
+  :idDrink,
+  :strAlcoholic,
+  :strCategory,
+  :strDrink,
+  :strDrinkThumb,
+  :strGlass,
+  :strIngredient1,
+  :strIngredient2,
+  :strInstructions,
+  :strMeasure1,
+  :strMeasure2,
   keyword_init: true
 )
 
 # Request payload for Random#list.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] id_drink
+# @!attribute [rw] idDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_alcoholic
+# @!attribute [rw] strAlcoholic
 #   @return [String, nil]
 #
-# @!attribute [rw] str_category
+# @!attribute [rw] strCategory
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink
+# @!attribute [rw] strDrink
 #   @return [String, nil]
 #
-# @!attribute [rw] str_drink_thumb
+# @!attribute [rw] strDrinkThumb
 #   @return [String, nil]
 #
-# @!attribute [rw] str_glass
+# @!attribute [rw] strGlass
 #   @return [String, nil]
 #
-# @!attribute [rw] str_ingredient1
+# @!attribute [rw] strIngredient1
 #   @return [String, nil]
 #
-# @!attribute [rw] str_ingredient2
+# @!attribute [rw] strIngredient2
 #   @return [String, nil]
 #
-# @!attribute [rw] str_instruction
+# @!attribute [rw] strInstructions
 #   @return [String, nil]
 #
-# @!attribute [rw] str_measure1
+# @!attribute [rw] strMeasure1
 #   @return [String, nil]
 #
-# @!attribute [rw] str_measure2
+# @!attribute [rw] strMeasure2
 #   @return [String, nil]
 RandomListMatch = Struct.new(
-  :drink,
-  :id_drink,
-  :str_alcoholic,
-  :str_category,
-  :str_drink,
-  :str_drink_thumb,
-  :str_glass,
-  :str_ingredient1,
-  :str_ingredient2,
-  :str_instruction,
-  :str_measure1,
-  :str_measure2,
+  :drinks,
+  :idDrink,
+  :strAlcoholic,
+  :strCategory,
+  :strDrink,
+  :strDrinkThumb,
+  :strGlass,
+  :strIngredient1,
+  :strIngredient2,
+  :strInstructions,
+  :strMeasure1,
+  :strMeasure2,
   keyword_init: true
 )
 
 # Search entity data model.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Array, nil]
 Search = Struct.new(
-  :drink,
-  :ingredient,
+  :drinks,
+  :ingredients,
   keyword_init: true
 )
 
 # Request payload for Search#list.
 #
-# @!attribute [rw] drink
+# @!attribute [rw] drinks
 #   @return [Array, nil]
 #
-# @!attribute [rw] ingredient
+# @!attribute [rw] ingredients
 #   @return [Array, nil]
 SearchListMatch = Struct.new(
-  :drink,
-  :ingredient,
+  :drinks,
+  :ingredients,
   keyword_init: true
 )
 

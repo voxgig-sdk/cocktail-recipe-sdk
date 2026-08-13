@@ -15,98 +15,98 @@ declare(strict_types=1);
 /** Filter entity data model. */
 class Filter
 {
-    public ?string $id_drink = null;
-    public ?string $str_drink = null;
-    public ?string $str_drink_thumb = null;
+    public ?string $idDrink = null;
+    public ?string $strDrink = null;
+    public ?string $strDrinkThumb = null;
 }
 
 /** Request payload for Filter#list. */
 class FilterListMatch
 {
-    public ?string $id_drink = null;
-    public ?string $str_drink = null;
-    public ?string $str_drink_thumb = null;
+    public ?string $idDrink = null;
+    public ?string $strDrink = null;
+    public ?string $strDrinkThumb = null;
 }
 
 /** List entity data model. */
 class List
 {
-    public ?array $drink = null;
-    public ?string $str_alcoholic = null;
-    public ?string $str_category = null;
-    public ?string $str_glass = null;
-    public ?string $str_ingredient1 = null;
+    public ?array $drinks = null;
+    public ?string $strAlcoholic = null;
+    public ?string $strCategory = null;
+    public ?string $strGlass = null;
+    public ?string $strIngredient1 = null;
 }
 
 /** Request payload for List#list. */
 class ListListMatch
 {
-    public ?array $drink = null;
-    public ?string $str_alcoholic = null;
-    public ?string $str_category = null;
-    public ?string $str_glass = null;
-    public ?string $str_ingredient1 = null;
+    public ?array $drinks = null;
+    public ?string $strAlcoholic = null;
+    public ?string $strCategory = null;
+    public ?string $strGlass = null;
+    public ?string $strIngredient1 = null;
 }
 
 /** Lookup entity data model. */
 class Lookup
 {
-    public ?array $drink = null;
-    public ?array $ingredient = null;
+    public ?array $drinks = null;
+    public ?array $ingredients = null;
 }
 
 /** Request payload for Lookup#list. */
 class LookupListMatch
 {
-    public ?array $drink = null;
-    public ?array $ingredient = null;
+    public ?array $drinks = null;
+    public ?array $ingredients = null;
 }
 
 /** Random entity data model. */
 class Random
 {
-    public ?array $drink = null;
-    public ?string $id_drink = null;
-    public ?string $str_alcoholic = null;
-    public ?string $str_category = null;
-    public ?string $str_drink = null;
-    public ?string $str_drink_thumb = null;
-    public ?string $str_glass = null;
-    public ?string $str_ingredient1 = null;
-    public ?string $str_ingredient2 = null;
-    public ?string $str_instruction = null;
-    public ?string $str_measure1 = null;
-    public ?string $str_measure2 = null;
+    public ?array $drinks = null;
+    public ?string $idDrink = null;
+    public ?string $strAlcoholic = null;
+    public ?string $strCategory = null;
+    public ?string $strDrink = null;
+    public ?string $strDrinkThumb = null;
+    public ?string $strGlass = null;
+    public ?string $strIngredient1 = null;
+    public ?string $strIngredient2 = null;
+    public ?string $strInstructions = null;
+    public ?string $strMeasure1 = null;
+    public ?string $strMeasure2 = null;
 }
 
 /** Request payload for Random#list. */
 class RandomListMatch
 {
-    public ?array $drink = null;
-    public ?string $id_drink = null;
-    public ?string $str_alcoholic = null;
-    public ?string $str_category = null;
-    public ?string $str_drink = null;
-    public ?string $str_drink_thumb = null;
-    public ?string $str_glass = null;
-    public ?string $str_ingredient1 = null;
-    public ?string $str_ingredient2 = null;
-    public ?string $str_instruction = null;
-    public ?string $str_measure1 = null;
-    public ?string $str_measure2 = null;
+    public ?array $drinks = null;
+    public ?string $idDrink = null;
+    public ?string $strAlcoholic = null;
+    public ?string $strCategory = null;
+    public ?string $strDrink = null;
+    public ?string $strDrinkThumb = null;
+    public ?string $strGlass = null;
+    public ?string $strIngredient1 = null;
+    public ?string $strIngredient2 = null;
+    public ?string $strInstructions = null;
+    public ?string $strMeasure1 = null;
+    public ?string $strMeasure2 = null;
 }
 
 /** Search entity data model. */
 class Search
 {
-    public ?array $drink = null;
-    public ?array $ingredient = null;
+    public ?array $drinks = null;
+    public ?array $ingredients = null;
 }
 
 /** Request payload for Search#list. */
 class SearchListMatch
 {
-    public ?array $drink = null;
-    public ?array $ingredient = null;
+    public ?array $drinks = null;
+    public ?array $ingredients = null;
 }
 

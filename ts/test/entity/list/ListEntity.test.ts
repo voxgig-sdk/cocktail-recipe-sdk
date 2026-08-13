@@ -26,8 +26,8 @@ import {
 describe('ListEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COCKTAILRECIPE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COCKTAILRECIPE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COCKTAIL_RECIPE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COCKTAIL_RECIPE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CocktailRecipeSDK.test()
@@ -63,7 +63,7 @@ describe('ListEntity', async () => {
     const list_ref01_ent = client.List()
     const list_ref01_match: any = {}
 
-    const list_ref01_list = await list_ref01_ent.list(list_ref01_match)
+    const list_ref01_list = (await list_ref01_ent.list(list_ref01_match)).map((e: any) => e.data())
 
 
   })

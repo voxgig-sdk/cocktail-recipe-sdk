@@ -107,9 +107,9 @@ local filter = client:Filter(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | `string` | No |  |
-| `str_drink` | `string` | No |  |
-| `str_drink_thumb` | `string` | No |  |
+| `idDrink` | `string` | No |  |
+| `strDrink` | `string` | No |  |
+| `strDrinkThumb` | `string` | No |  |
 
 ### Operations
 
@@ -161,11 +161,11 @@ local list = client:List(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `table` | No |  |
-| `str_alcoholic` | `string` | No |  |
-| `str_category` | `string` | No |  |
-| `str_glass` | `string` | No |  |
-| `str_ingredient1` | `string` | No |  |
+| `drinks` | `table` | No |  |
+| `strAlcoholic` | `string` | No |  |
+| `strCategory` | `string` | No |  |
+| `strGlass` | `string` | No |  |
+| `strIngredient1` | `string` | No |  |
 
 ### Operations
 
@@ -217,8 +217,8 @@ local lookup = client:Lookup(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `table` | No |  |
-| `ingredient` | `table` | No |  |
+| `drinks` | `table` | No |  |
+| `ingredients` | `table` | No |  |
 
 ### Operations
 
@@ -270,18 +270,18 @@ local random = client:Random(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `table` | No |  |
-| `id_drink` | `string` | No |  |
-| `str_alcoholic` | `string` | No |  |
-| `str_category` | `string` | No |  |
-| `str_drink` | `string` | No |  |
-| `str_drink_thumb` | `string` | No |  |
-| `str_glass` | `string` | No |  |
-| `str_ingredient1` | `string` | No |  |
-| `str_ingredient2` | `string` | No |  |
-| `str_instruction` | `string` | No |  |
-| `str_measure1` | `string` | No |  |
-| `str_measure2` | `string` | No |  |
+| `drinks` | `table` | No |  |
+| `idDrink` | `string` | No |  |
+| `strAlcoholic` | `string` | No |  |
+| `strCategory` | `string` | No |  |
+| `strDrink` | `string` | No |  |
+| `strDrinkThumb` | `string` | No |  |
+| `strGlass` | `string` | No |  |
+| `strIngredient1` | `string` | No |  |
+| `strIngredient2` | `string` | No |  |
+| `strInstructions` | `string` | No |  |
+| `strMeasure1` | `string` | No |  |
+| `strMeasure2` | `string` | No |  |
 
 ### Operations
 
@@ -333,8 +333,8 @@ local search = client:Search(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `table` | No |  |
-| `ingredient` | `table` | No |  |
+| `drinks` | `table` | No |  |
+| `ingredients` | `table` | No |  |
 
 ### Operations
 

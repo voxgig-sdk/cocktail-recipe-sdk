@@ -23,8 +23,8 @@ module CocktailRecipeTestRunner
   end
 
   def self.env_override(m)
-    live = getenv("COCKTAILRECIPE_TEST_LIVE")
-    override = getenv("COCKTAILRECIPE_TEST_OVERRIDE")
+    live = getenv("COCKTAIL_RECIPE_TEST_LIVE")
+    override = getenv("COCKTAIL_RECIPE_TEST_OVERRIDE")
 
     if live == "TRUE" || override == "TRUE"
       m.each_key do |key|
@@ -44,8 +44,8 @@ module CocktailRecipeTestRunner
       end
     end
 
-    explain = getenv("COCKTAILRECIPE_TEST_EXPLAIN")
-    m["COCKTAILRECIPE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
+    explain = getenv("COCKTAIL_RECIPE_TEST_EXPLAIN")
+    m["COCKTAIL_RECIPE_TEST_EXPLAIN"] = explain if explain && !explain.empty?
 
     m
   end

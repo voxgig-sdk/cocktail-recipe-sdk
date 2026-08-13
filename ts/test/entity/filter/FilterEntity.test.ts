@@ -26,8 +26,8 @@ import {
 describe('FilterEntity', async () => {
 
   // Per-test live pacing. Delay is read from sdk-test-control.json's
-  // `test.live.delayMs`; only sleeps when COCKTAILRECIPE_TEST_LIVE=TRUE.
-  afterEach(liveDelay('COCKTAILRECIPE_TEST_LIVE'))
+  // `test.live.delayMs`; only sleeps when COCKTAIL_RECIPE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('COCKTAIL_RECIPE_TEST_LIVE'))
 
   test('instance', async () => {
     const testsdk = CocktailRecipeSDK.test()
@@ -63,7 +63,7 @@ describe('FilterEntity', async () => {
     const filter_ref01_ent = client.Filter()
     const filter_ref01_match: any = {}
 
-    const filter_ref01_list = await filter_ref01_ent.list(filter_ref01_match)
+    const filter_ref01_list = (await filter_ref01_ent.list(filter_ref01_match)).map((e: any) => e.data())
 
 
   })

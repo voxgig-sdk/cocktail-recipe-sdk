@@ -37,7 +37,7 @@ class LookupEntity extends CocktailRecipeEntityBase<Lookup> {
 
 
 
-  async list(this: any, reqmatch?: LookupListMatch, ctrl?: Control): Promise<Lookup[]> {
+  async list(this: any, reqmatch?: LookupListMatch, ctrl?: Control): Promise<LookupEntity[]> {
 
     const utility = this._utility
 

@@ -127,7 +127,8 @@ Create a mock client for unit testing — no server required:
 ```python
 client = CocktailRecipeSDK.test()
 
-# Entity ops return the bare record and raise on error.
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
 filter = client.Filter().list()
 # filter contains the mock response record
 ```
@@ -229,7 +230,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -251,9 +252,9 @@ On error, `ok` is `False` and `err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id_drink` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
+| `idDrink` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
 
 Operations: List.
 
@@ -263,11 +264,11 @@ API path: `/filter.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
+| `drinks` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
 
 Operations: List.
 
@@ -277,8 +278,8 @@ API path: `/list.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -288,18 +289,18 @@ API path: `/lookup.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `id_drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
-| `str_ingredient2` |  |
-| `str_instruction` |  |
-| `str_measure1` |  |
-| `str_measure2` |  |
+| `drinks` |  |
+| `idDrink` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
+| `strIngredient2` |  |
+| `strInstructions` |  |
+| `strMeasure1` |  |
+| `strMeasure2` |  |
 
 Operations: List.
 
@@ -309,8 +310,8 @@ API path: `/random.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -335,9 +336,9 @@ Create an instance: `filter = client.Filter()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | `str` |  |
-| `str_drink` | `str` |  |
-| `str_drink_thumb` | `str` |  |
+| `idDrink` | `str` |  |
+| `strDrink` | `str` |  |
+| `strDrinkThumb` | `str` |  |
 
 #### Example: List
 
@@ -360,11 +361,11 @@ Create an instance: `list = client.List()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `list` |  |
-| `str_alcoholic` | `str` |  |
-| `str_category` | `str` |  |
-| `str_glass` | `str` |  |
-| `str_ingredient1` | `str` |  |
+| `drinks` | `list` |  |
+| `strAlcoholic` | `str` |  |
+| `strCategory` | `str` |  |
+| `strGlass` | `str` |  |
+| `strIngredient1` | `str` |  |
 
 #### Example: List
 
@@ -387,8 +388,8 @@ Create an instance: `lookup = client.Lookup()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `list` |  |
-| `ingredient` | `list` |  |
+| `drinks` | `list` |  |
+| `ingredients` | `list` |  |
 
 #### Example: List
 
@@ -411,18 +412,18 @@ Create an instance: `random = client.Random()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `list` |  |
-| `id_drink` | `str` |  |
-| `str_alcoholic` | `str` |  |
-| `str_category` | `str` |  |
-| `str_drink` | `str` |  |
-| `str_drink_thumb` | `str` |  |
-| `str_glass` | `str` |  |
-| `str_ingredient1` | `str` |  |
-| `str_ingredient2` | `str` |  |
-| `str_instruction` | `str` |  |
-| `str_measure1` | `str` |  |
-| `str_measure2` | `str` |  |
+| `drinks` | `list` |  |
+| `idDrink` | `str` |  |
+| `strAlcoholic` | `str` |  |
+| `strCategory` | `str` |  |
+| `strDrink` | `str` |  |
+| `strDrinkThumb` | `str` |  |
+| `strGlass` | `str` |  |
+| `strIngredient1` | `str` |  |
+| `strIngredient2` | `str` |  |
+| `strInstructions` | `str` |  |
+| `strMeasure1` | `str` |  |
+| `strMeasure2` | `str` |  |
 
 #### Example: List
 
@@ -445,8 +446,8 @@ Create an instance: `search = client.Search()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `list` |  |
-| `ingredient` | `list` |  |
+| `drinks` | `list` |  |
+| `ingredients` | `list` |  |
 
 #### Example: List
 

@@ -66,16 +66,16 @@ function lookup_direct_setup($mockres)
     $calls = new \ArrayObject();
 
     $env = Runner::env_override([
-        "COCKTAILRECIPE_TEST_LOOKUP_ENTID" => [],
-        "COCKTAILRECIPE_TEST_LIVE" => "FALSE",
-        "COCKTAILRECIPE_APIKEY" => "NONE",
+        "COCKTAIL_RECIPE_TEST_LOOKUP_ENTID" => [],
+        "COCKTAIL_RECIPE_TEST_LIVE" => "FALSE",
+        "COCKTAIL_RECIPE_APIKEY" => "NONE",
     ]);
 
-    $live = $env["COCKTAILRECIPE_TEST_LIVE"] === "TRUE";
+    $live = $env["COCKTAIL_RECIPE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["COCKTAILRECIPE_APIKEY"],
+            "apikey" => $env["COCKTAIL_RECIPE_APIKEY"],
         ];
         $client = new CocktailRecipeSDK($merged_opts);
         return [

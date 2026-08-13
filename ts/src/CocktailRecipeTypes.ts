@@ -6,80 +6,80 @@
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 
 export interface Filter {
-  id_drink?: string
-  str_drink?: string
-  str_drink_thumb?: string
+  idDrink?: string
+  strDrink?: string
+  strDrinkThumb?: string
 }
 
 export interface FilterListMatch {
-  id_drink?: string
-  str_drink?: string
-  str_drink_thumb?: string
+  idDrink?: string
+  strDrink?: string
+  strDrinkThumb?: string
 }
 
 export interface List {
-  drink?: any[]
-  str_alcoholic?: string
-  str_category?: string
-  str_glass?: string
-  str_ingredient1?: string
+  drinks?: any[]
+  strAlcoholic?: string
+  strCategory?: string
+  strGlass?: string
+  strIngredient1?: string
 }
 
 export interface ListListMatch {
-  drink?: any[]
-  str_alcoholic?: string
-  str_category?: string
-  str_glass?: string
-  str_ingredient1?: string
+  drinks?: any[]
+  strAlcoholic?: string
+  strCategory?: string
+  strGlass?: string
+  strIngredient1?: string
 }
 
 export interface Lookup {
-  drink?: any[]
-  ingredient?: any[]
+  drinks?: any[]
+  ingredients?: any[]
 }
 
 export interface LookupListMatch {
-  drink?: any[]
-  ingredient?: any[]
+  drinks?: any[]
+  ingredients?: any[]
 }
 
 export interface Random {
-  drink?: any[]
-  id_drink?: string
-  str_alcoholic?: string
-  str_category?: string
-  str_drink?: string
-  str_drink_thumb?: string
-  str_glass?: string
-  str_ingredient1?: string
-  str_ingredient2?: string
-  str_instruction?: string
-  str_measure1?: string
-  str_measure2?: string
+  drinks?: any[]
+  idDrink?: string
+  strAlcoholic?: string
+  strCategory?: string
+  strDrink?: string
+  strDrinkThumb?: string
+  strGlass?: string
+  strIngredient1?: string
+  strIngredient2?: string
+  strInstructions?: string
+  strMeasure1?: string
+  strMeasure2?: string
 }
 
 export interface RandomListMatch {
-  drink?: any[]
-  id_drink?: string
-  str_alcoholic?: string
-  str_category?: string
-  str_drink?: string
-  str_drink_thumb?: string
-  str_glass?: string
-  str_ingredient1?: string
-  str_ingredient2?: string
-  str_instruction?: string
-  str_measure1?: string
-  str_measure2?: string
+  drinks?: any[]
+  idDrink?: string
+  strAlcoholic?: string
+  strCategory?: string
+  strDrink?: string
+  strDrinkThumb?: string
+  strGlass?: string
+  strIngredient1?: string
+  strIngredient2?: string
+  strInstructions?: string
+  strMeasure1?: string
+  strMeasure2?: string
 }
 
 export interface Search {
-  drink?: any[]
-  ingredient?: any[]
+  drinks?: any[]
+  ingredients?: any[]
 }
 
 export interface SearchListMatch {
-  drink?: any[]
-  ingredient?: any[]
+  drinks?: any[]
+  ingredients?: any[]
 }
 

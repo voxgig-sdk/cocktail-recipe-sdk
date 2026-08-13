@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import CocktailRecipeControl
-from core.error import CocktailRecipeError
-from core.result import CocktailRecipeResult
-from core.spec import CocktailRecipeSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import CocktailRecipeControl
+from projectname_sdk.core.error import CocktailRecipeError
+from projectname_sdk.core.result import CocktailRecipeResult
+from projectname_sdk.core.spec import CocktailRecipeSpec
 
 
 # True when this SDK was generated with the named feature.

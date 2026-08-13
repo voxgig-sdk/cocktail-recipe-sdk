@@ -2,28 +2,28 @@
   "existing": {
     "filter": {
       "FILTER00": {
-        "id_drink": "s1e",
-        "str_drink": "s1f",
-        "str_drink_thumb": "s20"
+        "idDrink": "s1e",
+        "strDrink": "s1f",
+        "strDrinkThumb": "s20"
       },
       "FILTER01": {
-        "id_drink": "s3c",
-        "str_drink": "s3d",
-        "str_drink_thumb": "s3e"
+        "idDrink": "s3c",
+        "strDrink": "s3d",
+        "strDrinkThumb": "s3e"
       },
       "FILTER02": {
-        "id_drink": "s5a",
-        "str_drink": "s5b",
-        "str_drink_thumb": "s5c"
+        "idDrink": "s5a",
+        "strDrink": "s5b",
+        "strDrinkThumb": "s5c"
       }
     }
   },
   "new": {
     "filter": {
       "filter_ref01": {
-        "id_drink": "s78",
-        "str_drink": "s79",
-        "str_drink_thumb": "s7a"
+        "idDrink": "s78",
+        "strDrink": "s79",
+        "strDrinkThumb": "s7a"
       }
     }
   }

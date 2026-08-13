@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from cocktailrecipe_sdk.utility.voxgig_struct import voxgig_struct as vs
 from cocktailrecipe_sdk import CocktailRecipeSDK
-from core import helpers
+from cocktailrecipe_sdk.core import helpers
 from test import runner
 
 
@@ -58,16 +58,16 @@ def _lookup_direct_setup(mockres):
     calls = []
 
     env = runner.env_override({
-        "COCKTAILRECIPE_TEST_LOOKUP_ENTID": {},
-        "COCKTAILRECIPE_TEST_LIVE": "FALSE",
-        "COCKTAILRECIPE_APIKEY": "NONE",
+        "COCKTAIL_RECIPE_TEST_LOOKUP_ENTID": {},
+        "COCKTAIL_RECIPE_TEST_LIVE": "FALSE",
+        "COCKTAIL_RECIPE_APIKEY": "NONE",
     })
 
-    live = env.get("COCKTAILRECIPE_TEST_LIVE") == "TRUE"
+    live = env.get("COCKTAIL_RECIPE_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("COCKTAILRECIPE_APIKEY"),
+            "apikey": env.get("COCKTAIL_RECIPE_APIKEY"),
         }
         client = CocktailRecipeSDK(merged_opts)
         return {

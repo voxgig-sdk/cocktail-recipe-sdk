@@ -2,24 +2,24 @@
   "existing": {
     "lookup": {
       "LOOKUP00": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       },
       "LOOKUP01": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       },
       "LOOKUP02": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       }
     }
   },
   "new": {
     "lookup": {
       "lookup_ref01": {
-        "drink": [],
-        "ingredient": []
+        "drinks": [],
+        "ingredients": []
       }
     }
   }

@@ -43,8 +43,8 @@ class CocktailRecipeTestRunner
 
     public static function env_override(array $m): array
     {
-        $live = self::getenv('COCKTAILRECIPE_TEST_LIVE');
-        $override = self::getenv('COCKTAILRECIPE_TEST_OVERRIDE');
+        $live = self::getenv('COCKTAIL_RECIPE_TEST_LIVE');
+        $override = self::getenv('COCKTAIL_RECIPE_TEST_OVERRIDE');
 
         if ($live === 'TRUE' || $override === 'TRUE') {
             foreach (array_keys($m) as $key) {
@@ -63,9 +63,9 @@ class CocktailRecipeTestRunner
             }
         }
 
-        $explain = self::getenv('COCKTAILRECIPE_TEST_EXPLAIN');
+        $explain = self::getenv('COCKTAIL_RECIPE_TEST_EXPLAIN');
         if ($explain !== null && $explain !== '') {
-            $m['COCKTAILRECIPE_TEST_EXPLAIN'] = $explain;
+            $m['COCKTAIL_RECIPE_TEST_EXPLAIN'] = $explain;
         }
 
         return $m;

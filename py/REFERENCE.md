@@ -104,9 +104,9 @@ filter = client.Filter()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | `str` | No |  |
-| `str_drink` | `str` | No |  |
-| `str_drink_thumb` | `str` | No |  |
+| `idDrink` | `str` | No |  |
+| `strDrink` | `str` | No |  |
+| `strDrinkThumb` | `str` | No |  |
 
 ### Operations
 
@@ -159,11 +159,11 @@ list = client.List()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `list` | No |  |
-| `str_alcoholic` | `str` | No |  |
-| `str_category` | `str` | No |  |
-| `str_glass` | `str` | No |  |
-| `str_ingredient1` | `str` | No |  |
+| `drinks` | `list` | No |  |
+| `strAlcoholic` | `str` | No |  |
+| `strCategory` | `str` | No |  |
+| `strGlass` | `str` | No |  |
+| `strIngredient1` | `str` | No |  |
 
 ### Operations
 
@@ -216,8 +216,8 @@ lookup = client.Lookup()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `list` | No |  |
-| `ingredient` | `list` | No |  |
+| `drinks` | `list` | No |  |
+| `ingredients` | `list` | No |  |
 
 ### Operations
 
@@ -270,18 +270,18 @@ random = client.Random()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `list` | No |  |
-| `id_drink` | `str` | No |  |
-| `str_alcoholic` | `str` | No |  |
-| `str_category` | `str` | No |  |
-| `str_drink` | `str` | No |  |
-| `str_drink_thumb` | `str` | No |  |
-| `str_glass` | `str` | No |  |
-| `str_ingredient1` | `str` | No |  |
-| `str_ingredient2` | `str` | No |  |
-| `str_instruction` | `str` | No |  |
-| `str_measure1` | `str` | No |  |
-| `str_measure2` | `str` | No |  |
+| `drinks` | `list` | No |  |
+| `idDrink` | `str` | No |  |
+| `strAlcoholic` | `str` | No |  |
+| `strCategory` | `str` | No |  |
+| `strDrink` | `str` | No |  |
+| `strDrinkThumb` | `str` | No |  |
+| `strGlass` | `str` | No |  |
+| `strIngredient1` | `str` | No |  |
+| `strIngredient2` | `str` | No |  |
+| `strInstructions` | `str` | No |  |
+| `strMeasure1` | `str` | No |  |
+| `strMeasure2` | `str` | No |  |
 
 ### Operations
 
@@ -334,8 +334,8 @@ search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `list` | No |  |
-| `ingredient` | `list` | No |  |
+| `drinks` | `list` | No |  |
+| `ingredients` | `list` | No |  |
 
 ### Operations
 

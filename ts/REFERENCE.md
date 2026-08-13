@@ -165,9 +165,9 @@ const filter = client.Filter()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `id_drink` | `string` | No |  |
-| `str_drink` | `string` | No |  |
-| `str_drink_thumb` | `string` | No |  |
+| `idDrink` | `string` | No |  |
+| `strDrink` | `string` | No |  |
+| `strDrinkThumb` | `string` | No |  |
 
 ### Operations
 
@@ -217,11 +217,11 @@ const list = client.List()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `any[]` | No |  |
-| `str_alcoholic` | `string` | No |  |
-| `str_category` | `string` | No |  |
-| `str_glass` | `string` | No |  |
-| `str_ingredient1` | `string` | No |  |
+| `drinks` | `any[]` | No |  |
+| `strAlcoholic` | `string` | No |  |
+| `strCategory` | `string` | No |  |
+| `strGlass` | `string` | No |  |
+| `strIngredient1` | `string` | No |  |
 
 ### Operations
 
@@ -271,8 +271,8 @@ const lookup = client.Lookup()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `any[]` | No |  |
-| `ingredient` | `any[]` | No |  |
+| `drinks` | `any[]` | No |  |
+| `ingredients` | `any[]` | No |  |
 
 ### Operations
 
@@ -322,18 +322,18 @@ const random = client.Random()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `any[]` | No |  |
-| `id_drink` | `string` | No |  |
-| `str_alcoholic` | `string` | No |  |
-| `str_category` | `string` | No |  |
-| `str_drink` | `string` | No |  |
-| `str_drink_thumb` | `string` | No |  |
-| `str_glass` | `string` | No |  |
-| `str_ingredient1` | `string` | No |  |
-| `str_ingredient2` | `string` | No |  |
-| `str_instruction` | `string` | No |  |
-| `str_measure1` | `string` | No |  |
-| `str_measure2` | `string` | No |  |
+| `drinks` | `any[]` | No |  |
+| `idDrink` | `string` | No |  |
+| `strAlcoholic` | `string` | No |  |
+| `strCategory` | `string` | No |  |
+| `strDrink` | `string` | No |  |
+| `strDrinkThumb` | `string` | No |  |
+| `strGlass` | `string` | No |  |
+| `strIngredient1` | `string` | No |  |
+| `strIngredient2` | `string` | No |  |
+| `strInstructions` | `string` | No |  |
+| `strMeasure1` | `string` | No |  |
+| `strMeasure2` | `string` | No |  |
 
 ### Operations
 
@@ -383,8 +383,8 @@ const search = client.Search()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `drink` | `any[]` | No |  |
-| `ingredient` | `any[]` | No |  |
+| `drinks` | `any[]` | No |  |
+| `ingredients` | `any[]` | No |  |
 
 ### Operations
 

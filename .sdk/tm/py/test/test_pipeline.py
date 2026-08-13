@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import CocktailRecipeSDK
-from core.error import CocktailRecipeError
-from core.result import CocktailRecipeResult
-from core.response import CocktailRecipeResponse
-from core.spec import CocktailRecipeSpec
-from feature.base_feature import CocktailRecipeBaseFeature
+from projectname_sdk.core.error import CocktailRecipeError
+from projectname_sdk.core.result import CocktailRecipeResult
+from projectname_sdk.core.response import CocktailRecipeResponse
+from projectname_sdk.core.spec import CocktailRecipeSpec
+from projectname_sdk.feature.base_feature import CocktailRecipeBaseFeature
 
 
 def _client():

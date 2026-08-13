@@ -40,7 +40,7 @@ try {
     // list() returns an array of Filter records — iterate directly.
     $filters = $client->Filter()->list();
     foreach ($filters as $item) {
-        echo $item["id_drink"] . "\n";
+        echo $item["idDrink"] . "\n";
     }
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -127,7 +127,8 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = CocktailRecipeSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
 $filter = $client->Filter()->list();
 print_r($filter);
 ```
@@ -232,7 +233,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -254,9 +255,9 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `id_drink` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
+| `idDrink` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
 
 Operations: List.
 
@@ -266,11 +267,11 @@ API path: `/filter.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
+| `drinks` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
 
 Operations: List.
 
@@ -280,8 +281,8 @@ API path: `/list.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -291,18 +292,18 @@ API path: `/lookup.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `id_drink` |  |
-| `str_alcoholic` |  |
-| `str_category` |  |
-| `str_drink` |  |
-| `str_drink_thumb` |  |
-| `str_glass` |  |
-| `str_ingredient1` |  |
-| `str_ingredient2` |  |
-| `str_instruction` |  |
-| `str_measure1` |  |
-| `str_measure2` |  |
+| `drinks` |  |
+| `idDrink` |  |
+| `strAlcoholic` |  |
+| `strCategory` |  |
+| `strDrink` |  |
+| `strDrinkThumb` |  |
+| `strGlass` |  |
+| `strIngredient1` |  |
+| `strIngredient2` |  |
+| `strInstructions` |  |
+| `strMeasure1` |  |
+| `strMeasure2` |  |
 
 Operations: List.
 
@@ -312,8 +313,8 @@ API path: `/random.php`
 
 | Field | Description |
 | --- | --- |
-| `drink` |  |
-| `ingredient` |  |
+| `drinks` |  |
+| `ingredients` |  |
 
 Operations: List.
 
@@ -338,9 +339,9 @@ Create an instance: `$filter = $client->Filter();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `id_drink` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
+| `idDrink` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
 
 #### Example: List
 
@@ -364,11 +365,11 @@ Create an instance: `$list = $client->List();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `array` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
+| `drinks` | `array` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
 
 #### Example: List
 
@@ -392,8 +393,8 @@ Create an instance: `$lookup = $client->Lookup();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `array` |  |
-| `ingredient` | `array` |  |
+| `drinks` | `array` |  |
+| `ingredients` | `array` |  |
 
 #### Example: List
 
@@ -417,18 +418,18 @@ Create an instance: `$random = $client->Random();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `array` |  |
-| `id_drink` | `string` |  |
-| `str_alcoholic` | `string` |  |
-| `str_category` | `string` |  |
-| `str_drink` | `string` |  |
-| `str_drink_thumb` | `string` |  |
-| `str_glass` | `string` |  |
-| `str_ingredient1` | `string` |  |
-| `str_ingredient2` | `string` |  |
-| `str_instruction` | `string` |  |
-| `str_measure1` | `string` |  |
-| `str_measure2` | `string` |  |
+| `drinks` | `array` |  |
+| `idDrink` | `string` |  |
+| `strAlcoholic` | `string` |  |
+| `strCategory` | `string` |  |
+| `strDrink` | `string` |  |
+| `strDrinkThumb` | `string` |  |
+| `strGlass` | `string` |  |
+| `strIngredient1` | `string` |  |
+| `strIngredient2` | `string` |  |
+| `strInstructions` | `string` |  |
+| `strMeasure1` | `string` |  |
+| `strMeasure2` | `string` |  |
 
 #### Example: List
 
@@ -452,8 +453,8 @@ Create an instance: `$search = $client->Search();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `drink` | `array` |  |
-| `ingredient` | `array` |  |
+| `drinks` | `array` |  |
+| `ingredients` | `array` |  |
 
 #### Example: List
 

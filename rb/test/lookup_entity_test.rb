@@ -62,7 +62,7 @@ class LookupEntityTest < Minitest::Test
     # The basic flow consumes synthetic IDs from the fixture. In live mode
     # without an *_ENTID env override, those IDs hit the live API and 4xx.
     if setup[:synthetic_only]
-      skip "live entity test uses synthetic IDs from fixture — set COCKTAILRECIPE_TEST_LOOKUP_ENTID JSON to run live"
+      skip "live entity test uses synthetic IDs from fixture — set COCKTAIL_RECIPE_TEST_LOOKUP_ENTID JSON to run live"
       return
     end
     client = setup[:client]
@@ -111,39 +111,39 @@ def lookup_basic_setup(extra)
   # Detect ENTID env override before envOverride consumes it. When live
   # mode is on without a real override, the basic test runs against synthetic
   # IDs from the fixture and 4xx's. Surface this so the test can skip.
-  entid_env_raw = ENV["COCKTAILRECIPE_TEST_LOOKUP_ENTID"]
+  entid_env_raw = ENV["COCKTAIL_RECIPE_TEST_LOOKUP_ENTID"]
   idmap_overridden = !entid_env_raw.nil? && entid_env_raw.strip.start_with?("{")
 
   env = Runner.env_override({
-    "COCKTAILRECIPE_TEST_LOOKUP_ENTID" => idmap,
-    "COCKTAILRECIPE_TEST_LIVE" => "FALSE",
-    "COCKTAILRECIPE_TEST_EXPLAIN" => "FALSE",
-    "COCKTAILRECIPE_APIKEY" => "NONE",
+    "COCKTAIL_RECIPE_TEST_LOOKUP_ENTID" => idmap,
+    "COCKTAIL_RECIPE_TEST_LIVE" => "FALSE",
+    "COCKTAIL_RECIPE_TEST_EXPLAIN" => "FALSE",
+    "COCKTAIL_RECIPE_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
-    env["COCKTAILRECIPE_TEST_LOOKUP_ENTID"])
+    env["COCKTAIL_RECIPE_TEST_LOOKUP_ENTID"])
   if idmap_resolved.nil?
     idmap_resolved = Helpers.to_map(idmap)
   end
 
-  if env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE"
+  if env["COCKTAIL_RECIPE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["COCKTAILRECIPE_APIKEY"],
+        "apikey" => env["COCKTAIL_RECIPE_APIKEY"],
       },
       extra || {},
     ])
     client = CocktailRecipeSDK.new(Helpers.to_map(merged_opts))
   end
 
-  live = env["COCKTAILRECIPE_TEST_LIVE"] == "TRUE"
+  live = env["COCKTAIL_RECIPE_TEST_LIVE"] == "TRUE"
   {
     client: client,
     data: entity_data,
     idmap: idmap_resolved,
     env: env,
-    explain: env["COCKTAILRECIPE_TEST_EXPLAIN"] == "TRUE",
+    explain: env["COCKTAIL_RECIPE_TEST_EXPLAIN"] == "TRUE",
     live: live,
     synthetic_only: live && !idmap_overridden,
     now: (Time.now.to_f * 1000).to_i,
