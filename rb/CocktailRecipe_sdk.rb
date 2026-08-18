@@ -28,7 +28,7 @@ class CocktailRecipeSDK
     utility = CocktailRecipeUtility.new
     @_utility = utility
 
-    config = CocktailRecipeConfig.make_config
+    config = CocktailRecipeConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

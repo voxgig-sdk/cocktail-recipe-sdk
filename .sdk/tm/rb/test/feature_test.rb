@@ -15,7 +15,7 @@ require_relative "../CocktailRecipe_sdk"
 module CocktailRecipeFeatureHarness
   # True when this SDK was generated with the named feature.
   def self.has_feature?(name)
-    f = CocktailRecipeConfig.make_config["feature"]
+    f = CocktailRecipeConfig.shared_config["feature"]
     f.is_a?(Hash) && !f[name].nil?
   end
 

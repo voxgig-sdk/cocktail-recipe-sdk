@@ -1,7 +1,30 @@
 # CocktailRecipe SDK configuration
 
 
+_shared_config = None
+
+
+def shared_config():
+    """Return the process-wide config, built once on first use.
+
+    The SDK reads the config on every request and never writes to it, so one
+    instance is shared by every client rather than rebuilt per client.
+
+    The returned dict is shared: treat it as read-only. Callers that need to
+    mutate should use make_config, which always returns a fresh copy.
+    """
+    global _shared_config
+    if _shared_config is None:
+        _shared_config = make_config()
+    return _shared_config
+
+
 def make_config():
+    """Build a fresh, fully materialised config dict.
+
+    Every call rebuilds the whole structure, so prefer shared_config unless
+    you need a private copy you intend to mutate.
+    """
     return {
         "main": {
             "name": "CocktailRecipe",
@@ -33,25 +56,16 @@ def make_config():
       "filter": {
         "fields": [
           {
-            "active": True,
             "name": "idDrink",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "strDrink",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "strDrinkThumb",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
         ],
         "name": "filter",
@@ -61,43 +75,34 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "Alcoholic",
                       "kind": "query",
                       "name": "a",
                       "orig": "a",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "Ordinary_Drink",
                       "kind": "query",
                       "name": "c",
                       "orig": "c",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "Cocktail_glass",
                       "kind": "query",
                       "name": "g",
                       "orig": "g",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "Gin",
                       "kind": "query",
                       "name": "i",
                       "orig": "i",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -120,10 +125,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -133,39 +136,24 @@ def make_config():
       "list": {
         "fields": [
           {
-            "active": True,
             "name": "drinks",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "strAlcoholic",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "strCategory",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "strGlass",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "strIngredient1",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
         ],
         "name": "list",
@@ -175,43 +163,34 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "list",
                       "kind": "query",
                       "name": "a",
                       "orig": "a",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "list",
                       "kind": "query",
                       "name": "c",
                       "orig": "c",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "list",
                       "kind": "query",
                       "name": "g",
                       "orig": "g",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "list",
                       "kind": "query",
                       "name": "i",
                       "orig": "i",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -234,10 +213,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -250,10 +227,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
-                "index$": 1,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -266,10 +241,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
-                "index$": 2,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -279,18 +252,12 @@ def make_config():
       "lookup": {
         "fields": [
           {
-            "active": True,
             "name": "drinks",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "ingredients",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
         ],
         "name": "lookup",
@@ -300,25 +267,20 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "11007",
                       "kind": "query",
                       "name": "i",
                       "orig": "i",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "552",
                       "kind": "query",
                       "name": "iid",
                       "orig": "iid",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -339,10 +301,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -352,88 +312,52 @@ def make_config():
       "random": {
         "fields": [
           {
-            "active": True,
             "name": "drinks",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "idDrink",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 1,
           },
           {
-            "active": True,
             "name": "strAlcoholic",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 2,
           },
           {
-            "active": True,
             "name": "strCategory",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 3,
           },
           {
-            "active": True,
             "name": "strDrink",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 4,
           },
           {
-            "active": True,
             "name": "strDrinkThumb",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 5,
           },
           {
-            "active": True,
             "name": "strGlass",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 6,
           },
           {
-            "active": True,
             "name": "strIngredient1",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 7,
           },
           {
-            "active": True,
             "name": "strIngredient2",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 8,
           },
           {
-            "active": True,
             "name": "strInstructions",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 9,
           },
           {
-            "active": True,
             "name": "strMeasure1",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 10,
           },
           {
-            "active": True,
             "name": "strMeasure2",
-            "req": False,
             "type": "`$STRING`",
-            "index$": 11,
           },
         ],
         "name": "random",
@@ -443,7 +367,6 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -456,10 +379,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
-                "index$": 0,
               },
               {
-                "active": True,
                 "args": {},
                 "kind": "http",
                 "method": "GET",
@@ -472,10 +393,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
-                "index$": 1,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {
@@ -485,18 +404,12 @@ def make_config():
       "search": {
         "fields": [
           {
-            "active": True,
             "name": "drinks",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 0,
           },
           {
-            "active": True,
             "name": "ingredients",
-            "req": False,
             "type": "`$ARRAY`",
-            "index$": 1,
           },
         ],
         "name": "search",
@@ -506,34 +419,27 @@ def make_config():
             "name": "list",
             "points": [
               {
-                "active": True,
                 "args": {
                   "query": [
                     {
-                      "active": True,
                       "example": "a",
                       "kind": "query",
                       "name": "f",
                       "orig": "f",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "vodka",
                       "kind": "query",
                       "name": "i",
                       "orig": "i",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                     {
-                      "active": True,
                       "example": "margarita",
                       "kind": "query",
                       "name": "s",
                       "orig": "s",
-                      "reqd": False,
                       "type": "`$STRING`",
                     },
                   ],
@@ -555,10 +461,8 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "index$": 0,
               },
             ],
-            "key$": "list",
           },
         },
         "relations": {

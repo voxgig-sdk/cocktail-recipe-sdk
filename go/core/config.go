@@ -1,5 +1,12 @@
 package core
 
+import (
+	"sync"
+)
+
+// MakeConfig builds a fresh, fully materialised config map. Every call
+// rebuilds the whole structure, so prefer SharedConfig unless you need a
+// private copy you intend to mutate.
 func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
@@ -32,25 +39,16 @@ func MakeConfig() map[string]any {
 			"filter": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "idDrink",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strDrink",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strDrinkThumb",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 				},
 				"name": "filter",
@@ -60,43 +58,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "Alcoholic",
 											"kind": "query",
 											"name": "a",
 											"orig": "a",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "Ordinary_Drink",
 											"kind": "query",
 											"name": "c",
 											"orig": "c",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "Cocktail_glass",
 											"kind": "query",
 											"name": "g",
 											"orig": "g",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "Gin",
 											"kind": "query",
 											"name": "i",
 											"orig": "i",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 									},
@@ -119,7 +108,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -131,39 +119,24 @@ func MakeConfig() map[string]any {
 			"list": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "drinks",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strAlcoholic",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strCategory",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strGlass",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strIngredient1",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 4,
 					},
 				},
 				"name": "list",
@@ -173,43 +146,34 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "list",
 											"kind": "query",
 											"name": "a",
 											"orig": "a",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "list",
 											"kind": "query",
 											"name": "c",
 											"orig": "c",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "list",
 											"kind": "query",
 											"name": "g",
 											"orig": "g",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "list",
 											"kind": "query",
 											"name": "i",
 											"orig": "i",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 									},
@@ -232,10 +196,8 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"index$": 0,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -248,10 +210,8 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"index$": 1,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -264,7 +224,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"index$": 2,
 							},
 						},
 					},
@@ -276,18 +235,12 @@ func MakeConfig() map[string]any {
 			"lookup": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "drinks",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "ingredients",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "lookup",
@@ -297,25 +250,20 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "11007",
 											"kind": "query",
 											"name": "i",
 											"orig": "i",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "552",
 											"kind": "query",
 											"name": "iid",
 											"orig": "iid",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 									},
@@ -336,7 +284,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -348,88 +295,52 @@ func MakeConfig() map[string]any {
 			"random": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "drinks",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "idDrink",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 1,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strAlcoholic",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 2,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strCategory",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 3,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strDrink",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 4,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strDrinkThumb",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 5,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strGlass",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 6,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strIngredient1",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 7,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strIngredient2",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 8,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strInstructions",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 9,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strMeasure1",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 10,
 					},
 					map[string]any{
-						"active": true,
 						"name": "strMeasure2",
-						"req": false,
 						"type": "`$STRING`",
-						"index$": 11,
 					},
 				},
 				"name": "random",
@@ -439,7 +350,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -452,10 +362,8 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"index$": 0,
 							},
 							map[string]any{
-								"active": true,
 								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
@@ -468,7 +376,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"index$": 1,
 							},
 						},
 					},
@@ -480,18 +387,12 @@ func MakeConfig() map[string]any {
 			"search": map[string]any{
 				"fields": []any{
 					map[string]any{
-						"active": true,
 						"name": "drinks",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 0,
 					},
 					map[string]any{
-						"active": true,
 						"name": "ingredients",
-						"req": false,
 						"type": "`$ARRAY`",
-						"index$": 1,
 					},
 				},
 				"name": "search",
@@ -501,34 +402,27 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"active": true,
 								"args": map[string]any{
 									"query": []any{
 										map[string]any{
-											"active": true,
 											"example": "a",
 											"kind": "query",
 											"name": "f",
 											"orig": "f",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "vodka",
 											"kind": "query",
 											"name": "i",
 											"orig": "i",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 										map[string]any{
-											"active": true,
 											"example": "margarita",
 											"kind": "query",
 											"name": "s",
 											"orig": "s",
-											"reqd": false,
 											"type": "`$STRING`",
 										},
 									},
@@ -550,7 +444,6 @@ func MakeConfig() map[string]any {
 									"req": "`reqdata`",
 									"res": "`body`",
 								},
-								"index$": 0,
 							},
 						},
 					},
@@ -561,6 +454,24 @@ func MakeConfig() map[string]any {
 			},
 		},
 	}
+}
+
+var (
+	sharedConfigOnce sync.Once
+	sharedConfigVal  map[string]any
+)
+
+// SharedConfig returns the process-wide config, built once on first use.
+// The SDK reads the config on every request and never writes to it, so one
+// instance is shared by every client rather than rebuilt per client.
+//
+// The returned map is shared: treat it as read-only. Callers that need to
+// mutate should use MakeConfig, which always returns a fresh copy.
+func SharedConfig() map[string]any {
+	sharedConfigOnce.Do(func() {
+		sharedConfigVal = MakeConfig()
+	})
+	return sharedConfigVal
 }
 
 func makeFeature(name string) Feature {

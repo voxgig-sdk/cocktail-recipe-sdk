@@ -23,8 +23,8 @@ class CocktailRecipeSDK:
         utility = CocktailRecipeUtility()
         self._utility = utility
 
-        from cocktailrecipe_sdk.config import make_config
-        config = make_config()
+        from cocktailrecipe_sdk.config import shared_config
+        config = shared_config()
 
         self._rootctx = utility.make_context({
             "client": self,

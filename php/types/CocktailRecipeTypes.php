@@ -29,7 +29,7 @@ class FilterListMatch
 }
 
 /** List entity data model. */
-class List
+class ListType
 {
     public ?array $drinks = null;
     public ?string $strAlcoholic = null;

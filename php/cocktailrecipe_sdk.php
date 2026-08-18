@@ -40,7 +40,7 @@ class CocktailRecipeSDK
         $utility = new CocktailRecipeUtility();
         $this->_utility = $utility;
 
-        $config = CocktailRecipeConfig::make_config();
+        $config = CocktailRecipeConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

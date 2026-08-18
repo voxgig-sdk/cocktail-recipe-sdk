@@ -1,6 +1,20 @@
 # CocktailRecipe SDK configuration
 
 module CocktailRecipeConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -33,25 +47,16 @@ module CocktailRecipeConfig
         "filter" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "idDrink",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "strDrink",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "strDrinkThumb",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
           ],
           "name" => "filter",
@@ -61,43 +66,34 @@ module CocktailRecipeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "Alcoholic",
                         "kind" => "query",
                         "name" => "a",
                         "orig" => "a",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "Ordinary_Drink",
                         "kind" => "query",
                         "name" => "c",
                         "orig" => "c",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "Cocktail_glass",
                         "kind" => "query",
                         "name" => "g",
                         "orig" => "g",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "Gin",
                         "kind" => "query",
                         "name" => "i",
                         "orig" => "i",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -120,10 +116,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.drinks`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -133,39 +127,24 @@ module CocktailRecipeConfig
         "list" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "drinks",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "strAlcoholic",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "strCategory",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "strGlass",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "strIngredient1",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
           ],
           "name" => "list",
@@ -175,43 +154,34 @@ module CocktailRecipeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "list",
                         "kind" => "query",
                         "name" => "a",
                         "orig" => "a",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "list",
                         "kind" => "query",
                         "name" => "c",
                         "orig" => "c",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "list",
                         "kind" => "query",
                         "name" => "g",
                         "orig" => "g",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "list",
                         "kind" => "query",
                         "name" => "i",
                         "orig" => "i",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -234,10 +204,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.drinks`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -250,10 +218,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.drinks`",
                   },
-                  "index$" => 1,
                 },
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -266,10 +232,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.drinks`",
                   },
-                  "index$" => 2,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -279,18 +243,12 @@ module CocktailRecipeConfig
         "lookup" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "drinks",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "ingredients",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "lookup",
@@ -300,25 +258,20 @@ module CocktailRecipeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "11007",
                         "kind" => "query",
                         "name" => "i",
                         "orig" => "i",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "552",
                         "kind" => "query",
                         "name" => "iid",
                         "orig" => "iid",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -339,10 +292,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -352,88 +303,52 @@ module CocktailRecipeConfig
         "random" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "drinks",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "idDrink",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "strAlcoholic",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "strCategory",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 3,
             },
             {
-              "active" => true,
               "name" => "strDrink",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 4,
             },
             {
-              "active" => true,
               "name" => "strDrinkThumb",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 5,
             },
             {
-              "active" => true,
               "name" => "strGlass",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 6,
             },
             {
-              "active" => true,
               "name" => "strIngredient1",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 7,
             },
             {
-              "active" => true,
               "name" => "strIngredient2",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 8,
             },
             {
-              "active" => true,
               "name" => "strInstructions",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 9,
             },
             {
-              "active" => true,
               "name" => "strMeasure1",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 10,
             },
             {
-              "active" => true,
               "name" => "strMeasure2",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 11,
             },
           ],
           "name" => "random",
@@ -443,7 +358,6 @@ module CocktailRecipeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -456,10 +370,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.drinks`",
                   },
-                  "index$" => 0,
                 },
                 {
-                  "active" => true,
                   "args" => {},
                   "kind" => "http",
                   "method" => "GET",
@@ -472,10 +384,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body.drinks`",
                   },
-                  "index$" => 1,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {
@@ -485,18 +395,12 @@ module CocktailRecipeConfig
         "search" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "drinks",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "ingredients",
-              "req" => false,
               "type" => "`$ARRAY`",
-              "index$" => 1,
             },
           ],
           "name" => "search",
@@ -506,34 +410,27 @@ module CocktailRecipeConfig
               "name" => "list",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "query" => [
                       {
-                        "active" => true,
                         "example" => "a",
                         "kind" => "query",
                         "name" => "f",
                         "orig" => "f",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "vodka",
                         "kind" => "query",
                         "name" => "i",
                         "orig" => "i",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                       {
-                        "active" => true,
                         "example" => "margarita",
                         "kind" => "query",
                         "name" => "s",
                         "orig" => "s",
-                        "reqd" => false,
                         "type" => "`$STRING`",
                       },
                     ],
@@ -555,10 +452,8 @@ module CocktailRecipeConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "list",
             },
           },
           "relations" => {

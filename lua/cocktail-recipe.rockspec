@@ -23,6 +23,7 @@ build = {
   modules = {
     ["cocktail-recipe_sdk"] = "cocktail-recipe_sdk.lua",
     ["config"] = "config.lua",
+    ["config_shared"] = "config_shared.lua",
     ["features"] = "features.lua",
   }
 }
