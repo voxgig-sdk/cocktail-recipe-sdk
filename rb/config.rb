@@ -19,6 +19,9 @@ module CocktailRecipeConfig
     {
       "main" => {
         "name" => "CocktailRecipe",
+        "slug" => "cocktail-recipe",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
