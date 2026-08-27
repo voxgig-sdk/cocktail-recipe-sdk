@@ -23,9 +23,10 @@ class Filter
 /** Request payload for Filter#list. */
 class FilterListMatch
 {
-    public ?string $idDrink = null;
-    public ?string $strDrink = null;
-    public ?string $strDrinkThumb = null;
+    public ?string $a = null;
+    public ?string $c = null;
+    public ?string $g = null;
+    public ?string $i = null;
 }
 
 /** List entity data model. */
@@ -41,11 +42,10 @@ class ListType
 /** Request payload for List#list. */
 class ListListMatch
 {
-    public ?array $drinks = null;
-    public ?string $strAlcoholic = null;
-    public ?string $strCategory = null;
-    public ?string $strGlass = null;
-    public ?string $strIngredient1 = null;
+    public ?string $a = null;
+    public ?string $c = null;
+    public ?string $g = null;
+    public ?string $i = null;
 }
 
 /** Lookup entity data model. */
@@ -58,8 +58,8 @@ class Lookup
 /** Request payload for Lookup#list. */
 class LookupListMatch
 {
-    public ?array $drinks = null;
-    public ?array $ingredients = null;
+    public ?string $i = null;
+    public ?string $iid = null;
 }
 
 /** Random entity data model. */
@@ -106,7 +106,8 @@ class Search
 /** Request payload for Search#list. */
 class SearchListMatch
 {
-    public ?array $drinks = null;
-    public ?array $ingredients = null;
+    public ?string $f = null;
+    public ?string $i = null;
+    public ?string $s = null;
 }
 

@@ -23,9 +23,10 @@ class Filter(TypedDict, total=False):
 
 
 class FilterListMatch(TypedDict, total=False):
-    idDrink: str
-    strDrink: str
-    strDrinkThumb: str
+    a: str
+    c: str
+    g: str
+    i: str
 
 
 class List(TypedDict, total=False):
@@ -37,11 +38,10 @@ class List(TypedDict, total=False):
 
 
 class ListListMatch(TypedDict, total=False):
-    drinks: list
-    strAlcoholic: str
-    strCategory: str
-    strGlass: str
-    strIngredient1: str
+    a: str
+    c: str
+    g: str
+    i: str
 
 
 class Lookup(TypedDict, total=False):
@@ -50,8 +50,8 @@ class Lookup(TypedDict, total=False):
 
 
 class LookupListMatch(TypedDict, total=False):
-    drinks: list
-    ingredients: list
+    i: str
+    iid: str
 
 
 class Random(TypedDict, total=False):
@@ -90,5 +90,6 @@ class Search(TypedDict, total=False):
 
 
 class SearchListMatch(TypedDict, total=False):
-    drinks: list
-    ingredients: list
+    f: str
+    i: str
+    s: str

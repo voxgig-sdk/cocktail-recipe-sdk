@@ -12,9 +12,10 @@ export interface Filter {
 }
 
 export interface FilterListMatch {
-  idDrink?: string
-  strDrink?: string
-  strDrinkThumb?: string
+  a?: string
+  c?: string
+  g?: string
+  i?: string
 }
 
 export interface List {
@@ -26,11 +27,10 @@ export interface List {
 }
 
 export interface ListListMatch {
-  drinks?: any[]
-  strAlcoholic?: string
-  strCategory?: string
-  strGlass?: string
-  strIngredient1?: string
+  a?: string
+  c?: string
+  g?: string
+  i?: string
 }
 
 export interface Lookup {
@@ -39,8 +39,8 @@ export interface Lookup {
 }
 
 export interface LookupListMatch {
-  drinks?: any[]
-  ingredients?: any[]
+  i?: string
+  iid?: string
 }
 
 export interface Random {
@@ -79,7 +79,8 @@ export interface Search {
 }
 
 export interface SearchListMatch {
-  drinks?: any[]
-  ingredients?: any[]
+  f?: string
+  i?: string
+  s?: string
 }
 

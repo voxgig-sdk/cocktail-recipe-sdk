@@ -21,9 +21,10 @@ type Filter struct {
 
 // FilterListMatch is the typed request payload for Filter.ListTyped.
 type FilterListMatch struct {
-	IdDrink *string `json:"idDrink,omitempty"`
-	StrDrink *string `json:"strDrink,omitempty"`
-	StrDrinkThumb *string `json:"strDrinkThumb,omitempty"`
+	A *string `json:"a,omitempty"`
+	C *string `json:"c,omitempty"`
+	G *string `json:"g,omitempty"`
+	I *string `json:"i,omitempty"`
 }
 
 // List is the typed data model for the list entity.
@@ -37,11 +38,10 @@ type List struct {
 
 // ListListMatch is the typed request payload for List.ListTyped.
 type ListListMatch struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	StrAlcoholic *string `json:"strAlcoholic,omitempty"`
-	StrCategory *string `json:"strCategory,omitempty"`
-	StrGlass *string `json:"strGlass,omitempty"`
-	StrIngredient1 *string `json:"strIngredient1,omitempty"`
+	A *string `json:"a,omitempty"`
+	C *string `json:"c,omitempty"`
+	G *string `json:"g,omitempty"`
+	I *string `json:"i,omitempty"`
 }
 
 // Lookup is the typed data model for the lookup entity.
@@ -52,8 +52,8 @@ type Lookup struct {
 
 // LookupListMatch is the typed request payload for Lookup.ListTyped.
 type LookupListMatch struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	Ingredients *[]any `json:"ingredients,omitempty"`
+	I *string `json:"i,omitempty"`
+	Iid *string `json:"iid,omitempty"`
 }
 
 // Random is the typed data model for the random entity.
@@ -96,8 +96,9 @@ type Search struct {
 
 // SearchListMatch is the typed request payload for Search.ListTyped.
 type SearchListMatch struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	Ingredients *[]any `json:"ingredients,omitempty"`
+	F *string `json:"f,omitempty"`
+	I *string `json:"i,omitempty"`
+	S *string `json:"s,omitempty"`
 }
 
 // asMap turns a typed request/data struct into the map[string]any the

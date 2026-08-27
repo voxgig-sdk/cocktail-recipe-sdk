@@ -27,18 +27,22 @@ Filter = Struct.new(
 
 # Request payload for Filter#list.
 #
-# @!attribute [rw] idDrink
+# @!attribute [rw] a
 #   @return [String, nil]
 #
-# @!attribute [rw] strDrink
+# @!attribute [rw] c
 #   @return [String, nil]
 #
-# @!attribute [rw] strDrinkThumb
+# @!attribute [rw] g
+#   @return [String, nil]
+#
+# @!attribute [rw] i
 #   @return [String, nil]
 FilterListMatch = Struct.new(
-  :idDrink,
-  :strDrink,
-  :strDrinkThumb,
+  :a,
+  :c,
+  :g,
+  :i,
   keyword_init: true
 )
 
@@ -69,26 +73,22 @@ List = Struct.new(
 
 # Request payload for List#list.
 #
-# @!attribute [rw] drinks
-#   @return [Array, nil]
-#
-# @!attribute [rw] strAlcoholic
+# @!attribute [rw] a
 #   @return [String, nil]
 #
-# @!attribute [rw] strCategory
+# @!attribute [rw] c
 #   @return [String, nil]
 #
-# @!attribute [rw] strGlass
+# @!attribute [rw] g
 #   @return [String, nil]
 #
-# @!attribute [rw] strIngredient1
+# @!attribute [rw] i
 #   @return [String, nil]
 ListListMatch = Struct.new(
-  :drinks,
-  :strAlcoholic,
-  :strCategory,
-  :strGlass,
-  :strIngredient1,
+  :a,
+  :c,
+  :g,
+  :i,
   keyword_init: true
 )
 
@@ -107,14 +107,14 @@ Lookup = Struct.new(
 
 # Request payload for Lookup#list.
 #
-# @!attribute [rw] drinks
-#   @return [Array, nil]
+# @!attribute [rw] i
+#   @return [String, nil]
 #
-# @!attribute [rw] ingredients
-#   @return [Array, nil]
+# @!attribute [rw] iid
+#   @return [String, nil]
 LookupListMatch = Struct.new(
-  :drinks,
-  :ingredients,
+  :i,
+  :iid,
   keyword_init: true
 )
 
@@ -239,14 +239,18 @@ Search = Struct.new(
 
 # Request payload for Search#list.
 #
-# @!attribute [rw] drinks
-#   @return [Array, nil]
+# @!attribute [rw] f
+#   @return [String, nil]
 #
-# @!attribute [rw] ingredients
-#   @return [Array, nil]
+# @!attribute [rw] i
+#   @return [String, nil]
+#
+# @!attribute [rw] s
+#   @return [String, nil]
 SearchListMatch = Struct.new(
-  :drinks,
-  :ingredients,
+  :f,
+  :i,
+  :s,
   keyword_init: true
 )
 

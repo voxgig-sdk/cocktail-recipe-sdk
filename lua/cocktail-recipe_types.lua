@@ -12,9 +12,10 @@
 ---@field strDrinkThumb? string
 
 ---@class FilterListMatch
----@field idDrink? string
----@field strDrink? string
----@field strDrinkThumb? string
+---@field a? string
+---@field c? string
+---@field g? string
+---@field i? string
 
 ---@class List
 ---@field drinks? table
@@ -24,19 +25,18 @@
 ---@field strIngredient1? string
 
 ---@class ListListMatch
----@field drinks? table
----@field strAlcoholic? string
----@field strCategory? string
----@field strGlass? string
----@field strIngredient1? string
+---@field a? string
+---@field c? string
+---@field g? string
+---@field i? string
 
 ---@class Lookup
 ---@field drinks? table
 ---@field ingredients? table
 
 ---@class LookupListMatch
----@field drinks? table
----@field ingredients? table
+---@field i? string
+---@field iid? string
 
 ---@class Random
 ---@field drinks? table
@@ -71,8 +71,9 @@
 ---@field ingredients? table
 
 ---@class SearchListMatch
----@field drinks? table
----@field ingredients? table
+---@field f? string
+---@field i? string
+---@field s? string
 
 local M = {}
 
