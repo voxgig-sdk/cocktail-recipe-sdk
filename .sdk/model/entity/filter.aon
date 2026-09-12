@@ -66,8 +66,10 @@ main: kit: entity: filter: {
           }
           method: "GET"
           orig: "/filter.php"
-          parts: [
-            "filter.php"
+          segments: [
+            {
+              lit: "filter.php"
+            }
           ]
           select: {
             exist: [

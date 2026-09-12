@@ -68,15 +68,17 @@ function random_direct_setup($mockres)
     $env = Runner::env_override([
         "COCKTAIL_RECIPE_TEST_RANDOM_ENTID" => [],
         "COCKTAIL_RECIPE_TEST_LIVE" => "FALSE",
-        "COCKTAIL_RECIPE_APIKEY" => "NONE",
+        "COCKTAIL_RECIPE_APIKEY" => "",
     ]);
 
     $live = $env["COCKTAIL_RECIPE_TEST_LIVE"] === "TRUE";
 
     if ($live) {
-        $merged_opts = [
+        // Merged so the generated fields win: sdk-test-control.json's
+        // test.client.options adds to the live client, it does not redirect it.
+        $merged_opts = array_merge(Runner::live_client_options(), [
             "apikey" => $env["COCKTAIL_RECIPE_APIKEY"],
-        ];
+        ]);
         $client = new CocktailRecipeSDK($merged_opts);
         return [
             "client" => $client,

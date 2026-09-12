@@ -1,6 +1,14 @@
 # CocktailRecipe SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -114,8 +122,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/filter.php",
-                "parts": [
-                  "filter.php",
+                "segments": [
+                  {
+                    "lit": "filter.php",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -129,6 +139,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
+                "parts": [
+                  "filter.php",
+                ],
               },
             ],
           },
@@ -202,8 +215,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/list.php",
-                "parts": [
-                  "list.php",
+                "segments": [
+                  {
+                    "lit": "list.php",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -217,34 +232,47 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
+                "parts": [
+                  "list.php",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/latest.php",
-                "parts": [
-                  "latest.php",
+                "segments": [
+                  {
+                    "lit": "latest.php",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
+                "parts": [
+                  "latest.php",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/popular.php",
-                "parts": [
-                  "popular.php",
+                "segments": [
+                  {
+                    "lit": "popular.php",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
+                "parts": [
+                  "popular.php",
+                ],
               },
             ],
           },
@@ -292,8 +320,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/lookup.php",
-                "parts": [
-                  "lookup.php",
+                "segments": [
+                  {
+                    "lit": "lookup.php",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -305,6 +335,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "lookup.php",
+                ],
               },
             ],
           },
@@ -375,28 +408,38 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/random.php",
-                "parts": [
-                  "random.php",
+                "segments": [
+                  {
+                    "lit": "random.php",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
+                "parts": [
+                  "random.php",
+                ],
               },
               {
                 "args": {},
                 "kind": "http",
                 "method": "GET",
                 "orig": "/randomselection.php",
-                "parts": [
-                  "randomselection.php",
+                "segments": [
+                  {
+                    "lit": "randomselection.php",
+                  },
                 ],
                 "select": {},
                 "transform": {
                   "req": "`reqdata`",
                   "res": "`body.drinks`",
                 },
+                "parts": [
+                  "randomselection.php",
+                ],
               },
             ],
           },
@@ -451,8 +494,10 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/search.php",
-                "parts": [
-                  "search.php",
+                "segments": [
+                  {
+                    "lit": "search.php",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -465,6 +510,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "search.php",
+                ],
               },
             ],
           },

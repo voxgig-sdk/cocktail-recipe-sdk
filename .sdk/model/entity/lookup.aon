@@ -45,8 +45,10 @@ main: kit: entity: lookup: {
           }
           method: "GET"
           orig: "/lookup.php"
-          parts: [
-            "lookup.php"
+          segments: [
+            {
+              lit: "lookup.php"
+            }
           ]
           select: {
             exist: [

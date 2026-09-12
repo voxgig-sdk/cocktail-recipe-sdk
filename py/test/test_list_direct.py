@@ -60,15 +60,18 @@ def _list_direct_setup(mockres):
     env = runner.env_override({
         "COCKTAIL_RECIPE_TEST_LIST_ENTID": {},
         "COCKTAIL_RECIPE_TEST_LIVE": "FALSE",
-        "COCKTAIL_RECIPE_APIKEY": "NONE",
+        "COCKTAIL_RECIPE_APIKEY": "",
     })
 
     live = env.get("COCKTAIL_RECIPE_TEST_LIVE") == "TRUE"
 
     if live:
-        merged_opts = {
+        # sdk-test-control.json's test.client.options seeds the live
+        # client; the generated fields below overwrite anything they name.
+        merged_opts = dict(runner.live_client_options())
+        merged_opts.update({
             "apikey": env.get("COCKTAIL_RECIPE_APIKEY"),
-        }
+        })
         client = CocktailRecipeSDK(merged_opts)
         return {
             "client": client,

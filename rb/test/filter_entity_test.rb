@@ -118,7 +118,7 @@ def filter_basic_setup(extra)
     "COCKTAIL_RECIPE_TEST_FILTER_ENTID" => idmap,
     "COCKTAIL_RECIPE_TEST_LIVE" => "FALSE",
     "COCKTAIL_RECIPE_TEST_EXPLAIN" => "FALSE",
-    "COCKTAIL_RECIPE_APIKEY" => "NONE",
+    "COCKTAIL_RECIPE_APIKEY" => "",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -129,6 +129,9 @@ def filter_basic_setup(extra)
 
   if env["COCKTAIL_RECIPE_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
+      # FIRST, so the generated fields below win: sdk-test-control.json's
+      # test.client.options adds to the live client, it does not redirect it.
+      Runner.live_client_options,
       {
         "apikey" => env["COCKTAIL_RECIPE_APIKEY"],
       },

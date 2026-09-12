@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -137,8 +148,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/filter.php",
-              "parts": [
-                "filter.php"
+              "segments": [
+                {
+                  "lit": "filter.php"
+                }
               ],
               "select": {
                 "exist": [
@@ -151,7 +164,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
-              }
+              },
+              "parts": [
+                "filter.php"
+              ]
             }
           ]
         }
@@ -225,8 +241,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/list.php",
-              "parts": [
-                "list.php"
+              "segments": [
+                {
+                  "lit": "list.php"
+                }
               ],
               "select": {
                 "exist": [
@@ -239,35 +257,48 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
-              }
+              },
+              "parts": [
+                "list.php"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/latest.php",
-              "parts": [
-                "latest.php"
+              "segments": [
+                {
+                  "lit": "latest.php"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
-              }
+              },
+              "parts": [
+                "latest.php"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/popular.php",
-              "parts": [
-                "popular.php"
+              "segments": [
+                {
+                  "lit": "popular.php"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
-              }
+              },
+              "parts": [
+                "popular.php"
+              ]
             }
           ]
         }
@@ -315,8 +346,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/lookup.php",
-              "parts": [
-                "lookup.php"
+              "segments": [
+                {
+                  "lit": "lookup.php"
+                }
               ],
               "select": {
                 "exist": [
@@ -327,7 +360,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "lookup.php"
+              ]
             }
           ]
         }
@@ -398,28 +434,38 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/random.php",
-              "parts": [
-                "random.php"
+              "segments": [
+                {
+                  "lit": "random.php"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
-              }
+              },
+              "parts": [
+                "random.php"
+              ]
             },
             {
               "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/randomselection.php",
-              "parts": [
-                "randomselection.php"
+              "segments": [
+                {
+                  "lit": "randomselection.php"
+                }
               ],
               "select": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
-              }
+              },
+              "parts": [
+                "randomselection.php"
+              ]
             }
           ]
         }
@@ -474,8 +520,10 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/search.php",
-              "parts": [
-                "search.php"
+              "segments": [
+                {
+                  "lit": "search.php"
+                }
               ],
               "select": {
                 "exist": [
@@ -487,7 +535,10 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "search.php"
+              ]
             }
           ]
         }
@@ -503,6 +554,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

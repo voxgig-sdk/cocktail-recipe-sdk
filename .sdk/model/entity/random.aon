@@ -75,8 +75,10 @@ main: kit: entity: random: {
         {
           method: "GET"
           orig: "/random.php"
-          parts: [
-            "random.php"
+          segments: [
+            {
+              lit: "random.php"
+            }
           ]
           transform: {
             req: "`reqdata`"
@@ -86,8 +88,10 @@ main: kit: entity: random: {
         {
           method: "GET"
           orig: "/randomselection.php"
-          parts: [
-            "randomselection.php"
+          segments: [
+            {
+              lit: "randomselection.php"
+            }
           ]
           transform: {
             req: "`reqdata`"

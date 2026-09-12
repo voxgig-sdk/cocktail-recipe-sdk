@@ -98,7 +98,7 @@ func TestLookupEntity(t *testing.T) {
 		client := setup.client
 
 		// Bootstrap entity data from existing test data (no create step in flow).
-		lookupRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath("existing.lookup", setup.data)))
+		lookupRef01DataRaw := vs.Items(core.ToMapAny(vs.GetPath(setup.data, "existing.lookup")))
 		var lookupRef01Data map[string]any
 		if len(lookupRef01DataRaw) > 0 {
 			lookupRef01Data = core.ToMapAny(lookupRef01DataRaw[0][1])
@@ -147,7 +147,7 @@ func lookupBasicSetup(extra map[string]any) *entityTestSetup {
 	client := sdk.TestSDK(options, extra)
 
 	// Generate idmap via transform, matching TS pattern.
-	idmap := vs.Transform(
+	idmap, _ := vs.Transform(
 		[]any{"lookup01", "lookup02", "lookup03"},
 		map[string]any{
 			"`$PACK`": []any{"", map[string]any{
@@ -167,7 +167,7 @@ func lookupBasicSetup(extra map[string]any) *entityTestSetup {
 		"COCKTAIL_RECIPE_TEST_LOOKUP_ENTID": idmap,
 		"COCKTAIL_RECIPE_TEST_LIVE":      "FALSE",
 		"COCKTAIL_RECIPE_TEST_EXPLAIN":   "FALSE",
-		"COCKTAIL_RECIPE_APIKEY":         "NONE",
+		"COCKTAIL_RECIPE_APIKEY":         "",
 	})
 
 	idmapResolved := core.ToMapAny(env["COCKTAIL_RECIPE_TEST_LOOKUP_ENTID"])
@@ -176,11 +176,23 @@ func lookupBasicSetup(extra map[string]any) *entityTestSetup {
 	}
 
 	if env["COCKTAIL_RECIPE_TEST_LIVE"] == "TRUE" {
+		// An empty map, not a nil one: Merge returns nil when its last entry
+		// is nil, and BasicSetup is normally called with no extras - so a
+		// bare nil silently discarded the apikey and server values below.
+		extraOpts := extra
+		if extraOpts == nil {
+			extraOpts = map[string]any{}
+		}
+
 		mergedOpts := vs.Merge([]any{
+			// liveClientOptions() FIRST, so the generated fields below win:
+			// sdk-test-control.json's test.client.options adds to the live
+			// client, it does not redirect it.
+			liveClientOptions(),
 			map[string]any{
 				"apikey": env["COCKTAIL_RECIPE_APIKEY"],
 			},
-			extra,
+			extraOpts,
 		})
 		client = sdk.NewCocktailRecipeSDK(core.ToMapAny(mergedOpts))
 	}

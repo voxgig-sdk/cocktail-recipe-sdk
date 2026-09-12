@@ -119,8 +119,10 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/filter.php',
-                  'parts' => [
-                    'filter.php',
+                  'segments' => [
+                    [
+                      'lit' => 'filter.php',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -133,6 +135,9 @@ class CocktailRecipeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.drinks`',
+                  ],
+                  'parts' => [
+                    'filter.php',
                   ],
                 ],
               ],
@@ -207,8 +212,10 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/list.php',
-                  'parts' => [
-                    'list.php',
+                  'segments' => [
+                    [
+                      'lit' => 'list.php',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -222,19 +229,27 @@ class CocktailRecipeConfig
                     'req' => '`reqdata`',
                     'res' => '`body.drinks`',
                   ],
+                  'parts' => [
+                    'list.php',
+                  ],
                 ],
                 [
                   'args' => [],
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/latest.php',
-                  'parts' => [
-                    'latest.php',
+                  'segments' => [
+                    [
+                      'lit' => 'latest.php',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.drinks`',
+                  ],
+                  'parts' => [
+                    'latest.php',
                   ],
                 ],
                 [
@@ -242,13 +257,18 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/popular.php',
-                  'parts' => [
-                    'popular.php',
+                  'segments' => [
+                    [
+                      'lit' => 'popular.php',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.drinks`',
+                  ],
+                  'parts' => [
+                    'popular.php',
                   ],
                 ],
               ],
@@ -297,8 +317,10 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/lookup.php',
-                  'parts' => [
-                    'lookup.php',
+                  'segments' => [
+                    [
+                      'lit' => 'lookup.php',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -309,6 +331,9 @@ class CocktailRecipeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'lookup.php',
                   ],
                 ],
               ],
@@ -380,13 +405,18 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/random.php',
-                  'parts' => [
-                    'random.php',
+                  'segments' => [
+                    [
+                      'lit' => 'random.php',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.drinks`',
+                  ],
+                  'parts' => [
+                    'random.php',
                   ],
                 ],
                 [
@@ -394,13 +424,18 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/randomselection.php',
-                  'parts' => [
-                    'randomselection.php',
+                  'segments' => [
+                    [
+                      'lit' => 'randomselection.php',
+                    ],
                   ],
                   'select' => [],
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body.drinks`',
+                  ],
+                  'parts' => [
+                    'randomselection.php',
                   ],
                 ],
               ],
@@ -456,8 +491,10 @@ class CocktailRecipeConfig
                   'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/search.php',
-                  'parts' => [
-                    'search.php',
+                  'segments' => [
+                    [
+                      'lit' => 'search.php',
+                    ],
                   ],
                   'select' => [
                     'exist' => [
@@ -469,6 +506,9 @@ class CocktailRecipeConfig
                   'transform' => [
                     'req' => '`reqdata`',
                     'res' => '`body`',
+                  ],
+                  'parts' => [
+                    'search.php',
                   ],
                 ],
               ],

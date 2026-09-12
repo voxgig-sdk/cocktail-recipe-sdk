@@ -53,8 +53,10 @@ main: kit: entity: search: {
           }
           method: "GET"
           orig: "/search.php"
-          parts: [
-            "search.php"
+          segments: [
+            {
+              lit: "search.php"
+            }
           ]
           select: {
             exist: [
