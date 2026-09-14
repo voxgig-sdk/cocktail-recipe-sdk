@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe'
+import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe-sdk'
 
 const client = new CocktailRecipeSDK({
   apikey: process.env.COCKTAIL_RECIPE_APIKEY,
@@ -583,7 +583,7 @@ cocktail-recipe/
 Import the SDK from the package root:
 
 ```ts
-import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe'
+import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe-sdk'
 ```
 
 ### Entity state

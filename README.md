@@ -105,7 +105,7 @@ local results, err = client:Filter():list()
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/cocktail-recipe` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases) |
+| TypeScript | `@voxgig-sdk/cocktail-recipe-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases) |
 | Python | `voxgig-sdk-cocktail-recipe` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases) |
 | PHP | `voxgig-sdk/cocktail-recipe` | publish pending — [install from git tag](https://github.com/voxgig-sdk/cocktail-recipe-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/cocktail-recipe-sdk/go` | `go get github.com/voxgig-sdk/cocktail-recipe-sdk/go@latest` |
@@ -119,7 +119,7 @@ local results, err = client:Filter():list()
 ### TypeScript
 
 ```ts
-import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe'
+import { CocktailRecipeSDK } from '@voxgig-sdk/cocktail-recipe-sdk'
 
 const client = new CocktailRecipeSDK({
   apikey: process.env.COCKTAIL_RECIPE_APIKEY,
