@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { CocktailRecipeSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('FilterEntity', async () => {
 
     const live = 'TRUE' === process.env.COCKTAIL_RECIPE_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'filter.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'filter.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COCKTAIL_RECIPE_TEST_FILTER_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"idDrink","req":false,"type":"`$STRING`","index$":0},{"active":true,"name":"strDrink","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"strDrinkThumb","req":false,"type":"`$STRING`","index$":2}],"name":"filter","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{"query":[{"active":true,"example":"Alcoholic","kind":"query","name":"a","orig":"a","reqd":false,"type":"`$STRING`","index$":0},{"active":true,"example":"Ordinary_Drink","kind":"query","name":"c","orig":"c","reqd":false,"type":"`$STRING`","index$":1},{"active":true,"example":"Cocktail_glass","kind":"query","name":"g","orig":"g","reqd":false,"type":"`$STRING`","index$":2},{"active":true,"example":"Gin","kind":"query","name":"i","orig":"i","reqd":false,"type":"`$STRING`","index$":3}]},"contract":{"id":"GET /filter.php","json":"{\"operationId\":\"filterCocktails\",\"parameters\":[{\"description\":\"Filter by ingredient (comma-separated for multi-ingredient, Premium only)\",\"in\":\"query\",\"name\":\"i\",\"required\":false,\"schema\":{\"example\":\"Gin\",\"type\":\"string\"}},{\"description\":\"Filter by alcoholic type\",\"in\":\"query\",\"name\":\"a\",\"required\":false,\"schema\":{\"enum\":[\"Alcoholic\",\"Non_Alcoholic\"],\"example\":\"Alcoholic\",\"type\":\"string\"}},{\"description\":\"Filter by category\",\"in\":\"query\",\"name\":\"c\",\"required\":false,\"schema\":{\"example\":\"Ordinary_Drink\",\"type\":\"string\"}},{\"description\":\"Filter by glass type\",\"in\":\"query\",\"name\":\"g\",\"required\":false,\"schema\":{\"example\":\"Cocktail_glass\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"idDrink\":{\"type\":\"string\"},\"strDrink\":{\"type\":\"string\"},\"strDrinkThumb\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with filtered cocktails\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/filter.php","segments":[{"lit":"filter.php"}],"select":{"exist":["a","c","g","i"]},"transform":{"req":"`reqdata`","res":"`body.drinks`"},"index$":0}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"filter","name__orig":"filter","Name":"Filter","name_":"filter","name-":"filter","NAME":"FILTER","index$":0}, {"active":true,"entity":"filter","key$":"BasicFilterFlow","kind":"basic","name":"BasicFilterFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"filter_ref01"}}],"index$":0}]}, 'Filter')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COCKTAIL_RECIPE_TEST_FILTER_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'COCKTAIL_RECIPE_TEST_FILTER_ENTID': idmap,
     'COCKTAIL_RECIPE_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.COCKTAIL_RECIPE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['COCKTAIL_RECIPE_TEST_FILTER_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new CocktailRecipeSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.COCKTAIL_RECIPE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

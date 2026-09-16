@@ -34,5 +34,201 @@
         "strIngredient1": "scc"
       }
     }
+  },
+  "requests": {
+    "GET /list.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "listFilters",
+        "parameters": [
+          {
+            "description": "List categories",
+            "in": "query",
+            "name": "c",
+            "required": false,
+            "schema": {
+              "enum": [
+                "list"
+              ],
+              "example": "list",
+              "type": "string"
+            }
+          },
+          {
+            "description": "List glass types",
+            "in": "query",
+            "name": "g",
+            "required": false,
+            "schema": {
+              "enum": [
+                "list"
+              ],
+              "example": "list",
+              "type": "string"
+            }
+          },
+          {
+            "description": "List ingredients",
+            "in": "query",
+            "name": "i",
+            "required": false,
+            "schema": {
+              "enum": [
+                "list"
+              ],
+              "example": "list",
+              "type": "string"
+            }
+          },
+          {
+            "description": "List alcoholic filters",
+            "in": "query",
+            "name": "a",
+            "required": false,
+            "schema": {
+              "enum": [
+                "list"
+              ],
+              "example": "list",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "properties": {
+                          "strAlcoholic": {
+                            "type": "string"
+                          },
+                          "strCategory": {
+                            "type": "string"
+                          },
+                          "strGlass": {
+                            "type": "string"
+                          },
+                          "strIngredient1": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with list of filters"
+          }
+        },
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /latest.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getLatestCocktails",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with latest cocktails"
+          },
+          "401": {
+            "description": "Unauthorized - Premium API key required"
+          }
+        },
+        "security": [
+          {
+            "premiumApiKey": []
+          }
+        ],
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    },
+    "GET /popular.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getPopularCocktails",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with popular cocktails"
+          },
+          "401": {
+            "description": "Unauthorized - Premium API key required"
+          }
+        },
+        "security": [
+          {
+            "premiumApiKey": []
+          }
+        ],
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
   }
 }

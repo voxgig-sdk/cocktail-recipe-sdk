@@ -4,7 +4,10 @@ declare(strict_types=1);
 // CocktailRecipe SDK feature factory
 
 require_once __DIR__ . '/feature/BaseFeature.php';
+require_once __DIR__ . '/feature/RatelimitFeature.php';
+require_once __DIR__ . '/feature/RetryFeature.php';
 require_once __DIR__ . '/feature/TestFeature.php';
+require_once __DIR__ . '/feature/TimeoutFeature.php';
 
 
 class CocktailRecipeFeatures
@@ -14,8 +17,14 @@ class CocktailRecipeFeatures
         switch ($name) {
             case "base":
                 return new CocktailRecipeBaseFeature();
+            case "ratelimit":
+                return new CocktailRecipeRatelimitFeature();
+            case "retry":
+                return new CocktailRecipeRetryFeature();
             case "test":
                 return new CocktailRecipeTestFeature();
+            case "timeout":
+                return new CocktailRecipeTimeoutFeature();
             default:
                 return new CocktailRecipeBaseFeature();
         }
@@ -31,7 +40,10 @@ class CocktailRecipeFeatures
     {
         switch ($name) {
             case "base":
+            case "ratelimit":
+            case "retry":
             case "test":
+            case "timeout":
                 return true;
             default:
                 return false;

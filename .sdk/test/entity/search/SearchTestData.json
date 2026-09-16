@@ -22,5 +22,182 @@
         "ingredients": []
       }
     }
+  },
+  "requests": {
+    "GET /search.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "searchCocktails",
+        "parameters": [
+          {
+            "description": "Search cocktail by name",
+            "in": "query",
+            "name": "s",
+            "required": false,
+            "schema": {
+              "example": "margarita",
+              "type": "string"
+            }
+          },
+          {
+            "description": "List all cocktails by first letter",
+            "in": "query",
+            "name": "f",
+            "required": false,
+            "schema": {
+              "example": "a",
+              "maxLength": 1,
+              "minLength": 1,
+              "type": "string"
+            }
+          },
+          {
+            "description": "Search ingredient by name",
+            "in": "query",
+            "name": "i",
+            "required": false,
+            "schema": {
+              "example": "vodka",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "properties": {
+                          "dateModified": {
+                            "format": "date-time",
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "idDrink": {
+                            "description": "Unique drink ID",
+                            "type": "string"
+                          },
+                          "strAlcoholic": {
+                            "description": "Alcoholic or Non-Alcoholic",
+                            "type": "string"
+                          },
+                          "strCategory": {
+                            "description": "Drink category",
+                            "type": "string"
+                          },
+                          "strDrink": {
+                            "description": "Drink name",
+                            "type": "string"
+                          },
+                          "strDrinkAlternate": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strDrinkThumb": {
+                            "description": "URL to drink thumbnail image",
+                            "type": "string"
+                          },
+                          "strGlass": {
+                            "description": "Type of glass",
+                            "type": "string"
+                          },
+                          "strIBA": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strIngredient1": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strIngredient2": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strIngredient3": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strInstructions": {
+                            "description": "Recipe instructions",
+                            "type": "string"
+                          },
+                          "strMeasure1": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strMeasure2": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strMeasure3": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strTags": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strVideo": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    },
+                    "ingredients": {
+                      "items": {
+                        "properties": {
+                          "idIngredient": {
+                            "type": "string"
+                          },
+                          "strABV": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strAlcohol": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strDescription": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strIngredient": {
+                            "type": "string"
+                          },
+                          "strType": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response"
+          }
+        },
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

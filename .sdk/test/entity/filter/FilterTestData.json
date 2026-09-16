@@ -26,5 +26,100 @@
         "strDrinkThumb": "s7a"
       }
     }
+  },
+  "requests": {
+    "GET /filter.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "filterCocktails",
+        "parameters": [
+          {
+            "description": "Filter by ingredient (comma-separated for multi-ingredient, Premium only)",
+            "in": "query",
+            "name": "i",
+            "required": false,
+            "schema": {
+              "example": "Gin",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by alcoholic type",
+            "in": "query",
+            "name": "a",
+            "required": false,
+            "schema": {
+              "enum": [
+                "Alcoholic",
+                "Non_Alcoholic"
+              ],
+              "example": "Alcoholic",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by category",
+            "in": "query",
+            "name": "c",
+            "required": false,
+            "schema": {
+              "example": "Ordinary_Drink",
+              "type": "string"
+            }
+          },
+          {
+            "description": "Filter by glass type",
+            "in": "query",
+            "name": "g",
+            "required": false,
+            "schema": {
+              "example": "Cocktail_glass",
+              "type": "string"
+            }
+          }
+        ],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "properties": {
+                          "idDrink": {
+                            "type": "string"
+                          },
+                          "strDrink": {
+                            "type": "string"
+                          },
+                          "strDrinkThumb": {
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with filtered cocktails"
+          }
+        },
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    }
   }
 }

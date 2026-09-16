@@ -43,6 +43,12 @@ main: kit: entity: lookup: {
               }
             ]
           }
+          contract: {
+            id: "GET /lookup.php"
+            json: "{\"operationId\":\"lookupDetails\",\"parameters\":[{\"description\":\"Lookup cocktail by ID\",\"in\":\"query\",\"name\":\"i\",\"required\":false,\"schema\":{\"example\":\"11007\",\"type\":\"string\"}},{\"description\":\"Lookup ingredient by ID\",\"in\":\"query\",\"name\":\"iid\",\"required\":false,\"schema\":{\"example\":\"552\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"idDrink\":{\"type\":\"string\"},\"strAlcoholic\":{\"type\":\"string\"},\"strCategory\":{\"type\":\"string\"},\"strDrink\":{\"type\":\"string\"},\"strDrinkThumb\":{\"type\":\"string\"},\"strGlass\":{\"type\":\"string\"},\"strInstructions\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"ingredients\":{\"items\":{\"properties\":{\"idIngredient\":{\"type\":\"string\"},\"strDescription\":{\"type\":\"string\"},\"strIngredient\":{\"type\":\"string\"},\"strType\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/lookup.php"
           segments: [

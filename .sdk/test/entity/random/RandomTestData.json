@@ -62,5 +62,130 @@
         "strMeasure2": "s1eb"
       }
     }
+  },
+  "requests": {
+    "GET /random.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomCocktail",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "properties": {
+                          "idDrink": {
+                            "type": "string"
+                          },
+                          "strAlcoholic": {
+                            "type": "string"
+                          },
+                          "strCategory": {
+                            "type": "string"
+                          },
+                          "strDrink": {
+                            "type": "string"
+                          },
+                          "strDrinkThumb": {
+                            "type": "string"
+                          },
+                          "strGlass": {
+                            "type": "string"
+                          },
+                          "strIngredient1": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strIngredient2": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strInstructions": {
+                            "type": "string"
+                          },
+                          "strMeasure1": {
+                            "nullable": true,
+                            "type": "string"
+                          },
+                          "strMeasure2": {
+                            "nullable": true,
+                            "type": "string"
+                          }
+                        },
+                        "type": "object"
+                      },
+                      "maxItems": 1,
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with random cocktail"
+          }
+        },
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "unspecified"
+      }
+    },
+    "GET /randomselection.php": {
+      "provenance": "operation-contract",
+      "contract": {
+        "operationId": "getRandomSelection",
+        "parameters": [],
+        "protocol": "http",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "properties": {
+                    "drinks": {
+                      "items": {
+                        "type": "object"
+                      },
+                      "maxItems": 10,
+                      "type": "array"
+                    }
+                  },
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful response with 10 random cocktails"
+          },
+          "401": {
+            "description": "Unauthorized - Premium API key required"
+          }
+        },
+        "security": [
+          {
+            "premiumApiKey": []
+          }
+        ],
+        "securitySchemes": {
+          "premiumApiKey": {
+            "description": "Premium API key for production use. Test key '1' can be used for development.",
+            "in": "path",
+            "name": "apiKey",
+            "type": "apiKey"
+          }
+        },
+        "securitySource": "operation"
+      }
+    }
   }
 }

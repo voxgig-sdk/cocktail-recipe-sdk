@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { CocktailRecipeSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('RandomEntity', async () => {
 
     const live = 'TRUE' === process.env.COCKTAIL_RECIPE_TEST_LIVE
     for (const op of ['list']) {
-      if (maybeSkipControl(t, 'entityOp', 'random.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'random.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set COCKTAIL_RECIPE_TEST_RANDOM_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"drinks","req":false,"type":"`$ARRAY`","index$":0},{"active":true,"name":"idDrink","req":false,"type":"`$STRING`","index$":1},{"active":true,"name":"strAlcoholic","req":false,"type":"`$STRING`","index$":2},{"active":true,"name":"strCategory","req":false,"type":"`$STRING`","index$":3},{"active":true,"name":"strDrink","req":false,"type":"`$STRING`","index$":4},{"active":true,"name":"strDrinkThumb","req":false,"type":"`$STRING`","index$":5},{"active":true,"name":"strGlass","req":false,"type":"`$STRING`","index$":6},{"active":true,"name":"strIngredient1","req":false,"type":"`$STRING`","index$":7},{"active":true,"name":"strIngredient2","req":false,"type":"`$STRING`","index$":8},{"active":true,"name":"strInstructions","req":false,"type":"`$STRING`","index$":9},{"active":true,"name":"strMeasure1","req":false,"type":"`$STRING`","index$":10},{"active":true,"name":"strMeasure2","req":false,"type":"`$STRING`","index$":11}],"name":"random","op":{"list":{"input":"data","name":"list","points":[{"active":true,"args":{},"contract":{"id":"GET /random.php","json":"{\"operationId\":\"getRandomCocktail\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"idDrink\":{\"type\":\"string\"},\"strAlcoholic\":{\"type\":\"string\"},\"strCategory\":{\"type\":\"string\"},\"strDrink\":{\"type\":\"string\"},\"strDrinkThumb\":{\"type\":\"string\"},\"strGlass\":{\"type\":\"string\"},\"strIngredient1\":{\"nullable\":true,\"type\":\"string\"},\"strIngredient2\":{\"nullable\":true,\"type\":\"string\"},\"strInstructions\":{\"type\":\"string\"},\"strMeasure1\":{\"nullable\":true,\"type\":\"string\"},\"strMeasure2\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"maxItems\":1,\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with random cocktail\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/random.php","segments":[{"lit":"random.php"}],"select":{},"transform":{"req":"`reqdata`","res":"`body.drinks`"},"index$":0},{"active":true,"args":{},"contract":{"id":"GET /randomselection.php","json":"{\"operationId\":\"getRandomSelection\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"type\":\"object\"},\"maxItems\":10,\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with 10 random cocktails\"},\"401\":{\"description\":\"Unauthorized - Premium API key required\"}},\"security\":[{\"premiumApiKey\":[]}],\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/randomselection.php","segments":[{"lit":"randomselection.php"}],"select":{},"transform":{"req":"`reqdata`","res":"`body.drinks`"},"index$":1}],"key$":"list"}},"relations":{"ancestors":[]},"key$":"random","name__orig":"random","Name":"Random","name_":"random","name-":"random","NAME":"RANDOM","index$":3}, {"active":true,"entity":"random","key$":"BasicRandomFlow","kind":"basic","name":"BasicRandomFlow","param":{},"step":[{"active":true,"data":{},"input":{},"match":{},"op":"list","spec":[],"valid":[{"apply":"ItemExists","def":{"ref":"random_ref01"}}],"index$":0}]}, 'Random')
     }
     const client = setup.client
     const struct = setup.struct
@@ -109,13 +108,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['COCKTAIL_RECIPE_TEST_RANDOM_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'COCKTAIL_RECIPE_TEST_RANDOM_ENTID': idmap,
     'COCKTAIL_RECIPE_TEST_LIVE': 'FALSE',
@@ -127,7 +119,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.COCKTAIL_RECIPE_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['COCKTAIL_RECIPE_TEST_RANDOM_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new CocktailRecipeSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -140,7 +138,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -153,7 +152,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.COCKTAIL_RECIPE_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 
