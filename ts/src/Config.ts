@@ -123,6 +123,8 @@ class Config {
 
     auth: {
       prefix: '',
+      in: 'path',
+      name: 'apiKey',
     },
 
     headers: {
@@ -131,21 +133,21 @@ class Config {
 
     entity: {
       
-      filter: {
-      },
-
-      list: {
-      },
-
-      lookup: {
-      },
-
-      random: {
-      },
-
-      search: {
-      },
-
+        filter: {
+        },
+  
+        list: {
+        },
+  
+        lookup: {
+        },
+  
+        random: {
+        },
+  
+        search: {
+        },
+  
     }
   }
 

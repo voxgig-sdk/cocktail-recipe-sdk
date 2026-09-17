@@ -106,6 +106,8 @@ def make_config():
             "base": "https://www.thecocktaildb.com/api/json/v1/1",
             "auth": {
                 "prefix": "",
+                "in": "path",
+                "name": "apiKey",
             },
             "headers": {
         "content-type": "application/json",
