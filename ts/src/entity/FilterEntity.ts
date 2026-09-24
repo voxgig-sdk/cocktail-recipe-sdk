@@ -19,7 +19,6 @@ import type {
   FilterListMatch,
 } from '../CocktailRecipeTypes'
 
-// TODO: needs Entity superclass
 class FilterEntity extends CocktailRecipeEntityBase<Filter> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {

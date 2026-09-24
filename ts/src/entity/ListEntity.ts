@@ -19,7 +19,6 @@ import type {
   ListListMatch,
 } from '../CocktailRecipeTypes'
 
-// TODO: needs Entity superclass
 class ListEntity extends CocktailRecipeEntityBase<List> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {

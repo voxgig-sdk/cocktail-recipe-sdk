@@ -1,0 +1,86 @@
+# Entity: search
+
+main: kit: entity: search: {
+
+  alias: field: {}
+
+  fields: {
+    drinks: {
+      h: "Drinks"
+      n: "drinks"
+      r: false
+      t: "`$ARRAY`"
+    }
+    ingredients: {
+      h: "Ingredients"
+      n: "ingredients"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "search"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /search.php"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "a"
+                k: "query"
+                n: "f"
+                or: "f"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "vodka"
+                k: "query"
+                n: "i"
+                or: "i"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "margarita"
+                k: "query"
+                n: "s"
+                or: "s"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/search.php"
+          q: {
+            exist: [
+              "f"
+              "i"
+              "s"
+            ]
+          }
+          s: [
+            {
+              lit: "search.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

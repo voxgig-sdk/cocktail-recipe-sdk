@@ -1,0 +1,149 @@
+# Entity: list
+
+main: kit: entity: list: {
+
+  alias: field: {}
+
+  fields: {
+    drinks: {
+      h: "Drinks"
+      n: "drinks"
+      r: false
+      t: "`$ARRAY`"
+    }
+    strAlcoholic: {
+      h: "Str Alcoholic"
+      n: "strAlcoholic"
+      r: false
+      t: "`$STRING`"
+    }
+    strCategory: {
+      h: "Str Category"
+      n: "strCategory"
+      r: false
+      t: "`$STRING`"
+    }
+    strGlass: {
+      h: "Str Glass"
+      n: "strGlass"
+      r: false
+      t: "`$STRING`"
+    }
+    strIngredient1: {
+      h: "Str Ingredient1"
+      n: "strIngredient1"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "list"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /list.php"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "list"
+                k: "query"
+                n: "a"
+                or: "a"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "list"
+                k: "query"
+                n: "c"
+                or: "c"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "list"
+                k: "query"
+                n: "g"
+                or: "g"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "list"
+                k: "query"
+                n: "i"
+                or: "i"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/list.php"
+          q: {
+            exist: [
+              "a"
+              "c"
+              "g"
+              "i"
+            ]
+          }
+          s: [
+            {
+              lit: "list.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.drinks`"
+          }
+        }
+        {
+          co: {
+            id: "GET /latest.php"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/latest.php"
+          s: [
+            {
+              lit: "latest.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.drinks`"
+          }
+        }
+        {
+          co: {
+            id: "GET /popular.php"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/popular.php"
+          s: [
+            {
+              lit: "popular.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.drinks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

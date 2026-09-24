@@ -19,7 +19,6 @@ import type {
   SearchListMatch,
 } from '../CocktailRecipeTypes'
 
-// TODO: needs Entity superclass
 class SearchEntity extends CocktailRecipeEntityBase<Search> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {

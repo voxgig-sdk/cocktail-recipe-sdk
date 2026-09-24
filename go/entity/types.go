@@ -1,7 +1,7 @@
 // Typed models for the CocktailRecipe SDK.
 //
-// GENERATED from the API model: main.kit.entity.<e>.fields[] and per-op
-// params (op.<name>.points[].args.params[]). Field/param types come from the
+// GENERATED from the API model: main.kit.entity.<e>.fields{} and per-op
+// params (op.<name>.points[].g.params[]). Field/param types come from the
 // canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 // @voxgig/apidef VALID_CANON). Do not edit by hand.
 package entity
@@ -14,9 +14,6 @@ import (
 
 // Filter is the typed data model for the filter entity.
 type Filter struct {
-	IdDrink *string `json:"idDrink,omitempty"`
-	StrDrink *string `json:"strDrink,omitempty"`
-	StrDrinkThumb *string `json:"strDrinkThumb,omitempty"`
 }
 
 // FilterListMatch is the typed request payload for Filter.ListTyped.
@@ -29,11 +26,6 @@ type FilterListMatch struct {
 
 // List is the typed data model for the list entity.
 type List struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	StrAlcoholic *string `json:"strAlcoholic,omitempty"`
-	StrCategory *string `json:"strCategory,omitempty"`
-	StrGlass *string `json:"strGlass,omitempty"`
-	StrIngredient1 *string `json:"strIngredient1,omitempty"`
 }
 
 // ListListMatch is the typed request payload for List.ListTyped.
@@ -46,8 +38,6 @@ type ListListMatch struct {
 
 // Lookup is the typed data model for the lookup entity.
 type Lookup struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	Ingredients *[]any `json:"ingredients,omitempty"`
 }
 
 // LookupListMatch is the typed request payload for Lookup.ListTyped.
@@ -58,18 +48,6 @@ type LookupListMatch struct {
 
 // Random is the typed data model for the random entity.
 type Random struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	IdDrink *string `json:"idDrink,omitempty"`
-	StrAlcoholic *string `json:"strAlcoholic,omitempty"`
-	StrCategory *string `json:"strCategory,omitempty"`
-	StrDrink *string `json:"strDrink,omitempty"`
-	StrDrinkThumb *string `json:"strDrinkThumb,omitempty"`
-	StrGlass *string `json:"strGlass,omitempty"`
-	StrIngredient1 *string `json:"strIngredient1,omitempty"`
-	StrIngredient2 *string `json:"strIngredient2,omitempty"`
-	StrInstructions *string `json:"strInstructions,omitempty"`
-	StrMeasure1 *string `json:"strMeasure1,omitempty"`
-	StrMeasure2 *string `json:"strMeasure2,omitempty"`
 }
 
 // RandomListMatch is the typed request payload for Random.ListTyped.
@@ -90,8 +68,6 @@ type RandomListMatch struct {
 
 // Search is the typed data model for the search entity.
 type Search struct {
-	Drinks *[]any `json:"drinks,omitempty"`
-	Ingredients *[]any `json:"ingredients,omitempty"`
 }
 
 // SearchListMatch is the typed request payload for Search.ListTyped.

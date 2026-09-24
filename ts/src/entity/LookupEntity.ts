@@ -19,7 +19,6 @@ import type {
   LookupListMatch,
 } from '../CocktailRecipeTypes'
 
-// TODO: needs Entity superclass
 class LookupEntity extends CocktailRecipeEntityBase<Lookup> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {

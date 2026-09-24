@@ -45,7 +45,7 @@ local filters, err = client:Filter():list()
 if err then error(err) end
 
 for _, item in ipairs(filters) do
-  print(item["idDrink"])
+  print(item)
 end
 ```
 

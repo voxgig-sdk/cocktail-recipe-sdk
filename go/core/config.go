@@ -100,14 +100,17 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "idDrink",
+						"title": "Id Drink",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strDrink",
+						"title": "Str Drink",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strDrinkThumb",
+						"title": "Str Drink Thumb",
 						"type": "`$STRING`",
 					},
 				},
@@ -118,44 +121,52 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "Alcoholic",
-											"kind": "query",
-											"name": "a",
-											"orig": "a",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "Ordinary_Drink",
-											"kind": "query",
-											"name": "c",
-											"orig": "c",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "Cocktail_glass",
-											"kind": "query",
-											"name": "g",
-											"orig": "g",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "Gin",
-											"kind": "query",
-											"name": "i",
-											"orig": "i",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/filter.php",
 								"segments": []any{
 									map[string]any{
 										"lit": "filter.php",
+									},
+								},
+								"parts": []any{
+									"filter.php",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.drinks`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "a",
+											"orig": "a",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Alcoholic",
+										},
+										map[string]any{
+											"name": "c",
+											"orig": "c",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Ordinary_Drink",
+										},
+										map[string]any{
+											"name": "g",
+											"orig": "g",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Cocktail_glass",
+										},
+										map[string]any{
+											"name": "i",
+											"orig": "i",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "Gin",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -165,13 +176,6 @@ func MakeConfig() map[string]any {
 										"g",
 										"i",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.drinks`",
-								},
-								"parts": []any{
-									"filter.php",
 								},
 							},
 						},
@@ -185,22 +189,27 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "drinks",
+						"title": "Drinks",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "strAlcoholic",
+						"title": "Str Alcoholic",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strCategory",
+						"title": "Str Category",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strGlass",
+						"title": "Str Glass",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strIngredient1",
+						"title": "Str Ingredient1",
 						"type": "`$STRING`",
 					},
 				},
@@ -211,44 +220,52 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "list",
-											"kind": "query",
-											"name": "a",
-											"orig": "a",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "list",
-											"kind": "query",
-											"name": "c",
-											"orig": "c",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "list",
-											"kind": "query",
-											"name": "g",
-											"orig": "g",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "list",
-											"kind": "query",
-											"name": "i",
-											"orig": "i",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/list.php",
 								"segments": []any{
 									map[string]any{
 										"lit": "list.php",
+									},
+								},
+								"parts": []any{
+									"list.php",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body.drinks`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "a",
+											"orig": "a",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "list",
+										},
+										map[string]any{
+											"name": "c",
+											"orig": "c",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "list",
+										},
+										map[string]any{
+											"name": "g",
+											"orig": "g",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "list",
+										},
+										map[string]any{
+											"name": "i",
+											"orig": "i",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "list",
+										},
 									},
 								},
 								"select": map[string]any{
@@ -259,16 +276,8 @@ func MakeConfig() map[string]any {
 										"i",
 									},
 								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body.drinks`",
-								},
-								"parts": []any{
-									"list.php",
-								},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/latest.php",
@@ -277,17 +286,18 @@ func MakeConfig() map[string]any {
 										"lit": "latest.php",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"latest.php",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"parts": []any{
-									"latest.php",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/popular.php",
@@ -296,14 +306,16 @@ func MakeConfig() map[string]any {
 										"lit": "popular.php",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"popular.php",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"parts": []any{
-									"popular.php",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -316,10 +328,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "drinks",
+						"title": "Drinks",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ingredients",
+						"title": "Ingredients",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -330,24 +344,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "11007",
-											"kind": "query",
-											"name": "i",
-											"orig": "i",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "552",
-											"kind": "query",
-											"name": "iid",
-											"orig": "iid",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/lookup.php",
@@ -356,18 +352,37 @@ func MakeConfig() map[string]any {
 										"lit": "lookup.php",
 									},
 								},
+								"parts": []any{
+									"lookup.php",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "i",
+											"orig": "i",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "11007",
+										},
+										map[string]any{
+											"name": "iid",
+											"orig": "iid",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "552",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"i",
 										"iid",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"lookup.php",
 								},
 							},
 						},
@@ -381,50 +396,62 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "drinks",
+						"title": "Drinks",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "idDrink",
+						"title": "Id Drink",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strAlcoholic",
+						"title": "Str Alcoholic",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strCategory",
+						"title": "Str Category",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strDrink",
+						"title": "Str Drink",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strDrinkThumb",
+						"title": "Str Drink Thumb",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strGlass",
+						"title": "Str Glass",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strIngredient1",
+						"title": "Str Ingredient1",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strIngredient2",
+						"title": "Str Ingredient2",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strInstructions",
+						"title": "Str Instructions",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strMeasure1",
+						"title": "Str Measure1",
 						"type": "`$STRING`",
 					},
 					map[string]any{
 						"name": "strMeasure2",
+						"title": "Str Measure2",
 						"type": "`$STRING`",
 					},
 				},
@@ -435,7 +462,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/random.php",
@@ -444,17 +470,18 @@ func MakeConfig() map[string]any {
 										"lit": "random.php",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"random.php",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"parts": []any{
-									"random.php",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 							map[string]any{
-								"args": map[string]any{},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/randomselection.php",
@@ -463,14 +490,16 @@ func MakeConfig() map[string]any {
 										"lit": "randomselection.php",
 									},
 								},
-								"select": map[string]any{},
+								"parts": []any{
+									"randomselection.php",
+								},
+								"rename": map[string]any{},
 								"transform": map[string]any{
 									"req": "`reqdata`",
 									"res": "`body.drinks`",
 								},
-								"parts": []any{
-									"randomselection.php",
-								},
+								"args": map[string]any{},
+								"select": map[string]any{},
 							},
 						},
 					},
@@ -483,10 +512,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "drinks",
+						"title": "Drinks",
 						"type": "`$ARRAY`",
 					},
 					map[string]any{
 						"name": "ingredients",
+						"title": "Ingredients",
 						"type": "`$ARRAY`",
 					},
 				},
@@ -497,31 +528,6 @@ func MakeConfig() map[string]any {
 						"name": "list",
 						"points": []any{
 							map[string]any{
-								"args": map[string]any{
-									"query": []any{
-										map[string]any{
-											"example": "a",
-											"kind": "query",
-											"name": "f",
-											"orig": "f",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "vodka",
-											"kind": "query",
-											"name": "i",
-											"orig": "i",
-											"type": "`$STRING`",
-										},
-										map[string]any{
-											"example": "margarita",
-											"kind": "query",
-											"name": "s",
-											"orig": "s",
-											"type": "`$STRING`",
-										},
-									},
-								},
 								"kind": "http",
 								"method": "GET",
 								"orig": "/search.php",
@@ -530,19 +536,45 @@ func MakeConfig() map[string]any {
 										"lit": "search.php",
 									},
 								},
+								"parts": []any{
+									"search.php",
+								},
+								"rename": map[string]any{},
+								"transform": map[string]any{
+									"req": "`reqdata`",
+									"res": "`body`",
+								},
+								"args": map[string]any{
+									"query": []any{
+										map[string]any{
+											"name": "f",
+											"orig": "f",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "a",
+										},
+										map[string]any{
+											"name": "i",
+											"orig": "i",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "vodka",
+										},
+										map[string]any{
+											"name": "s",
+											"orig": "s",
+											"type": "`$STRING`",
+											"kind": "query",
+											"example": "margarita",
+										},
+									},
+								},
 								"select": map[string]any{
 									"exist": []any{
 										"f",
 										"i",
 										"s",
 									},
-								},
-								"transform": map[string]any{
-									"req": "`reqdata`",
-									"res": "`body`",
-								},
-								"parts": []any{
-									"search.php",
 								},
 							},
 						},

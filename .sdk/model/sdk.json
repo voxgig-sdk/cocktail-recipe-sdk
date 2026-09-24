@@ -24,32 +24,101 @@
         "repr": "auto"
       },
       "contributor": {},
+      "doc": {
+        "active": true,
+        "assets": {
+          "path": ".sdk/doc/assets"
+        },
+        "brand": {
+          "label": "",
+          "notice": "",
+          "shortNotice": "",
+          "url": ""
+        },
+        "ci": {
+          "active": true,
+          "branch": "main"
+        },
+        "content": {
+          "path": ".sdk/doc/content"
+        },
+        "edition": {
+          "summary": {
+            "active": true,
+            "base": "node_modules/@voxgig/docgen/project/.sdk",
+            "brand": {},
+            "filter": {
+              "entities": [],
+              "features": [],
+              "targets": []
+            },
+            "kind": "summary",
+            "name": "summary",
+            "origname": "",
+            "output": {
+              "path": "SUMMARY.md"
+            },
+            "package": "@voxgig/docgen",
+            "published": false,
+            "site": {
+              "active": true
+            },
+            "style": {},
+            "title": ""
+          }
+        },
+        "qa": {
+          "vocabulary": []
+        },
+        "style": {
+          "color": {
+            "accent": "#00c6d8",
+            "background": "#f5f5f9",
+            "darkBackground": "#0f1117",
+            "darkText": "#e6edf3",
+            "primary": "#e70042",
+            "text": "#0a0a0a"
+          },
+          "font": "Nunito, system-ui, sans-serif",
+          "fontFile": "",
+          "headingFont": "Nunito, system-ui, sans-serif",
+          "headingFontFile": "",
+          "logo": "",
+          "mode": "light",
+          "mono": "ui-monospace, monospace",
+          "monoFile": ""
+        },
+        "target": {}
+      },
       "entity": {
         "filter": {
           "active": true,
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "idDrink",
-              "req": false,
-              "type": "`$STRING`"
+          "fields": {
+            "idDrink": {
+              "a": true,
+              "h": "Id Drink",
+              "n": "idDrink",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strDrink",
-              "req": false,
-              "type": "`$STRING`"
+            "strDrink": {
+              "a": true,
+              "h": "Str Drink",
+              "n": "strDrink",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strDrinkThumb",
-              "req": false,
-              "type": "`$STRING`"
+            "strDrinkThumb": {
+              "a": true,
+              "h": "Str Drink Thumb",
+              "n": "strDrinkThumb",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "filter",
           "op": {
             "list": {
@@ -57,62 +126,56 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /filter.php",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "Alcoholic",
-                        "kind": "query",
-                        "name": "a",
-                        "orig": "a",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Alcoholic",
+                        "k": "query",
+                        "n": "a",
+                        "or": "a",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "Ordinary_Drink",
-                        "kind": "query",
-                        "name": "c",
-                        "orig": "c",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Ordinary_Drink",
+                        "k": "query",
+                        "n": "c",
+                        "or": "c",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "Cocktail_glass",
-                        "kind": "query",
-                        "name": "g",
-                        "orig": "g",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Cocktail_glass",
+                        "k": "query",
+                        "n": "g",
+                        "or": "g",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "Gin",
-                        "kind": "query",
-                        "name": "i",
-                        "orig": "i",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "Gin",
+                        "k": "query",
+                        "n": "i",
+                        "or": "i",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /filter.php",
-                    "json": "{\"operationId\":\"filterCocktails\",\"parameters\":[{\"description\":\"Filter by ingredient (comma-separated for multi-ingredient, Premium only)\",\"in\":\"query\",\"name\":\"i\",\"required\":false,\"schema\":{\"example\":\"Gin\",\"type\":\"string\"}},{\"description\":\"Filter by alcoholic type\",\"in\":\"query\",\"name\":\"a\",\"required\":false,\"schema\":{\"enum\":[\"Alcoholic\",\"Non_Alcoholic\"],\"example\":\"Alcoholic\",\"type\":\"string\"}},{\"description\":\"Filter by category\",\"in\":\"query\",\"name\":\"c\",\"required\":false,\"schema\":{\"example\":\"Ordinary_Drink\",\"type\":\"string\"}},{\"description\":\"Filter by glass type\",\"in\":\"query\",\"name\":\"g\",\"required\":false,\"schema\":{\"example\":\"Cocktail_glass\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"idDrink\":{\"type\":\"string\"},\"strDrink\":{\"type\":\"string\"},\"strDrinkThumb\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with filtered cocktails\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/filter.php",
-                  "segments": [
-                    {
-                      "lit": "filter.php"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/filter.php",
+                  "q": {
                     "exist": [
                       "a",
                       "c",
@@ -120,7 +183,13 @@
                       "i"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "filter.php"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.drinks`"
                   }
@@ -137,38 +206,43 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "drinks",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "drinks": {
+              "a": true,
+              "h": "Drinks",
+              "n": "drinks",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "strAlcoholic",
-              "req": false,
-              "type": "`$STRING`"
+            "strAlcoholic": {
+              "a": true,
+              "h": "Str Alcoholic",
+              "n": "strAlcoholic",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strCategory",
-              "req": false,
-              "type": "`$STRING`"
+            "strCategory": {
+              "a": true,
+              "h": "Str Category",
+              "n": "strCategory",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strGlass",
-              "req": false,
-              "type": "`$STRING`"
+            "strGlass": {
+              "a": true,
+              "h": "Str Glass",
+              "n": "strGlass",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strIngredient1",
-              "req": false,
-              "type": "`$STRING`"
+            "strIngredient1": {
+              "a": true,
+              "h": "Str Ingredient1",
+              "n": "strIngredient1",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "list",
           "op": {
             "list": {
@@ -176,62 +250,56 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /list.php",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "list",
-                        "kind": "query",
-                        "name": "a",
-                        "orig": "a",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "list",
+                        "k": "query",
+                        "n": "a",
+                        "or": "a",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "list",
-                        "kind": "query",
-                        "name": "c",
-                        "orig": "c",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "list",
+                        "k": "query",
+                        "n": "c",
+                        "or": "c",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "list",
-                        "kind": "query",
-                        "name": "g",
-                        "orig": "g",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "list",
+                        "k": "query",
+                        "n": "g",
+                        "or": "g",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "list",
-                        "kind": "query",
-                        "name": "i",
-                        "orig": "i",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "list",
+                        "k": "query",
+                        "n": "i",
+                        "or": "i",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /list.php",
-                    "json": "{\"operationId\":\"listFilters\",\"parameters\":[{\"description\":\"List categories\",\"in\":\"query\",\"name\":\"c\",\"required\":false,\"schema\":{\"enum\":[\"list\"],\"example\":\"list\",\"type\":\"string\"}},{\"description\":\"List glass types\",\"in\":\"query\",\"name\":\"g\",\"required\":false,\"schema\":{\"enum\":[\"list\"],\"example\":\"list\",\"type\":\"string\"}},{\"description\":\"List ingredients\",\"in\":\"query\",\"name\":\"i\",\"required\":false,\"schema\":{\"enum\":[\"list\"],\"example\":\"list\",\"type\":\"string\"}},{\"description\":\"List alcoholic filters\",\"in\":\"query\",\"name\":\"a\",\"required\":false,\"schema\":{\"enum\":[\"list\"],\"example\":\"list\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"strAlcoholic\":{\"type\":\"string\"},\"strCategory\":{\"type\":\"string\"},\"strGlass\":{\"type\":\"string\"},\"strIngredient1\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with list of filters\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/list.php",
-                  "segments": [
-                    {
-                      "lit": "list.php"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/list.php",
+                  "q": {
                     "exist": [
                       "a",
                       "c",
@@ -239,53 +307,59 @@
                       "i"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "list.php"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.drinks`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /latest.php",
-                    "json": "{\"operationId\":\"getLatestCocktails\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with latest cocktails\"},\"401\":{\"description\":\"Unauthorized - Premium API key required\"}},\"security\":[{\"premiumApiKey\":[]}],\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/latest.php",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/latest.php",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "latest.php"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.drinks`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /popular.php",
-                    "json": "{\"operationId\":\"getPopularCocktails\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with popular cocktails\"},\"401\":{\"description\":\"Unauthorized - Premium API key required\"}},\"security\":[{\"premiumApiKey\":[]}],\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/popular.php",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/popular.php",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "popular.php"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.drinks`"
                   }
@@ -302,20 +376,22 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "drinks",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "drinks": {
+              "a": true,
+              "h": "Drinks",
+              "n": "drinks",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "ingredients",
-              "req": false,
-              "type": "`$ARRAY`"
+            "ingredients": {
+              "a": true,
+              "h": "Ingredients",
+              "n": "ingredients",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "lookup",
           "op": {
             "list": {
@@ -323,50 +399,50 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /lookup.php",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "11007",
-                        "kind": "query",
-                        "name": "i",
-                        "orig": "i",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "11007",
+                        "k": "query",
+                        "n": "i",
+                        "or": "i",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "552",
-                        "kind": "query",
-                        "name": "iid",
-                        "orig": "iid",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "552",
+                        "k": "query",
+                        "n": "iid",
+                        "or": "iid",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /lookup.php",
-                    "json": "{\"operationId\":\"lookupDetails\",\"parameters\":[{\"description\":\"Lookup cocktail by ID\",\"in\":\"query\",\"name\":\"i\",\"required\":false,\"schema\":{\"example\":\"11007\",\"type\":\"string\"}},{\"description\":\"Lookup ingredient by ID\",\"in\":\"query\",\"name\":\"iid\",\"required\":false,\"schema\":{\"example\":\"552\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"idDrink\":{\"type\":\"string\"},\"strAlcoholic\":{\"type\":\"string\"},\"strCategory\":{\"type\":\"string\"},\"strDrink\":{\"type\":\"string\"},\"strDrinkThumb\":{\"type\":\"string\"},\"strGlass\":{\"type\":\"string\"},\"strInstructions\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"ingredients\":{\"items\":{\"properties\":{\"idIngredient\":{\"type\":\"string\"},\"strDescription\":{\"type\":\"string\"},\"strIngredient\":{\"type\":\"string\"},\"strType\":{\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/lookup.php",
-                  "segments": [
-                    {
-                      "lit": "lookup.php"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/lookup.php",
+                  "q": {
                     "exist": [
                       "i",
                       "iid"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "lookup.php"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -383,80 +459,92 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "drinks",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "drinks": {
+              "a": true,
+              "h": "Drinks",
+              "n": "drinks",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "idDrink",
-              "req": false,
-              "type": "`$STRING`"
+            "idDrink": {
+              "a": true,
+              "h": "Id Drink",
+              "n": "idDrink",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strAlcoholic",
-              "req": false,
-              "type": "`$STRING`"
+            "strAlcoholic": {
+              "a": true,
+              "h": "Str Alcoholic",
+              "n": "strAlcoholic",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strCategory",
-              "req": false,
-              "type": "`$STRING`"
+            "strCategory": {
+              "a": true,
+              "h": "Str Category",
+              "n": "strCategory",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strDrink",
-              "req": false,
-              "type": "`$STRING`"
+            "strDrink": {
+              "a": true,
+              "h": "Str Drink",
+              "n": "strDrink",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strDrinkThumb",
-              "req": false,
-              "type": "`$STRING`"
+            "strDrinkThumb": {
+              "a": true,
+              "h": "Str Drink Thumb",
+              "n": "strDrinkThumb",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strGlass",
-              "req": false,
-              "type": "`$STRING`"
+            "strGlass": {
+              "a": true,
+              "h": "Str Glass",
+              "n": "strGlass",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strIngredient1",
-              "req": false,
-              "type": "`$STRING`"
+            "strIngredient1": {
+              "a": true,
+              "h": "Str Ingredient1",
+              "n": "strIngredient1",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strIngredient2",
-              "req": false,
-              "type": "`$STRING`"
+            "strIngredient2": {
+              "a": true,
+              "h": "Str Ingredient2",
+              "n": "strIngredient2",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strInstructions",
-              "req": false,
-              "type": "`$STRING`"
+            "strInstructions": {
+              "a": true,
+              "h": "Str Instructions",
+              "n": "strInstructions",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strMeasure1",
-              "req": false,
-              "type": "`$STRING`"
+            "strMeasure1": {
+              "a": true,
+              "h": "Str Measure1",
+              "n": "strMeasure1",
+              "r": false,
+              "t": "`$STRING`"
             },
-            {
-              "active": true,
-              "name": "strMeasure2",
-              "req": false,
-              "type": "`$STRING`"
+            "strMeasure2": {
+              "a": true,
+              "h": "Str Measure2",
+              "n": "strMeasure2",
+              "r": false,
+              "t": "`$STRING`"
             }
-          ],
+          },
           "name": "random",
           "op": {
             "list": {
@@ -464,47 +552,47 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /random.php",
-                    "json": "{\"operationId\":\"getRandomCocktail\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"idDrink\":{\"type\":\"string\"},\"strAlcoholic\":{\"type\":\"string\"},\"strCategory\":{\"type\":\"string\"},\"strDrink\":{\"type\":\"string\"},\"strDrinkThumb\":{\"type\":\"string\"},\"strGlass\":{\"type\":\"string\"},\"strIngredient1\":{\"nullable\":true,\"type\":\"string\"},\"strIngredient2\":{\"nullable\":true,\"type\":\"string\"},\"strInstructions\":{\"type\":\"string\"},\"strMeasure1\":{\"nullable\":true,\"type\":\"string\"},\"strMeasure2\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"maxItems\":1,\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with random cocktail\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/random.php",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/random.php",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "random.php"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.drinks`"
                   }
                 },
                 {
-                  "active": true,
-                  "args": {},
-                  "contract": {
+                  "a": true,
+                  "co": {
                     "id": "GET /randomselection.php",
-                    "json": "{\"operationId\":\"getRandomSelection\",\"parameters\":[],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"type\":\"object\"},\"maxItems\":10,\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response with 10 random cocktails\"},\"401\":{\"description\":\"Unauthorized - Premium API key required\"}},\"security\":[{\"premiumApiKey\":[]}],\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"operation\"}",
                     "source": "openapi3",
-                    "version": 1
+                    "version": 2
                   },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/randomselection.php",
-                  "segments": [
+                  "g": {},
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/randomselection.php",
+                  "q": {},
+                  "r": {},
+                  "s": [
                     {
                       "lit": "randomselection.php"
                     }
                   ],
-                  "select": {},
-                  "transform": {
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body.drinks`"
                   }
@@ -521,20 +609,22 @@
           "alias": {
             "field": {}
           },
-          "fields": [
-            {
-              "active": true,
-              "name": "drinks",
-              "req": false,
-              "type": "`$ARRAY`"
+          "fields": {
+            "drinks": {
+              "a": true,
+              "h": "Drinks",
+              "n": "drinks",
+              "r": false,
+              "t": "`$ARRAY`"
             },
-            {
-              "active": true,
-              "name": "ingredients",
-              "req": false,
-              "type": "`$ARRAY`"
+            "ingredients": {
+              "a": true,
+              "h": "Ingredients",
+              "n": "ingredients",
+              "r": false,
+              "t": "`$ARRAY`"
             }
-          ],
+          },
           "name": "search",
           "op": {
             "list": {
@@ -542,60 +632,60 @@
               "name": "list",
               "points": [
                 {
-                  "active": true,
-                  "args": {
+                  "a": true,
+                  "co": {
+                    "id": "GET /search.php",
+                    "source": "openapi3",
+                    "version": 2
+                  },
+                  "g": {
                     "query": [
                       {
-                        "active": true,
-                        "example": "a",
-                        "kind": "query",
-                        "name": "f",
-                        "orig": "f",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "a",
+                        "k": "query",
+                        "n": "f",
+                        "or": "f",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "vodka",
-                        "kind": "query",
-                        "name": "i",
-                        "orig": "i",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "vodka",
+                        "k": "query",
+                        "n": "i",
+                        "or": "i",
+                        "r": false,
+                        "t": "`$STRING`"
                       },
                       {
-                        "active": true,
-                        "example": "margarita",
-                        "kind": "query",
-                        "name": "s",
-                        "orig": "s",
-                        "reqd": false,
-                        "type": "`$STRING`"
+                        "a": true,
+                        "ex": "margarita",
+                        "k": "query",
+                        "n": "s",
+                        "or": "s",
+                        "r": false,
+                        "t": "`$STRING`"
                       }
                     ]
                   },
-                  "contract": {
-                    "id": "GET /search.php",
-                    "json": "{\"operationId\":\"searchCocktails\",\"parameters\":[{\"description\":\"Search cocktail by name\",\"in\":\"query\",\"name\":\"s\",\"required\":false,\"schema\":{\"example\":\"margarita\",\"type\":\"string\"}},{\"description\":\"List all cocktails by first letter\",\"in\":\"query\",\"name\":\"f\",\"required\":false,\"schema\":{\"example\":\"a\",\"maxLength\":1,\"minLength\":1,\"type\":\"string\"}},{\"description\":\"Search ingredient by name\",\"in\":\"query\",\"name\":\"i\",\"required\":false,\"schema\":{\"example\":\"vodka\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"drinks\":{\"items\":{\"properties\":{\"dateModified\":{\"format\":\"date-time\",\"nullable\":true,\"type\":\"string\"},\"idDrink\":{\"description\":\"Unique drink ID\",\"type\":\"string\"},\"strAlcoholic\":{\"description\":\"Alcoholic or Non-Alcoholic\",\"type\":\"string\"},\"strCategory\":{\"description\":\"Drink category\",\"type\":\"string\"},\"strDrink\":{\"description\":\"Drink name\",\"type\":\"string\"},\"strDrinkAlternate\":{\"nullable\":true,\"type\":\"string\"},\"strDrinkThumb\":{\"description\":\"URL to drink thumbnail image\",\"type\":\"string\"},\"strGlass\":{\"description\":\"Type of glass\",\"type\":\"string\"},\"strIBA\":{\"nullable\":true,\"type\":\"string\"},\"strIngredient1\":{\"nullable\":true,\"type\":\"string\"},\"strIngredient2\":{\"nullable\":true,\"type\":\"string\"},\"strIngredient3\":{\"nullable\":true,\"type\":\"string\"},\"strInstructions\":{\"description\":\"Recipe instructions\",\"type\":\"string\"},\"strMeasure1\":{\"nullable\":true,\"type\":\"string\"},\"strMeasure2\":{\"nullable\":true,\"type\":\"string\"},\"strMeasure3\":{\"nullable\":true,\"type\":\"string\"},\"strTags\":{\"nullable\":true,\"type\":\"string\"},\"strVideo\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"},\"ingredients\":{\"items\":{\"properties\":{\"idIngredient\":{\"type\":\"string\"},\"strABV\":{\"nullable\":true,\"type\":\"string\"},\"strAlcohol\":{\"nullable\":true,\"type\":\"string\"},\"strDescription\":{\"nullable\":true,\"type\":\"string\"},\"strIngredient\":{\"type\":\"string\"},\"strType\":{\"nullable\":true,\"type\":\"string\"}},\"type\":\"object\"},\"type\":\"array\"}},\"type\":\"object\"}}},\"description\":\"Successful response\"}},\"securitySchemes\":{\"premiumApiKey\":{\"description\":\"Premium API key for production use. Test key '1' can be used for development.\",\"in\":\"path\",\"name\":\"apiKey\",\"type\":\"apiKey\"}},\"securitySource\":\"unspecified\"}",
-                    "source": "openapi3",
-                    "version": 1
-                  },
-                  "kind": "http",
-                  "method": "GET",
-                  "orig": "/search.php",
-                  "segments": [
-                    {
-                      "lit": "search.php"
-                    }
-                  ],
-                  "select": {
+                  "k": "http",
+                  "m": "GET",
+                  "o": "/search.php",
+                  "q": {
                     "exist": [
                       "f",
                       "i",
                       "s"
                     ]
                   },
-                  "transform": {
+                  "r": {},
+                  "s": [
+                    {
+                      "lit": "search.php"
+                    }
+                  ],
+                  "t": {
                     "req": "`reqdata`",
                     "res": "`body`"
                   }
@@ -1024,13 +1114,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1050,13 +1140,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1076,13 +1166,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1102,13 +1192,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {
@@ -1128,13 +1218,13 @@
           "param": {},
           "step": [
             {
-              "active": true,
-              "data": {},
-              "input": {},
-              "match": {},
-              "op": "list",
-              "spec": [],
-              "valid": [
+              "a": true,
+              "d": {},
+              "i": {},
+              "m": {},
+              "o": "list",
+              "s": [],
+              "v": [
                 {
                   "apply": "ItemExists",
                   "def": {

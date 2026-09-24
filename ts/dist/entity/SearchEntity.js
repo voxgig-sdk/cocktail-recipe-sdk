@@ -2,7 +2,6 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SearchEntity = void 0;
 const CocktailRecipeEntityBase_1 = require("../CocktailRecipeEntityBase");
-// TODO: needs Entity superclass
 class SearchEntity extends CocktailRecipeEntityBase_1.CocktailRecipeEntityBase {
     constructor(client, entopts) {
         super(client, entopts);

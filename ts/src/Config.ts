@@ -16,12 +16,6 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
-// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
-// the model's active plugin groups. A feature that takes a `plugins` option
-// (secrets over sekreto) reads its own entry; a feature with no plugins has
-// none. Named imports above make each definition statically reachable, so
-// an SDK carries exactly the plugin modules its model selects — the same
-// leanness the old side-effect registry imports bought, without a registry.
 const FEATURE_PLUGINS: Record<string, any[]> = {
   
 }
@@ -32,7 +26,6 @@ class Config {
   makeFeature(this: any, fn: string) {
     const fc = FEATURE_CLASS[fn]
     const fi = new fc()
-    // TODO: errors etc
     return fi
   }
 
@@ -157,14 +150,17 @@ class Config {
       "fields": [
         {
           "name": "idDrink",
+          "title": "Id Drink",
           "type": "`$STRING`"
         },
         {
           "name": "strDrink",
+          "title": "Str Drink",
           "type": "`$STRING`"
         },
         {
           "name": "strDrinkThumb",
+          "title": "Str Drink Thumb",
           "type": "`$STRING`"
         }
       ],
@@ -175,38 +171,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "Alcoholic",
-                    "kind": "query",
-                    "name": "a",
-                    "orig": "a",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "Ordinary_Drink",
-                    "kind": "query",
-                    "name": "c",
-                    "orig": "c",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "Cocktail_glass",
-                    "kind": "query",
-                    "name": "g",
-                    "orig": "g",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "Gin",
-                    "kind": "query",
-                    "name": "i",
-                    "orig": "i",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/filter.php",
@@ -215,6 +179,46 @@ class Config {
                   "lit": "filter.php"
                 }
               ],
+              "parts": [
+                "filter.php"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.drinks`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "a",
+                    "orig": "a",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Alcoholic"
+                  },
+                  {
+                    "name": "c",
+                    "orig": "c",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Ordinary_Drink"
+                  },
+                  {
+                    "name": "g",
+                    "orig": "g",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Cocktail_glass"
+                  },
+                  {
+                    "name": "i",
+                    "orig": "i",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "Gin"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "a",
@@ -222,14 +226,7 @@ class Config {
                   "g",
                   "i"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.drinks`"
-              },
-              "parts": [
-                "filter.php"
-              ]
+              }
             }
           ]
         }
@@ -242,22 +239,27 @@ class Config {
       "fields": [
         {
           "name": "drinks",
+          "title": "Drinks",
           "type": "`$ARRAY`"
         },
         {
           "name": "strAlcoholic",
+          "title": "Str Alcoholic",
           "type": "`$STRING`"
         },
         {
           "name": "strCategory",
+          "title": "Str Category",
           "type": "`$STRING`"
         },
         {
           "name": "strGlass",
+          "title": "Str Glass",
           "type": "`$STRING`"
         },
         {
           "name": "strIngredient1",
+          "title": "Str Ingredient1",
           "type": "`$STRING`"
         }
       ],
@@ -268,38 +270,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "list",
-                    "kind": "query",
-                    "name": "a",
-                    "orig": "a",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "list",
-                    "kind": "query",
-                    "name": "c",
-                    "orig": "c",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "list",
-                    "kind": "query",
-                    "name": "g",
-                    "orig": "g",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "list",
-                    "kind": "query",
-                    "name": "i",
-                    "orig": "i",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/list.php",
@@ -308,6 +278,46 @@ class Config {
                   "lit": "list.php"
                 }
               ],
+              "parts": [
+                "list.php"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body.drinks`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "a",
+                    "orig": "a",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "list"
+                  },
+                  {
+                    "name": "c",
+                    "orig": "c",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "list"
+                  },
+                  {
+                    "name": "g",
+                    "orig": "g",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "list"
+                  },
+                  {
+                    "name": "i",
+                    "orig": "i",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "list"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "a",
@@ -315,17 +325,9 @@ class Config {
                   "g",
                   "i"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body.drinks`"
-              },
-              "parts": [
-                "list.php"
-              ]
+              }
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/latest.php",
@@ -334,17 +336,18 @@ class Config {
                   "lit": "latest.php"
                 }
               ],
-              "select": {},
+              "parts": [
+                "latest.php"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
               },
-              "parts": [
-                "latest.php"
-              ]
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/popular.php",
@@ -353,14 +356,16 @@ class Config {
                   "lit": "popular.php"
                 }
               ],
-              "select": {},
+              "parts": [
+                "popular.php"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
               },
-              "parts": [
-                "popular.php"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -373,10 +378,12 @@ class Config {
       "fields": [
         {
           "name": "drinks",
+          "title": "Drinks",
           "type": "`$ARRAY`"
         },
         {
           "name": "ingredients",
+          "title": "Ingredients",
           "type": "`$ARRAY`"
         }
       ],
@@ -387,24 +394,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "11007",
-                    "kind": "query",
-                    "name": "i",
-                    "orig": "i",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "552",
-                    "kind": "query",
-                    "name": "iid",
-                    "orig": "iid",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/lookup.php",
@@ -413,19 +402,38 @@ class Config {
                   "lit": "lookup.php"
                 }
               ],
+              "parts": [
+                "lookup.php"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "i",
+                    "orig": "i",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "11007"
+                  },
+                  {
+                    "name": "iid",
+                    "orig": "iid",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "552"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "i",
                   "iid"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "lookup.php"
-              ]
+              }
             }
           ]
         }
@@ -438,50 +446,62 @@ class Config {
       "fields": [
         {
           "name": "drinks",
+          "title": "Drinks",
           "type": "`$ARRAY`"
         },
         {
           "name": "idDrink",
+          "title": "Id Drink",
           "type": "`$STRING`"
         },
         {
           "name": "strAlcoholic",
+          "title": "Str Alcoholic",
           "type": "`$STRING`"
         },
         {
           "name": "strCategory",
+          "title": "Str Category",
           "type": "`$STRING`"
         },
         {
           "name": "strDrink",
+          "title": "Str Drink",
           "type": "`$STRING`"
         },
         {
           "name": "strDrinkThumb",
+          "title": "Str Drink Thumb",
           "type": "`$STRING`"
         },
         {
           "name": "strGlass",
+          "title": "Str Glass",
           "type": "`$STRING`"
         },
         {
           "name": "strIngredient1",
+          "title": "Str Ingredient1",
           "type": "`$STRING`"
         },
         {
           "name": "strIngredient2",
+          "title": "Str Ingredient2",
           "type": "`$STRING`"
         },
         {
           "name": "strInstructions",
+          "title": "Str Instructions",
           "type": "`$STRING`"
         },
         {
           "name": "strMeasure1",
+          "title": "Str Measure1",
           "type": "`$STRING`"
         },
         {
           "name": "strMeasure2",
+          "title": "Str Measure2",
           "type": "`$STRING`"
         }
       ],
@@ -492,7 +512,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/random.php",
@@ -501,17 +520,18 @@ class Config {
                   "lit": "random.php"
                 }
               ],
-              "select": {},
+              "parts": [
+                "random.php"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
               },
-              "parts": [
-                "random.php"
-              ]
+              "args": {},
+              "select": {}
             },
             {
-              "args": {},
               "kind": "http",
               "method": "GET",
               "orig": "/randomselection.php",
@@ -520,14 +540,16 @@ class Config {
                   "lit": "randomselection.php"
                 }
               ],
-              "select": {},
+              "parts": [
+                "randomselection.php"
+              ],
+              "rename": {},
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body.drinks`"
               },
-              "parts": [
-                "randomselection.php"
-              ]
+              "args": {},
+              "select": {}
             }
           ]
         }
@@ -540,10 +562,12 @@ class Config {
       "fields": [
         {
           "name": "drinks",
+          "title": "Drinks",
           "type": "`$ARRAY`"
         },
         {
           "name": "ingredients",
+          "title": "Ingredients",
           "type": "`$ARRAY`"
         }
       ],
@@ -554,31 +578,6 @@ class Config {
           "name": "list",
           "points": [
             {
-              "args": {
-                "query": [
-                  {
-                    "example": "a",
-                    "kind": "query",
-                    "name": "f",
-                    "orig": "f",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "vodka",
-                    "kind": "query",
-                    "name": "i",
-                    "orig": "i",
-                    "type": "`$STRING`"
-                  },
-                  {
-                    "example": "margarita",
-                    "kind": "query",
-                    "name": "s",
-                    "orig": "s",
-                    "type": "`$STRING`"
-                  }
-                ]
-              },
               "kind": "http",
               "method": "GET",
               "orig": "/search.php",
@@ -587,20 +586,46 @@ class Config {
                   "lit": "search.php"
                 }
               ],
+              "parts": [
+                "search.php"
+              ],
+              "rename": {},
+              "transform": {
+                "req": "`reqdata`",
+                "res": "`body`"
+              },
+              "args": {
+                "query": [
+                  {
+                    "name": "f",
+                    "orig": "f",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "a"
+                  },
+                  {
+                    "name": "i",
+                    "orig": "i",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "vodka"
+                  },
+                  {
+                    "name": "s",
+                    "orig": "s",
+                    "type": "`$STRING`",
+                    "kind": "query",
+                    "example": "margarita"
+                  }
+                ]
+              },
               "select": {
                 "exist": [
                   "f",
                   "i",
                   "s"
                 ]
-              },
-              "transform": {
-                "req": "`reqdata`",
-                "res": "`body`"
-              },
-              "parts": [
-                "search.php"
-              ]
+              }
             }
           ]
         }

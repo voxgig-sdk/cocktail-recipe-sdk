@@ -1,0 +1,77 @@
+# Entity: lookup
+
+main: kit: entity: lookup: {
+
+  alias: field: {}
+
+  fields: {
+    drinks: {
+      h: "Drinks"
+      n: "drinks"
+      r: false
+      t: "`$ARRAY`"
+    }
+    ingredients: {
+      h: "Ingredients"
+      n: "ingredients"
+      r: false
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "lookup"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /lookup.php"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "11007"
+                k: "query"
+                n: "i"
+                or: "i"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "552"
+                k: "query"
+                n: "iid"
+                or: "iid"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/lookup.php"
+          q: {
+            exist: [
+              "i"
+              "iid"
+            ]
+          }
+          s: [
+            {
+              lit: "lookup.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

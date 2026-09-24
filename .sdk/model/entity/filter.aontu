@@ -1,0 +1,101 @@
+# Entity: filter
+
+main: kit: entity: filter: {
+
+  alias: field: {}
+
+  fields: {
+    idDrink: {
+      h: "Id Drink"
+      n: "idDrink"
+      r: false
+      t: "`$STRING`"
+    }
+    strDrink: {
+      h: "Str Drink"
+      n: "strDrink"
+      r: false
+      t: "`$STRING`"
+    }
+    strDrinkThumb: {
+      h: "Str Drink Thumb"
+      n: "strDrinkThumb"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "filter"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /filter.php"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            query: [
+              {
+                ex: "Alcoholic"
+                k: "query"
+                n: "a"
+                or: "a"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Ordinary_Drink"
+                k: "query"
+                n: "c"
+                or: "c"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Cocktail_glass"
+                k: "query"
+                n: "g"
+                or: "g"
+                r: false
+                t: "`$STRING`"
+              }
+              {
+                ex: "Gin"
+                k: "query"
+                n: "i"
+                or: "i"
+                r: false
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/filter.php"
+          q: {
+            exist: [
+              "a"
+              "c"
+              "g"
+              "i"
+            ]
+          }
+          s: [
+            {
+              lit: "filter.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.drinks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

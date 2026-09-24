@@ -1,0 +1,129 @@
+# Entity: random
+
+main: kit: entity: random: {
+
+  alias: field: {}
+
+  fields: {
+    drinks: {
+      h: "Drinks"
+      n: "drinks"
+      r: false
+      t: "`$ARRAY`"
+    }
+    idDrink: {
+      h: "Id Drink"
+      n: "idDrink"
+      r: false
+      t: "`$STRING`"
+    }
+    strAlcoholic: {
+      h: "Str Alcoholic"
+      n: "strAlcoholic"
+      r: false
+      t: "`$STRING`"
+    }
+    strCategory: {
+      h: "Str Category"
+      n: "strCategory"
+      r: false
+      t: "`$STRING`"
+    }
+    strDrink: {
+      h: "Str Drink"
+      n: "strDrink"
+      r: false
+      t: "`$STRING`"
+    }
+    strDrinkThumb: {
+      h: "Str Drink Thumb"
+      n: "strDrinkThumb"
+      r: false
+      t: "`$STRING`"
+    }
+    strGlass: {
+      h: "Str Glass"
+      n: "strGlass"
+      r: false
+      t: "`$STRING`"
+    }
+    strIngredient1: {
+      h: "Str Ingredient1"
+      n: "strIngredient1"
+      r: false
+      t: "`$STRING`"
+    }
+    strIngredient2: {
+      h: "Str Ingredient2"
+      n: "strIngredient2"
+      r: false
+      t: "`$STRING`"
+    }
+    strInstructions: {
+      h: "Str Instructions"
+      n: "strInstructions"
+      r: false
+      t: "`$STRING`"
+    }
+    strMeasure1: {
+      h: "Str Measure1"
+      n: "strMeasure1"
+      r: false
+      t: "`$STRING`"
+    }
+    strMeasure2: {
+      h: "Str Measure2"
+      n: "strMeasure2"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "random"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /random.php"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/random.php"
+          s: [
+            {
+              lit: "random.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.drinks`"
+          }
+        }
+        {
+          co: {
+            id: "GET /randomselection.php"
+            source: "openapi3"
+            version: 2
+          }
+          m: "GET"
+          o: "/randomselection.php"
+          s: [
+            {
+              lit: "randomselection.php"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.drinks`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

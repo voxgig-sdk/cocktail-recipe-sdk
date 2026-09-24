@@ -19,7 +19,6 @@ import type {
   RandomListMatch,
 } from '../CocktailRecipeTypes'
 
-// TODO: needs Entity superclass
 class RandomEntity extends CocktailRecipeEntityBase<Random> {
 
   constructor(client: CocktailRecipeSDK, entopts: any) {
